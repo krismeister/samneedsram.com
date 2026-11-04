@@ -17,6 +17,10 @@
 <meta name="twitter:title" content="samneedsram.com — Sam's out of memory. Help him remember.">
 <meta name="twitter:description" content="Sam Altman is out of memory. Pledge your old RAM, floppies, and USB sticks to the drive — honor system, every byte counts.">
 <meta name="twitter:image" content="https://samneedsram.com/homepage/og.jpg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Special+Elite&display=swap" rel="stylesheet">
@@ -670,7 +674,7 @@
         vy: -(180 + Math.random() * 340 * power),
         life: 1,
         decay: 0.5 + Math.random() * 0.6,
-        size: flame ? 6 + Math.random() * 16 * power : 4 + Math.random() * 7,
+        size: flame ? 6 + Math.random() * 16 * power : 6 + Math.random() * 9,
         color: flame ? FLAMES[(Math.random() * FLAMES.length) | 0]
                      : CONFETTI[(Math.random() * CONFETTI.length) | 0],
         flame: flame,
@@ -709,9 +713,30 @@
         ctx.quadraticCurveTo(-s * 0.8, -s * 0.2, 0, -s);
         ctx.fill();
       } else {
+        // RAM stick: green body, black chips, gold pins
         ctx.rotate(p.rot);
-        ctx.fillStyle = p.color;
-        ctx.fillRect(-p.size / 2, -p.size / 3, p.size, p.size * 0.66);
+        var w = p.size * 1.6, h = p.size * 0.7;
+        ctx.fillStyle = "#3f7a3f";
+        ctx.strokeStyle = "#16130e";
+        ctx.lineWidth = Math.max(1, p.size * 0.08);
+        ctx.beginPath();
+        ctx.rect(-w / 2, -h / 2, w, h);
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = "#16130e";
+        var chips = 4, cw = w / (chips + 1);
+        for (var c = 0; c < chips; c++) {
+          ctx.fillRect(-w / 2 + cw * (c + 0.5) - cw * 0.3, -h * 0.32, cw * 0.6, h * 0.4);
+        }
+        ctx.strokeStyle = "#c9a227";
+        ctx.lineWidth = Math.max(1, p.size * 0.06);
+        for (var g = 0; g < 6; g++) {
+          var gx = -w / 2 + (w / 7) * (g + 1);
+          ctx.beginPath();
+          ctx.moveTo(gx, h / 2);
+          ctx.lineTo(gx, h / 2 + h * 0.35);
+          ctx.stroke();
+        }
       }
       ctx.restore();
     }

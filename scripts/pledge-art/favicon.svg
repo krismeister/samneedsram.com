@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<!-- Site mark: tilted starburst + S, matching the homepage hero.
+     Rebuild the PNG set with: npm run build-favicon -->
+<g transform="translate(50 50) rotate(11) scale(0.92) translate(-50 -50)">
+<polygon points="50,0 61,12 75,6 79,20 93,19 90,33 100,40 93,52 99,64 87,69 87,83 74,82 68,95 57,87 47,97 40,85 27,90 25,77 12,77 14,64 2,57 9,46 2,35 14,30 14,16 26,17 32,5 43,12" fill="#3f7a3f" stroke="#16130e" stroke-width="2.5" stroke-linejoin="round"/>
+</g>
+<g transform="rotate(-4 50 50)" font-family="Liberation Sans, Arial, sans-serif" font-weight="bold" font-size="54" text-anchor="middle">
+<text x="52.5" y="52" dominant-baseline="central" fill="#16130e">S</text>
+<text x="50" y="50" dominant-baseline="central" fill="#f2ecdd">S</text>
+</g>
+</svg>
