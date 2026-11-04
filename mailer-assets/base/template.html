@@ -15,9 +15,7 @@
     <section class="labels">
       <div class="label mail-to">
         <h2>Mail to</h2>
-        <!-- Public corporate address only. The generating session fills in
-             OpenAI's verified public corporate mailing address here. -->
-        <p>{{OPENAI_PUBLIC_ADDRESS}}</p>
+        <p>OpenAI HQ<br>1455 Third Street, San Francisco, CA 94158</p>
       </div>
       <div class="label return">
         <h2>From</h2>
@@ -26,7 +24,7 @@
     </section>
 
     <section class="letter">
-      <h2>A plea from Sam (probably)</h2>
+      <h2>A plea from Sam</h2>
       <div class="cover-letter">{{COVER_LETTER_HTML}}</div>
     </section>
 
@@ -42,11 +40,6 @@
       <p class="donation-meta">{{NAME}} &middot; {{RAM_TYPE}} &middot; {{DATE}}</p>
     </aside>
 
-    <footer class="credits">
-      <div class="powered"><img class="muse-logo" src="muse-logo.svg" alt="Muse logo">Powered by Muse</div>
-      <ul class="photo-credits">{{PHOTO_CREDITS_HTML}}</ul>
-      <p class="disclaimer">Parody project. Not affiliated with OpenAI or Sam Altman.</p>
-    </footer>
   </div>
 </body>
 </html>

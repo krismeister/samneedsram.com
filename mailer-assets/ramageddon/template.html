@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{NAME}} — Ramageddon mailer</title>
+<link rel="stylesheet" href="./mailer.css">
+</head>
+<body>
+  <div class="sheet">
+    <header class="hero">
+      <img class="hero-art" src="header.jpg" alt="Burning data center corridor">
+      <div class="hero-titles">
+        <p class="hero-kicker">A Sam Needs RAM picture</p>
+        <h1>Ramageddon</h1>
+        <p class="hero-sub">the end is nigh (of memory)</p>
+      </div>
+    </header>
+
+    <p class="alertbar">!!! MEMORY EMERGENCY &mdash; ALL STICKS DEPLOYED &mdash; THIS IS NOT A DRILL !!!</p>
+
+    <main class="dispatch">
+      <section class="labels">
+        <div class="label mail-to">
+          <h2>Evacuate RAM to</h2>
+          <p>OpenAI HQ<br>1455 Third Street, San Francisco, CA 94158</p>
+        </div>
+        <div class="label return">
+          <h2>Survivor</h2>
+          <p>{{NAME}}<br>{{RETURN_ADDRESS}}</p>
+        </div>
+      </section>
+
+      <section class="letter">
+        <h2>Survivor's dispatch</h2>
+        <div class="cover-letter">{{COVER_LETTER_HTML}}</div>
+      </section>
+
+      <section class="eulogy">
+        <h2>Fallen sticks</h2>
+        <div class="eulogy-text">{{EULOGY_HTML}}</div>
+      </section>
+    </main>
+
+    <section class="cast">
+      <h2>The response team</h2>
+      <img class="cast-scene" src="cast.jpg" alt="The response team holding the east wing">
+      <p class="cast-caption">Sgt. Jensen, Cpl. Demis, and the Professor hold the east wing. Sam is missing.</p>
+    </section>
+
+    <aside class="manifest" aria-label="Supply drop manifest">
+      <h2>Supply drop manifest</h2>
+      <p class="manifest-claim">{{DONATION_SAYS}} &mdash; {{GB}} GB {{RAM_TYPE}}</p>
+      <p class="manifest-meta">logged by {{NAME}} &middot; {{DATE}}</p>
+    </aside>
+
+  </div>
+</body>
+</html>

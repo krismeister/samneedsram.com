@@ -42,6 +42,26 @@ export default function LetterDetailsPage({ params }) {
       <p>
         {letter.date} · Template: {letter.template}
       </p>
+      {letter.donation_says ? (
+        <p>
+          <em>Donation: {letter.donation_says}</em>
+        </p>
+      ) : null}
+
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className="letter-image"
+        src={letter.image}
+        alt={`${letter.name} letter image`}
+      />
+      <div className="button-row">
+        <a href={letter.image} target="_blank" rel="noreferrer">
+          View full size
+        </a>
+        <a href={letter.image} download>
+          Download image
+        </a>
+      </div>
 
       <h2>Cover letter</h2>
       <p className="prose">{letter.cover_letter}</p>
@@ -49,19 +69,16 @@ export default function LetterDetailsPage({ params }) {
       <h2>Eulogy</h2>
       <p className="prose">{letter.eulogy}</p>
 
-      <div className="button-row">
-        <a href={letter.pdf} target="_blank" rel="noreferrer">
-          View PDF
-        </a>
-        <a href={letter.pdf} download>
-          Download PDF
-        </a>
-      </div>
-      <iframe
-        className="pdf-frame"
-        src={letter.pdf}
-        title={`${letter.name} mailer PDF`}
-      />
+      <footer className="letter-footer">
+        {letter.photos?.length ? (
+          <ul>
+            {letter.photos.map((credit) => (
+              <li key={credit}>{credit}</li>
+            ))}
+          </ul>
+        ) : null}
+        <p>Powered by Muse.</p>
+      </footer>
     </>
   );
 }

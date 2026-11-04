@@ -17,9 +17,9 @@ sequencing and stack only.
 - **Stack: Next.js (App Router) for the public frontend only.** No CopilotKit
   runtime, no AG-UI, no MCP tools in Phase 1 (deferred to the online-generation
   phase, where AG-UI remains the planned backend-frontend bridge).
-- **PDFs rendered by headless Chromium** from HTML/CSS templates during CLI
-  generation sessions. Most flexible for intricate layouts with backgrounds
-  and graphics; runs locally.
+- **Letter images rendered by headless Chromium** (full-page screenshot) from
+  HTML/CSS templates during CLI generation sessions. Most flexible for intricate
+  layouts with backgrounds and graphics; runs locally.
 - **Next.js app lives at repo root** (quickstart-standard layout), generated
   content under `public/static-mailers/` (Next.js static convention — files
   are committed and directly URL-addressable, which also keeps a future
@@ -29,7 +29,7 @@ sequencing and stack only.
   app, so no production gating is needed yet.
 - **Barebones public frontend in Phase 1.** Homepage lists the local items,
   one details page per item, fed by a JSON index the public API reads.
-- **Mailers are designed PDFs**, not plain text. Each mailer combines
+- **Mailers are designed images**, not plain text. Each mailer combines
   generated text with joke backgrounds and graphics.
 
 ## What gets built
@@ -40,10 +40,11 @@ sequencing and stack only.
 - Mailer templates and graphics: committed files under
   `mailer-assets/` (backgrounds, graphics, HTML/CSS templates). Not
   under `public/` — templates are local build inputs, not served.
-  Template graphics are provided files in Phase 1, not AI-generated;
-  per-mailer thumbnails are AI-generated during the session (see skill step 4).
+  Template art is AI-generated during design sessions and committed under
+  `mailer-assets/`; per-mailer thumbnails are AI-generated per mailer (see skill step 4).
+  Reference photos of real people stay provided files with credits in SOURCES.md.
 - Content store (all committed to the repo):
-  - `public/static-mailers/<slug>.pdf` — the finished mailer artifact.
+  - `public/static-mailers/<slug>.jpg` — the finished letter image.
   - `public/static-mailers/<slug>.thumb.jpg` — 1000x1000 feed thumbnail.
   - `public/static-mailers/letters.json` — index array, newest first.
     Entry shape, see "letters.json schema" below.
@@ -53,8 +54,8 @@ sequencing and stack only.
   `GET /api/letters/[slug]` returns one entry (text plus PDF path).
 - Public pages (barebones, no styling beyond readable):
   - `/` homepage lists all items from the API (name, RAM type, GB, excerpt).
-  - `/letters/[slug]` details page renders the text in full with the PDF
-    embedded/linked for view and download.
+  - `/letters/[slug]` details page shows the letter image in full with the text,
+    plus a footer with photo credits and Powered by Muse.
 - No app secrets in Phase 1 (model auth lives in Kris's local CLI login).
 
 ### letters.json schema
@@ -72,7 +73,7 @@ Top-level JSON array, newest entry first. All fields required.
 | `cover_letter` | string | full cover letter text (markdown) |
 | `eulogy` | string | full eulogy/roast text (markdown) |
 | `template` | string | template id from `mailer-assets/` |
-| `pdf` | string | public URL path, `/static-mailers/<slug>.pdf` |
+| `image` | string | public URL path, `/static-mailers/<slug>.jpg` |
 | `thumbnail` | string | public URL path, `/static-mailers/<slug>.thumb.jpg` |
 
 Example:
@@ -89,7 +90,7 @@ Example:
     "cover_letter": "Dear Sam, ...",
     "eulogy": "Here lies a stick that never blue-screened, ...",
     "template": "brutalist-flyer",
-    "pdf": "/static-mailers/sample-ddr3-donation_001_f47ac10b-58cc-4372-a567-0e02b2c3d479.pdf",
+    "image": "/static-mailers/sample-ddr3-donation_001_f47ac10b-58cc-4372-a567-0e02b2c3d479.jpg",
     "thumbnail": "/static-mailers/sample-ddr3-donation_001_f47ac10b-58cc-4372-a567-0e02b2c3d479.thumb.jpg"
   }
 ]
@@ -101,20 +102,19 @@ Generator UI (`/local`), CopilotKit/AG-UI runtime, MCP tools, online text/PDF
 generation, model-provider choice (Llama is the leading candidate for the
 final public tool), counter, how-it-works, public pledge form, PDF mail-kit
 generator, leaderboard, share cards, user accounts, proof-photo uploads,
-AI-generated template graphics, and the full `/admin` section. None of these are built
+and the full `/admin` section. None of these are built
 in Phase 1.
 
 ## Acceptance criteria
 
-- A CLI generation session produces a finished mailer: the PDF and thumbnail appear under
-  `public/static-mailers/` and `letters.json` gains an entry matching the
+- A CLI generation session produces a finished mailer: the letter image and thumbnail
+  appear under `public/static-mailers/` and `letters.json` gains an entry matching the
   schema above.
 - `npm install && npm run dev`: `/` lists all indexed items;
   `/letters/[slug]` renders the text in full with the PDF viewable and
   downloadable; both read through the public API.
 - No secrets in the repo.
-- `npm run build` passes; disclaimer (parody, not affiliated with OpenAI or
-  Sam Altman) present on public pages and in generated mailers.
+- `npm run build` passes.
 
 ## Open questions
 

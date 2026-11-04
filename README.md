@@ -21,4 +21,4 @@ Status: scaffold. See [docs/da_plan.md](docs/da_plan.md) for the full plan.
 
 ## Disclaimer
 
-Parody project. Not affiliated with OpenAI or Sam Altman. Use only public corporate mailing addresses.
+Use only public corporate mailing addresses.

@@ -57,9 +57,8 @@ Decision needed from Kris before scaffolding code.
 
 ## 6. Conventions
 
-- Keep it funny but harmless. Parody, no harassment.
+- Keep it funny but harmless. Spoof, no harassment.
 - Public corporate address only. Never personal addresses.
-- Disclaimer on site + in mail kit: not affiliated with OpenAI or Sam Altman.
 - Mobile-first, fast load, one page can carry the joke.
 
 ## 7. Open questions

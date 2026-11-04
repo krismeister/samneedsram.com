@@ -86,10 +86,21 @@ a {
   white-space: pre-wrap;
 }
 
-.pdf-frame {
+.letter-image {
   width: 100%;
-  height: 70vh;
+  height: auto;
+  display: block;
   border: 2px solid #1a1a1a;
+}
+
+.letter-footer {
+  margin-top: 2rem;
+  border-top: 1px solid #1a1a1a;
+  font-size: 0.85rem;
+}
+
+.letter-footer ul {
+  padding-left: 1.25rem;
 }
 
 .button-row {

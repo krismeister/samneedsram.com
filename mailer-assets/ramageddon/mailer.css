@@ -1,0 +1,239 @@
+@page {
+  size: Letter;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  color: #f2e9d5;
+  background: #0b0b0d;
+}
+
+.sheet {
+  background: linear-gradient(180deg, #0b0b0d 0%, #171114 45%, #0b0b0d 100%);
+  min-height: 11in;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen {
+  body {
+    padding: 24px 12px;
+  }
+  .sheet {
+    max-width: 8.5in;
+    margin: 0 auto;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Cinematic header: generated art band with poster titles. */
+.hero {
+  position: relative;
+}
+
+.hero-art {
+  display: block;
+  width: 100%;
+  height: 3.4in;
+  object-fit: cover;
+}
+
+.hero-titles {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 0.5in 0.6in 0.25in;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.82));
+  text-align: center;
+}
+
+.hero-kicker {
+  margin: 0;
+  font-size: 10pt;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #ffb347;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 72pt;
+  line-height: 1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #f7f1e3;
+  text-shadow: 0 0 24px rgba(255, 90, 0, 0.65), 3px 3px 0 #000;
+}
+
+.hero-sub {
+  margin: 0.05in 0 0;
+  font-size: 13pt;
+  font-style: italic;
+  color: #e8d9bd;
+}
+
+.alertbar {
+  margin: 0;
+  padding: 0.09in 0.2in;
+  background: #a31212;
+  color: #ffe9a8;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 11pt;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+/* Scorched dispatch card. */
+.dispatch {
+  margin: 0.3in 0.6in 0;
+  background: linear-gradient(175deg, #f5edd8, #e7d9b8);
+  color: #241a10;
+  padding: 0.3in 0.35in;
+  border-top: 0.06in solid #a31212;
+  box-shadow: 0 0 0 1px #000, 0 6px 24px rgba(255, 90, 0, 0.25);
+}
+
+.labels {
+  display: flex;
+  gap: 0.25in;
+  margin-bottom: 0.18in;
+}
+
+.label {
+  flex: 1;
+  border: 2px solid #241a10;
+  padding: 0.08in 0.12in;
+  font-size: 9.5pt;
+}
+
+.label h2 {
+  margin: 0 0 0.03in;
+  font-size: 9pt;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.label p {
+  margin: 0;
+}
+
+.letter h2,
+.eulogy h2 {
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 15pt;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0 0 0.06in;
+  color: #7a0d0d;
+}
+
+.cover-letter,
+.eulogy-text {
+  font-size: 10.5pt;
+  line-height: 1.5;
+}
+
+/* Response team action scene: generated art, full width. */
+.cast {
+  margin: 0.25in 0.6in 0;
+  text-align: center;
+}
+
+.cast h2 {
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 14pt;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ffb347;
+  margin: 0 0 0.1in;
+}
+
+.cast-scene {
+  display: block;
+  width: 100%;
+  border: 0.04in solid #ffb347;
+  box-shadow: 0 4px 18px rgba(255, 90, 0, 0.35);
+}
+
+.cast-caption {
+  margin: 0.06in 0 0;
+  font-size: 9pt;
+  font-style: italic;
+  color: #c9b891;
+}
+
+/* Stencil supply manifest. */
+.manifest {
+  margin: 0.25in 0.6in 0;
+  border: 0.045in solid #ffb347;
+  padding: 0.15in 0.25in;
+  text-align: center;
+  background: rgba(163, 18, 18, 0.18);
+}
+
+.manifest h2 {
+  margin: 0;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 13pt;
+  letter-spacing: 3px;
+  color: #ffb347;
+}
+
+.manifest-claim {
+  margin: 0.06in 0 0;
+  font-family: "Segoe Print", "Comic Sans MS", cursive;
+  font-size: 15pt;
+  color: #fff6e3;
+}
+
+.manifest-meta {
+  margin: 0.05in 0 0;
+  font-size: 9pt;
+  font-style: italic;
+  color: #c9b891;
+}
+
+.credits {
+  margin: auto 0.6in 0;
+  padding: 0.15in 0 0.3in;
+  text-align: center;
+}
+
+.powered {
+  font-size: 10pt;
+  font-weight: bold;
+  color: #e8d9bd;
+}
+
+.muse-logo {
+  height: 0.22in;
+  width: auto;
+  vertical-align: -0.045in;
+  margin-right: 0.06in;
+}
+
+.photo-credits {
+  list-style: none;
+  margin: 0.05in 0 0;
+  padding: 0;
+  font-size: 8pt;
+  font-style: italic;
+  color: #9c8f74;
+}
+
+.disclaimer {
+  margin: 0.05in 0 0;
+  font-size: 9pt;
+  color: #c9b891;
+}
