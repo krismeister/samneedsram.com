@@ -1,1 +1,1 @@
-{"devDependencies":{"puppeteer":"^25.16.0","sharp":"^0.35.5"},"name":"samneedsram.com","private":true,"scripts":{"render-mailer-pdf":"node scripts/render-mailer-pdf.mjs"},"type":"module"}
+{"dependencies":{"next":"^16.4.5","react":"^19.3.1","react-dom":"^19.3.1"},"devDependencies":{"puppeteer":"^25.16.0","sharp":"^0.35.5"},"name":"samneedsram.com","private":true,"scripts":{"build":"next build","dev":"next dev","render-mailer-pdf":"node scripts/render-mailer-pdf.mjs","start":"next start"},"type":"module"}
