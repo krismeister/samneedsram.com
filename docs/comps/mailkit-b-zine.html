@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your mail kit — samneedsram.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f2ecdd;
+    --paper-2: #e9e0c9;
+    --ink: #16130e;
+    --red: #d92b1f;
+    --yellow: #ffc81a;
+    --blue: #2456c8;
+    --tape: rgba(233, 224, 190, 0.85);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: "Special Elite", "Courier New", monospace;
+    background-color: var(--paper);
+    background-image: radial-gradient(rgba(22, 19, 14, 0.10) 1px, transparent 1.6px);
+    background-size: 12px 12px;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 56rem; margin: 0 auto; padding: 1rem 1.25rem 3rem; }
+  #flares { position: fixed; inset: 0; pointer-events: none; z-index: 60; }
+
+  .back {
+    display: inline-block;
+    color: inherit;
+    font-size: 0.9rem;
+    margin: 0.5rem 0 0;
+    transform: rotate(-1deg);
+  }
+
+  /* ---------- header ---------- */
+  .masthead { position: relative; padding-top: 0.5rem; }
+  h1 {
+    font-family: Anton, Impact, sans-serif;
+    font-size: clamp(2.6rem, 9vw, 5.5rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin: 0.5rem 0;
+    transform: rotate(-1deg);
+    text-shadow: 4px 4px 0 var(--red);
+    max-width: 12em;
+    padding-right: 9rem;
+  }
+  .starburst {
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    width: 8rem;
+    height: 8rem;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    background: var(--red);
+    color: var(--paper);
+    font-family: Anton, Impact, sans-serif;
+    font-size: 1.5rem;
+    line-height: 1;
+    text-transform: uppercase;
+    padding: 1.2rem;
+    transform: rotate(10deg);
+    clip-path: polygon(50% 0%, 61% 12%, 75% 6%, 79% 20%, 93% 19%, 90% 33%, 100% 40%, 93% 52%, 99% 64%, 87% 69%, 87% 83%, 74% 82%, 68% 95%, 57% 87%, 47% 97%, 40% 85%, 27% 90%, 25% 77%, 12% 77%, 14% 64%, 2% 57%, 9% 46%, 2% 35%, 14% 30%, 14% 16%, 26% 17%, 32% 5%, 43% 12%);
+  }
+  .sub { font-size: clamp(1rem, 2.4vw, 1.2rem); max-width: 40rem; transform: rotate(-0.5deg); }
+  .sub strong { background: var(--yellow); padding: 0 0.25em; }
+
+  /* ---------- sticker buttons ---------- */
+  .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.4rem 0 0.5rem; align-items: center; }
+  .btn {
+    font-family: Anton, Impact, sans-serif;
+    text-transform: uppercase;
+    font-size: clamp(1.1rem, 3.6vw, 1.5rem);
+    letter-spacing: 0.02em;
+    padding: 0.5rem 1.2rem 0.4rem;
+    border: 4px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+  }
+  .btn:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--ink); }
+  .btn-red { background: var(--red); color: var(--paper); transform: rotate(-1.2deg); }
+  .btn-yellow { background: var(--yellow); color: var(--ink); transform: rotate(1deg); }
+  .btn-paper { background: #fbf7ea; color: var(--ink); font-size: 1rem; padding: 0.35rem 0.9rem; border-width: 3px; box-shadow: 4px 4px 0 var(--ink); transform: rotate(-0.6deg); }
+
+  /* ---------- sections ---------- */
+  .section-title {
+    font-family: Anton, Impact, sans-serif;
+    text-transform: uppercase;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    margin: 2.5rem 0 0.25rem;
+    transform: rotate(-0.8deg);
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.1rem 0.8rem;
+  }
+  .section-note { font-family: "Permanent Marker", cursive; color: var(--red); font-size: 1.05rem; margin: 0.4rem 0 1rem 0.4rem; transform: rotate(-1deg); }
+
+  /* ---------- address labels ---------- */
+  .kit-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.4rem; margin-top: 1rem; }
+  .label-card {
+    position: relative;
+    background: #fbf7ea;
+    border: 3px solid var(--ink);
+    padding: 1rem 1.2rem 1.2rem;
+    box-shadow: 6px 6px 0 rgba(22, 19, 14, 0.25);
+  }
+  .label-card:nth-child(1) { transform: rotate(-1deg); }
+  .label-card:nth-child(2) { transform: rotate(0.8deg); }
+  .label-card::before {
+    content: "";
+    position: absolute;
+    top: -0.8rem;
+    left: 35%;
+    width: 4.5rem;
+    height: 1.4rem;
+    background: var(--tape);
+    transform: rotate(-4deg);
+    border-left: 1px dashed rgba(0,0,0,0.25);
+    border-right: 1px dashed rgba(0,0,0,0.25);
+  }
+  .cut-hint {
+    border-bottom: 2px dashed rgba(22, 19, 14, 0.45);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.7rem;
+    opacity: 0.7;
+  }
+  .label-card h3 {
+    font-family: Anton, Impact, sans-serif;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.4rem;
+    color: var(--red);
+  }
+  .label-card address { font-style: normal; font-size: 1.25rem; line-height: 1.5; }
+  .label-card address .big { font-family: Anton, Impact, sans-serif; text-transform: uppercase; font-size: 1.5rem; }
+  .label-card .blank { font-family: "Permanent Marker", cursive; opacity: 0.55; }
+  .stamp-red {
+    display: inline-block;
+    margin-top: 0.8rem;
+    border: 3px solid var(--red);
+    color: var(--red);
+    font-family: Anton, Impact, sans-serif;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    padding: 0.15rem 0.6rem;
+    transform: rotate(-4deg);
+  }
+
+  /* ---------- cover letter ---------- */
+  .letter {
+    margin-top: 1.4rem;
+    background: #fbf7ea;
+    background-image: repeating-linear-gradient(transparent 0 1.72rem, rgba(36, 86, 200, 0.18) 1.72rem 1.78rem);
+    border: 3px solid var(--ink);
+    box-shadow: 6px 6px 0 rgba(22, 19, 14, 0.25);
+    padding: 1.2rem 1.4rem 1.4rem;
+    transform: rotate(0.4deg);
+    position: relative;
+    line-height: 1.78rem;
+  }
+  .letter::before {
+    content: "";
+    position: absolute;
+    top: -0.8rem;
+    right: 12%;
+    width: 5rem;
+    height: 1.4rem;
+    background: var(--tape);
+    transform: rotate(5deg);
+    border-left: 1px dashed rgba(0,0,0,0.25);
+    border-right: 1px dashed rgba(0,0,0,0.25);
+  }
+  .letter-head {
+    font-family: Anton, Impact, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.9rem;
+    border-bottom: 3px solid var(--ink);
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .letter p { margin: 0 0 1.78rem; font-size: 1.02rem; }
+  .eulogy {
+    font-family: "Permanent Marker", cursive;
+    color: var(--red);
+    font-size: 1.25rem;
+    transform: rotate(-1deg);
+    margin: 0 0 1.78rem;
+  }
+  .sign { font-size: 1.02rem; }
+  .sign .hand { font-family: "Permanent Marker", cursive; font-size: 1.5rem; }
+
+  /* ---------- share card ---------- */
+  .sharecard {
+    margin-top: 1rem;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1.2rem 1.4rem;
+    transform: rotate(-0.7deg);
+    box-shadow: 8px 8px 0 rgba(22, 19, 14, 0.25);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.2rem;
+    align-items: center;
+  }
+  .sharecard svg { width: 9rem; height: auto; display: block; }
+  .sharecard .sc-text { font-family: Anton, Impact, sans-serif; font-size: clamp(1.3rem, 4.5vw, 2rem); line-height: 1.05; text-transform: uppercase; }
+  .sharecard .sc-text .hl { color: var(--yellow); }
+  .sharecard .sc-meta { font-size: 0.85rem; margin-top: 0.4rem; opacity: 0.85; }
+
+  footer { margin-top: 3rem; }
+  .caution {
+    height: 1.1rem;
+    background: repeating-linear-gradient(-45deg, var(--yellow) 0 1rem, var(--ink) 1rem 2rem);
+    border: 2px solid var(--ink);
+    transform: rotate(-0.4deg);
+  }
+  .foot-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 0.8rem 0.2rem;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 640px) {
+    h1 { padding-right: 7rem; }
+    .kit-grid { grid-template-columns: 1fr; }
+    .starburst { width: 6.4rem; height: 6.4rem; font-size: 1.05rem; padding: 0.9rem; }
+    .sharecard { grid-template-columns: 1fr; }
+    .sharecard svg { width: 7rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn { transition: none; }
+  }
+  @media print {
+    body { background: #fff; }
+    #flares, .noprint { display: none !important; }
+    .wrap { max-width: none; padding: 0; }
+    h1, .sub, .label-card, .letter, .sharecard { transform: none; box-shadow: none; }
+    .starburst { position: static; width: 6rem; height: 6rem; font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+<canvas id="flares" aria-hidden="true"></canvas>
+<div class="wrap">
+
+  <a class="back noprint" href="homepage-b-zine.html">&larr; samneedsram.com</a>
+
+  <header class="masthead">
+    <div class="starburst noprint" aria-hidden="true">Pledged!</div>
+    <h1><span data-amount>8GB of DDR3</span> <span data-verb>is</span> headed to Sam</h1>
+    <p class="sub"><strong data-who>Mabel</strong>&rsquo;s pledge is <strong>#<span data-n>204</span></strong> on the pile. Print the kit below, stick it in the post, and Sam gets his memory back.</p>
+  </header>
+
+  <div class="cta-row noprint">
+    <button class="btn btn-red" id="postBtn" type="button">Post to X</button>
+    <button class="btn btn-yellow" id="copyBtn" type="button">Copy link</button>
+    <button class="btn btn-paper" id="printBtn" type="button">Print mail kit</button>
+  </div>
+
+  <section aria-label="Your mail kit">
+    <h2 class="section-title">Your mail kit</h2>
+    <p class="section-note noprint">cut along the dotted lines, champ</p>
+    <div class="kit-grid">
+      <article class="label-card" aria-label="Mail-to label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>Mail to</h3>
+        <address>
+          <span class="big">Sam Altman</span><br>
+          OpenAI<br>
+          3180 18th St<br>
+          San Francisco, CA 94110
+        </address>
+        <span class="stamp-red">Memory enclosed &mdash; do not bend</span>
+      </article>
+      <article class="label-card" aria-label="Return label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>From (you)</h3>
+        <address>
+          <span class="big" data-who>Mabel</span><br>
+          <span class="blank">your street here</span><br>
+          <span class="blank">your town here</span>
+        </address>
+      </article>
+    </div>
+
+    <article class="letter" aria-label="Cover letter for Sam">
+      <div class="letter-head"><span>A letter for Sam</span><span>pledge #<span data-n>204</span></span></div>
+      <p>Dear Sam,</p>
+      <p>Enclosed please find <span data-letter-amount>8GB of DDR3</span>, lightly used and fully loved. It has asked to spend its retirement keeping you online, and frankly it could not have picked a needier machine.</p>
+      <p class="eulogy">&ldquo;<span data-eulogy>she served 11 years in my ThinkPad</span>&rdquo; &mdash; eulogy for the departed</p>
+      <p>Please handle with care. It does not like static, magnets, or being called &ldquo;legacy&rdquo;.</p>
+      <div class="sign">With love and low latency,<br><span class="hand" data-who>Mabel</span></div>
+    </article>
+  </section>
+
+  <section aria-label="Your share card">
+    <h2 class="section-title">Your share card</h2>
+    <p class="section-note noprint">this is what your post looks like</p>
+    <div class="sharecard">
+      <svg id="scRam" viewBox="0 0 120 60" role="img" aria-label="RAM stick doodle">
+        <g fill="none" stroke="#f2ecdd" stroke-width="3">
+          <rect x="8" y="10" width="104" height="26" fill="#3f7a3f"/>
+          <rect x="16" y="15" width="12" height="12" fill="#16130e"/>
+          <rect x="34" y="15" width="12" height="12" fill="#16130e"/>
+          <rect x="52" y="15" width="12" height="12" fill="#16130e"/>
+          <rect x="70" y="15" width="12" height="12" fill="#16130e"/>
+          <rect x="88" y="15" width="12" height="12" fill="#16130e"/>
+          <line x1="14" y1="36" x2="14" y2="48" stroke="#c9a227" stroke-width="4"/>
+          <line x1="32" y1="36" x2="32" y2="48" stroke="#c9a227" stroke-width="4"/>
+          <line x1="50" y1="36" x2="50" y2="48" stroke="#c9a227" stroke-width="4"/>
+          <line x1="68" y1="36" x2="68" y2="48" stroke="#c9a227" stroke-width="4"/>
+          <line x1="86" y1="36" x2="86" y2="48" stroke="#c9a227" stroke-width="4"/>
+          <line x1="104" y1="36" x2="104" y2="48" stroke="#c9a227" stroke-width="4"/>
+        </g>
+      </svg>
+      <svg id="scFloppy" viewBox="0 0 120 60" role="img" aria-label="Floppy disk doodle" style="display:none">
+        <g fill="none" stroke="#f2ecdd" stroke-width="3">
+          <rect x="30" y="4" width="60" height="52" fill="#2456c8"/>
+          <rect x="42" y="4" width="36" height="18" fill="#c9c2ad"/>
+          <rect x="52" y="8" width="16" height="10" fill="#16130e"/>
+          <rect x="38" y="30" width="44" height="18" fill="#fbf7ea"/>
+          <line x1="43" y1="36" x2="77" y2="36"/>
+          <line x1="43" y1="42" x2="70" y2="42"/>
+        </g>
+      </svg>
+      <svg id="scUsb" viewBox="0 0 120 60" role="img" aria-label="USB stick doodle" style="display:none">
+        <g fill="none" stroke="#f2ecdd" stroke-width="3">
+          <rect x="14" y="20" width="30" height="20" fill="#c9c2ad"/>
+          <rect x="20" y="25" width="8" height="10" fill="#16130e"/>
+          <rect x="32" y="25" width="8" height="10" fill="#16130e"/>
+          <rect x="44" y="14" width="62" height="32" fill="#d92b1f"/>
+          <circle cx="96" cy="30" r="5" fill="#fbf7ea"/>
+        </g>
+      </svg>
+      <div>
+        <div class="sc-text"><span data-who>Mabel</span> pledged <span class="hl"><span data-short>8GB DDR3</span></span> to Sam</div>
+        <div class="sc-meta">pledged just now &bull; #PledgeYourSticks &bull; samneedsram.com</div>
+      </div>
+    </div>
+    <div class="cta-row noprint">
+      <button class="btn btn-red" id="postBtn2" type="button">Post to X</button>
+      <button class="btn btn-yellow" id="copyBtn2" type="button">Copy link</button>
+    </div>
+  </section>
+
+  <footer class="noprint">
+    <div class="caution"></div>
+    <div class="foot-row">
+      <span>samneedsram.com &bull; every byte counts</span>
+      <span>pledge #<span data-n>204</span> &bull; Sam is waiting</span>
+    </div>
+  </footer>
+
+</div>
+<script>
+(function () {
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- sample personalization: ?who=Bea&kind=usb&qty=64&type=USB-C&n=205&eulogy=... ---------- */
+  var q = new URLSearchParams(window.location.search);
+  var kind = (q.get("kind") || "ram").toLowerCase();
+  if (kind !== "ram" && kind !== "floppy" && kind !== "usb") kind = "ram";
+  var data = {
+    who: (q.get("who") || "Mabel").slice(0, 24),
+    qty: (q.get("qty") || q.get("gb") || "8").slice(0, 6),
+    type: (q.get("type") || "DDR3").slice(0, 12),
+    n: (q.get("n") || "204").slice(0, 8),
+    eulogy: (q.get("eulogy") || "she served 11 years in my ThinkPad").slice(0, 140)
+  };
+  var phrases = {
+    ram: { amount: data.qty + "GB of " + data.type, verb: "is",
+           letter: data.qty + "GB of " + data.type, short: data.qty + "GB " + data.type },
+    floppy: { amount: data.qty + " floppies", verb: "are",
+           letter: data.qty + " floppy disks (" + data.type + ")", short: data.qty + " floppies" },
+    usb: { amount: "a " + data.qty + "GB USB stick", verb: "is",
+           letter: "one " + data.qty + "GB USB stick (" + data.type + ")", short: data.qty + "GB USB" }
+  };
+  var ph = phrases[kind];
+  ["who", "n", "eulogy"].forEach(function (key) {
+    document.querySelectorAll("[data-" + key + "]").forEach(function (el) {
+      el.textContent = data[key];
+    });
+  });
+  document.querySelectorAll("[data-amount]").forEach(function (el) { el.textContent = ph.amount; });
+  document.querySelectorAll("[data-verb]").forEach(function (el) { el.textContent = ph.verb; });
+  document.querySelectorAll("[data-letter-amount]").forEach(function (el) { el.textContent = ph.letter; });
+  document.querySelectorAll("[data-short]").forEach(function (el) { el.textContent = ph.short; });
+  var doodle = { ram: "scRam", floppy: "scFloppy", usb: "scUsb" }[kind];
+  ["scRam", "scFloppy", "scUsb"].forEach(function (id) {
+    document.getElementById(id).style.display = id === doodle ? "" : "none";
+  });
+  var shareText = "I pledged " + ph.short +
+    " to Sam. He's out of memory — help him remember. #PledgeYourSticks";
+
+  /* ---------- flare-up particles ---------- */
+  var canvas = document.getElementById("flares");
+  var ctx = canvas.getContext("2d");
+  var parts = [];
+  var FLAMES = ["#ffc81a", "#ff9a1f", "#f97316", "#d92b1f"];
+  var CONFETTI = ["#d92b1f", "#ffc81a", "#2456c8", "#fbf7ea", "#16130e"];
+
+  function sizeCanvas() {
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.floor(window.innerWidth * dpr);
+    canvas.height = Math.floor(window.innerHeight * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  window.addEventListener("resize", sizeCanvas);
+  sizeCanvas();
+
+  function burst(power) {
+    if (reduceMotion) return;
+    var W = window.innerWidth, H = window.innerHeight;
+    var n = Math.round(40 * power) + 20;
+    for (var i = 0; i < n; i++) {
+      var flame = Math.random() < 0.65;
+      parts.push({
+        x: Math.random() * W,
+        y: H + 10 + Math.random() * 30,
+        vx: (Math.random() - 0.5) * 90,
+        vy: -(180 + Math.random() * 340 * power),
+        life: 1,
+        decay: 0.5 + Math.random() * 0.6,
+        size: flame ? 6 + Math.random() * 16 * power : 4 + Math.random() * 7,
+        color: flame ? FLAMES[(Math.random() * FLAMES.length) | 0]
+                     : CONFETTI[(Math.random() * CONFETTI.length) | 0],
+        flame: flame,
+        rot: Math.random() * Math.PI * 2,
+        spin: (Math.random() - 0.5) * 10
+      });
+    }
+    if (parts.length > 900) parts.splice(0, parts.length - 900);
+  }
+
+  var last = performance.now();
+  function tick(now) {
+    var dt = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    for (var i = parts.length - 1; i >= 0; i--) {
+      var p = parts[i];
+      p.life -= p.decay * dt;
+      if (p.life <= 0) { parts.splice(i, 1); continue; }
+      p.x += p.vx * dt;
+      p.y += p.vy * dt;
+      p.vy -= 60 * dt;
+      p.vx *= (1 - 0.6 * dt);
+      p.rot += p.spin * dt;
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, Math.min(1, p.life * 1.2));
+      ctx.translate(p.x, p.y);
+      if (p.flame) {
+        ctx.rotate(p.rot * 0.2);
+        var s = p.size * (0.4 + 0.6 * p.life);
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.moveTo(0, -s);
+        ctx.quadraticCurveTo(s * 0.8, -s * 0.2, s * 0.4, s * 0.6);
+        ctx.quadraticCurveTo(0, s, -s * 0.4, s * 0.6);
+        ctx.quadraticCurveTo(-s * 0.8, -s * 0.2, 0, -s);
+        ctx.fill();
+      } else {
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 3, p.size, p.size * 0.66);
+      }
+      ctx.restore();
+    }
+    requestAnimationFrame(tick);
+  }
+  if (!reduceMotion) requestAnimationFrame(tick);
+
+  // pledge-day celebration: three rolling bursts on arrival
+  setTimeout(function () { burst(1.6); }, 400);
+  setTimeout(function () { burst(1.2); }, 1100);
+  setTimeout(function () { burst(0.9); }, 1900);
+
+  /* ---------- buttons ---------- */
+  function flash(btn, msg) {
+    var orig = btn.textContent;
+    btn.textContent = msg;
+    burst(1.2);
+    setTimeout(function () { btn.textContent = orig; }, 2200);
+  }
+  function post(btn) {
+    var url = "https://twitter.com/intent/tweet?text=" +
+      encodeURIComponent(shareText) +
+      "&url=" + encodeURIComponent(window.location.href);
+    window.open(url, "_blank", "noopener");
+    flash(btn, "Go get him!");
+  }
+  function copy(btn) {
+    var payload = shareText + " " + window.location.href;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(payload).then(function () { flash(btn, "Link copied!"); });
+    } else {
+      flash(btn, "Copy the URL!");
+    }
+  }
+  document.getElementById("postBtn").addEventListener("click", function () { post(this); });
+  document.getElementById("postBtn2").addEventListener("click", function () { post(this); });
+  document.getElementById("copyBtn").addEventListener("click", function () { copy(this); });
+  document.getElementById("copyBtn2").addEventListener("click", function () { copy(this); });
+  document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://samneedsram.com/schemas/pledge-submission.json",
+  "title": "PledgeSubmission",
+  "description": "What the homepage pledge form submits. Query-param names match property names; qty arrives as a string in GET and is coerced to a number. Pledge number (n) is server-assigned and NOT submitted — the comp fakes it client-side only.",
+  "type": "object",
+  "required": ["who", "kind", "type", "qty", "theme"],
+  "additionalProperties": false,
+  "properties": {
+    "who": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 24,
+      "description": "Handle / nickname. Trim whitespace before validating."
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["ram", "floppy", "usb"]
+    },
+    "type": {
+      "type": "string",
+      "maxLength": 12,
+      "description": "Detail option; allowed values depend on kind (see allOf)."
+    },
+    "qty": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Gigabytes for ram/usb, disk count for floppy. Form floor is 1; values below 1 (e.g. 0.1 for a 128MB stick) are accepted by the feed but the form clamps to min 1."
+    },
+    "eulogy": {
+      "type": "string",
+      "maxLength": 140,
+      "description": "Optional eulogy for the media. Empty string or omitted both mean none."
+    },
+    "theme": {
+      "type": "string",
+      "enum": ["classic", "ramageddon", "warhammer40kb", "gondor"],
+      "description": "Mail-kit theme slug. Maps to pages: classic -> mailkit-b-zine.html, ramageddon -> theme-ramageddon.html, warhammer40kb -> theme-warhammer40kb.html, gondor -> theme-gondor.html. NOTE: the current comp dropdown submits page filenames and has no name attribute — adopting this schema means switching it to submit the slug."
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "const": "ram" } } },
+      "then": {
+        "properties": {
+          "type": { "enum": ["DDR2", "DDR3", "DDR4", "DDR5", "SODIMM"] },
+          "qty": { "minimum": 1, "maximum": 512 }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "floppy" } } },
+      "then": {
+        "properties": {
+          "type": { "enum": ["3.5\" HD", "3.5\" DD", "5.25\" HD"] },
+          "qty": { "type": "integer", "minimum": 1, "maximum": 500 }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "usb" } } },
+      "then": {
+        "properties": {
+          "type": { "enum": ["USB-A", "USB-C", "Mini", "Mystery"] },
+          "qty": { "minimum": 1, "maximum": 1024 }
+        }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "who": "Mabel",
+      "kind": "ram",
+      "type": "DDR3",
+      "qty": 8,
+      "eulogy": "she served 11 years in my ThinkPad",
+      "theme": "classic"
+    },
+    {
+      "who": "DumpsterDan",
+      "kind": "floppy",
+      "type": "3.5\" HD",
+      "qty": 12,
+      "theme": "gondor"
+    }
+  ]
+}

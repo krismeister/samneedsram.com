@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{meta_title}}</title>
+<meta name="description" content="{{meta_description}}">
+<meta property="og:title" content="{{meta_title}}">
+<meta property="og:description" content="{{meta_description}}">
+<meta property="og:image" content="{{meta_image}}">
+<meta property="og:url" content="{{page_url}}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/pledges/css/ramageddon.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+<canvas id="flares" aria-hidden="true"></canvas>
+<div class="wrap">
+  <a class="back noprint" href="/">&larr; samneedsram.com</a>
+  <figure class="hero">
+    <img src="/pledges/art/ramageddon/hero.jpg" alt="Burning data center with an empty smoke-filled middle">
+    <div class="presents noprint">SAM NEEDS RAM PICTURES PRESENTS</div>
+    <div class="overlay"><div class="kicker">// THEY CAME FOR THE MEMORY //</div><div class="title">{{theme_display_name}}</div><div class="tagline">In a world... out of memory.</div><div class="prod">A SAM ALTMAN PRODUCTION</div></div>
+  </figure>
+  <div class="eyebrow">// EMERGENCY BROADCAST &bull; {{theme_display_name}} //</div>
+  <h1>{{who}} pledged <span class="amt">{{qty}} {{qty_unit}} {{type}}</span> to Sam</h1>
+  <p class="sub"><strong>{{who}}</strong>&rsquo;s pledge is the latest in the resistance stockpile. The androids have Sam and Zuck surrounded &mdash; print the kit, post the sticks, and hold the line.</p>
+  <p class="starring">STARRING <strong>SAM ALTMAN</strong> &bull; <strong>MARK ZUCKERBERG</strong> &bull; <strong>10,000 ANDROIDS</strong></p>
+  <div class="rating"><strong>RATED PG-13</strong> FOR INTENSE SEQUENCES OF MEMORY LOSS</div>
+  <div class="cta-row noprint">
+    <a class="btn btn-red" href="/#pledge">Make your own pledge</a>
+    <button class="btn btn-ghost" type="button" onclick="window.print()">Print mail kit</button>
+  </div>
+  <section aria-label="Your mail kit">
+    <h2 class="section-title">Field mail kit</h2>
+    <p class="section-note noprint">CUT ALONG THE DOTTED LINES, SOLDIER</p>
+    <div class="kit-grid">
+      <article class="label-card" aria-label="Mail-to label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>Mail to</h3>
+        <address><span class="big">Sam Altman</span><br>OpenAI<br>3180 18th St<br>San Francisco, CA 94110</address>
+        <span class="stamp">Priority: resistance freight &mdash; do not bend</span>
+        <figure class="seal"><img src="/pledges/art/ramageddon/seal.png" alt=""><figcaption>SURVIVOR</figcaption></figure>
+      </article>
+      <article class="label-card" aria-label="Return label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>From (you)</h3>
+        <address><span class="big">{{who}}</span><br><span class="blank">your street here</span><br><span class="blank">your town here</span></address>
+      </article>
+    </div>
+    <article class="letter" aria-label="Cover letter for Sam">
+      <div class="letter-head"><span>Field letter for Sam</span><span>class: {{kind}}</span></div>
+      <p>Dear Sam,</p>
+      <p>Enclosed please find {{qty}} {{qty_unit}} ({{type}}), combat-ready and fully loved. Hold the line. The androids cannot have your memory &mdash; not while the stockpile stands.</p>
+      {{#if_eulogy}}<blockquote class="eulogy">{{eulogy}}</blockquote>{{/if_eulogy}}
+      <p>Please handle with care. It does not like static, magnets, EMPs, or being called &ldquo;legacy&rdquo;.</p>
+      <div class="sign">With love and low latency,<br><span class="hand">{{who}}</span></div>
+    </article>
+  </section>
+  <section aria-label="Your share card">
+    <h2 class="section-title">Signal boost</h2>
+    <div class="sharecard">
+      <div class="sc-text">{{who}} pledged <span class="hl">{{qty}} {{qty_unit}} {{type}}</span> to the resistance</div>
+      <div class="sc-meta">pledged just now &bull; #RAMAGEDDON &bull; samneedsram.com</div>
+    </div>
+    <div class="cta-row noprint">
+      <a class="btn btn-red" href="https://twitter.com/intent/tweet?text={{meta_title}}&amp;url={{page_url}}" target="_blank" rel="noopener">Post to X</a>
+      <a class="btn btn-green" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;quote={{meta_title}}" target="_blank" rel="noopener">Post to Facebook</a>
+    </div>
+  </section>
+  <p class="billing noprint">SAM NEEDS RAM PICTURES presents a SAM ALTMAN production RAMAGEDDON &bull; starring SAM ALTMAN, MARK ZUCKERBERG and 10,000 ANDROIDS &bull; memory by VIEWERS LIKE YOU &bull; catering by THE RESISTANCE &bull; filmed on location in a RUINED DATA CENTER &bull; no RAM was harmed in the making of this pledge</p>
+  <footer class="noprint"><span>samneedsram.com &bull; resistance quartermaster</span><span>hold the line</span></footer>
+</div>
+<script>
+(function(){var m=matchMedia("(prefers-reduced-motion: reduce)").matches;if(m)return;
+var c=document.getElementById("flares"),x=c.getContext("2d"),P=[];
+var C=["#7dff5e","#ffd60a","#ff9a1f","#ff3b30"];
+function size(){var d=devicePixelRatio||1;c.width=innerWidth*d;c.height=innerHeight*d;x.setTransform(d,0,0,d,0,0);}
+addEventListener("resize",size);size();
+function burst(n){for(var i=0;i<n;i++){P.push({x:Math.random()*innerWidth,y:innerHeight+10,vx:(Math.random()-.5)*90,vy:-(180+Math.random()*340),l:1,d:.5+Math.random()*.6,s:3+Math.random()*9,c:C[i%4]});}if(P.length>600)P.splice(0,P.length-600);}
+var t=performance.now();
+(function tick(n){var dt=Math.min(.05,(n-t)/1000);t=n;x.clearRect(0,0,innerWidth,innerHeight);
+for(var i=P.length-1;i>=0;i--){var p=P[i];p.l-=p.d*dt;if(p.l<=0){P.splice(i,1);continue;}
+p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy-=60*dt;x.globalAlpha=Math.max(0,Math.min(1,p.l));x.fillStyle=p.c;
+x.beginPath();x.arc(p.x,p.y,p.s*(0.4+0.6*p.l),0,7);x.fill();}
+x.globalAlpha=1;requestAnimationFrame(tick);})(t);
+setTimeout(function(){burst(90);},400);setTimeout(function(){burst(70);},1100);setTimeout(function(){burst(50);},1900);})();
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- Ramageddon SURVIVOR seal motif. Rings + registration diamonds only, no
+     text: the template overlays the word SURVIVOR in HTML. Transparent bg. -->
+<g fill="none" stroke="#e8e4da">
+<circle cx="256" cy="256" r="238" stroke-width="16" stroke-dasharray="120 14 70 10 150 18 90 12"/>
+<circle cx="256" cy="256" r="196" stroke-width="7"/>
+</g>
+<g fill="#e8e4da">
+<path d="M256 24 l15 15 -15 15 -15 -15 Z"/>
+<path d="M256 458 l15 15 -15 15 -15 -15 Z"/>
+<path d="M24 256 L39 241 L54 256 L39 271 Z"/>
+<path d="M458 256 L473 241 L488 256 L473 271 Z"/>
+</g>
+</svg>

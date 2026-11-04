@@ -3,7 +3,7 @@ import "./globals.css";
 export const metadata = {
   title: "samneedsram.com — Sam's out of memory",
   description:
-    "Pledge old RAM sticks and mail them to Sam. Parody project. Not affiliated with OpenAI or Sam Altman.",
+    "Pledge old RAM sticks and mail them to Sam.",
 };
 
 export default function RootLayout({ children }) {
@@ -17,8 +17,7 @@ export default function RootLayout({ children }) {
         <main>{children}</main>
         <footer className="site-footer">
           <p>
-            Parody project. Not affiliated with OpenAI or Sam Altman. Mail to
-            the public corporate address only.
+            Mail to the public corporate address only.
           </p>
         </footer>
       </body>

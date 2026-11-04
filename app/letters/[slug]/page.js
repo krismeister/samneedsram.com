@@ -23,7 +23,7 @@ export default function LetterDetailsPage({ params }) {
     return (
       <>
         <p>
-          <Link href="/">← All mailers</Link>
+          <Link href="/letters">← All mailers</Link>
         </p>
         <p>{error}</p>
       </>
@@ -34,7 +34,7 @@ export default function LetterDetailsPage({ params }) {
   return (
     <>
       <p>
-        <Link href="/">← All mailers</Link>
+        <Link href="/letters">← All mailers</Link>
       </p>
       <h1>
         {letter.name} — {letter.gb}GB {letter.ram_type}

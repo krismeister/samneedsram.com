@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Theme picker gallery — samneedsram.com comps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f2ecdd;
+    --ink: #16130e;
+    --red: #d92b1f;
+    --yellow: #ffc81a;
+    --blue: #2456c8;
+    --green: #3f7a3f;
+    --tape: rgba(233, 224, 190, 0.85);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: "Special Elite", "Courier New", monospace;
+    background-color: var(--paper);
+    background-image: radial-gradient(rgba(22, 19, 14, 0.10) 1px, transparent 1.6px);
+    background-size: 12px 12px;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 62rem; margin: 0 auto; padding: 1rem 1.25rem 3rem; }
+  .back { display: inline-block; color: inherit; font-size: 0.9rem; margin: 0.5rem 0 0; transform: rotate(-1deg); }
+  h1 {
+    font-family: Anton, Impact, sans-serif;
+    font-size: clamp(2.4rem, 8vw, 4.5rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin: 0.5rem 0;
+    transform: rotate(-1deg);
+    text-shadow: 4px 4px 0 var(--red);
+  }
+  .sub { font-size: 1.05rem; max-width: 44rem; transform: rotate(-0.5deg); }
+  .sub strong { background: var(--yellow); padding: 0 0.25em; }
+  .section-title {
+    font-family: Anton, Impact, sans-serif;
+    text-transform: uppercase;
+    font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+    margin: 2.5rem 0 0.25rem;
+    transform: rotate(-0.8deg);
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.1rem 0.8rem;
+  }
+  .section-note { font-family: "Permanent Marker", cursive; color: var(--red); font-size: 1.05rem; margin: 0.4rem 0 1rem 0.4rem; transform: rotate(-1deg); }
+  .verdict { font-size: 0.95rem; max-width: 44rem; margin: 0.2rem 0 1rem; }
+  .verdict strong { background: var(--yellow); padding: 0 0.25em; }
+
+  .panel {
+    background: #fbf7ea;
+    border: 3px solid var(--ink);
+    box-shadow: 6px 6px 0 rgba(22, 19, 14, 0.25);
+    padding: 1.1rem 1.2rem 1.2rem;
+    position: relative;
+  }
+  .panel::before {
+    content: "";
+    position: absolute;
+    top: -0.8rem;
+    left: 10%;
+    width: 5rem;
+    height: 1.4rem;
+    background: var(--tape);
+    transform: rotate(-4deg);
+    border-left: 1px dashed rgba(0,0,0,0.25);
+    border-right: 1px dashed rgba(0,0,0,0.25);
+  }
+  .readout {
+    margin: 1rem 0 0;
+    border: 3px solid var(--ink);
+    background: var(--paper);
+    padding: 0.5rem 0.8rem;
+    font-size: 1rem;
+    min-height: 2.6rem;
+  }
+  .readout a { color: inherit; font-weight: bold; }
+  .readout .soon { opacity: 0.65; font-size: 0.85rem; }
+
+  /* ---------- A: search + grid ---------- */
+  .toolbar { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.9rem; }
+  .toolbar input[type="search"] {
+    flex: 1 1 14rem;
+    font-family: "Special Elite", "Courier New", monospace;
+    font-size: 1.05rem;
+    color: var(--ink);
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    padding: 0.4rem 0.6rem;
+  }
+  .toolbar input[type="search"]:focus { outline: 3px solid var(--yellow); }
+  .gchip {
+    font-family: Anton, Impact, sans-serif;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    border: 3px solid var(--ink);
+    background: var(--paper);
+    padding: 0.2rem 0.7rem;
+    cursor: pointer;
+  }
+  .gchip[aria-pressed="true"] { background: var(--yellow); box-shadow: 3px 3px 0 var(--ink); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr)); gap: 0.9rem; }
+  .pcard {
+    border: 3px solid var(--ink);
+    background: var(--paper);
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    position: relative;
+  }
+  .pcard:nth-child(odd) { transform: rotate(-0.8deg); }
+  .pcard:nth-child(even) { transform: rotate(0.7deg); }
+  .pcard .thumb { display: block; width: 100%; height: 5.2rem; object-fit: cover; border-bottom: 3px solid var(--ink); }
+  .pcard .mono {
+    display: grid;
+    place-items: center;
+    height: 5.2rem;
+    border-bottom: 3px solid var(--ink);
+    font-family: Anton, Impact, sans-serif;
+    font-size: 2rem;
+    color: var(--paper);
+    background: var(--ink);
+  }
+  .pcard .mono.movies { background: var(--red); }
+  .pcard .mono.tv { background: var(--blue); }
+  .pcard .mono.games { background: var(--green); }
+  .pcard .mono.retro { background: #b35412; }
+  .pcard .mono.house { background: var(--ink); }
+  .pcard .name { display: block; font-family: Anton, Impact, sans-serif; text-transform: uppercase; font-size: 0.92rem; padding: 0.3rem 0.5rem 0; }
+  .pcard .genre { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.7; padding: 0 0.5rem 0.4rem; }
+  .pcard .live {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.3rem;
+    background: var(--yellow);
+    border: 2px solid var(--ink);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    padding: 0 0.3rem;
+    transform: rotate(3deg);
+  }
+  .pcard.picked { box-shadow: 5px 5px 0 var(--ink); background: #fff8df; outline: 3px solid var(--yellow); }
+  .empty { display: none; font-family: "Permanent Marker", cursive; color: var(--red); font-size: 1.2rem; margin: 0.5rem 0; }
+
+  /* ---------- B: grouped dropdown ---------- */
+  .biglabel { display: block; font-family: Anton, Impact, sans-serif; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+  .panel select {
+    width: 100%;
+    font-family: "Special Elite", "Courier New", monospace;
+    font-size: 1.05rem;
+    color: var(--ink);
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    padding: 0.4rem 0.6rem;
+  }
+  .panel select:focus { outline: 3px solid var(--yellow); }
+
+  /* ---------- C: filmstrip ---------- */
+  .strip-bar { display: flex; gap: 0.6rem; align-items: center; margin-bottom: 0.8rem; }
+  .arrow {
+    font-family: Anton, Impact, sans-serif;
+    font-size: 1.2rem;
+    border: 3px solid var(--ink);
+    background: var(--yellow);
+    box-shadow: 4px 4px 0 var(--ink);
+    width: 2.6rem;
+    height: 2.6rem;
+    cursor: pointer;
+  }
+  .arrow:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+  .strip-pos { font-size: 0.9rem; }
+  .strip {
+    display: flex;
+    gap: 0.9rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 0.8rem 0.2rem;
+    border-top: 5px solid var(--ink);
+    border-bottom: 5px solid var(--ink);
+  }
+  .strip .pcard { flex: 0 0 11rem; scroll-snap-align: start; }
+  .surprise {
+    margin-top: 0.9rem;
+    font-family: Anton, Impact, sans-serif;
+    text-transform: uppercase;
+    font-size: 1rem;
+    background: var(--red);
+    color: var(--paper);
+    border: 3px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    padding: 0.35rem 1rem;
+    cursor: pointer;
+    transform: rotate(-1deg);
+  }
+  .surprise:active { transform: translate(3px, 3px) rotate(-1deg); box-shadow: 1px 1px 0 var(--ink); }
+
+  footer { margin-top: 3rem; }
+  .caution {
+    height: 1.1rem;
+    background: repeating-linear-gradient(-45deg, var(--yellow) 0 1rem, var(--ink) 1rem 2rem);
+    border: 2px solid var(--ink);
+    transform: rotate(-0.4deg);
+  }
+  .foot-row { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 0.8rem 0.2rem; font-size: 0.85rem; }
+
+  @media (max-width: 640px) {
+    .strip .pcard { flex-basis: 9rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .arrow, .surprise { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="homepage-b-zine.html">&larr; homepage comp</a>
+  <h1>Theme picker gallery</h1>
+  <p class="sub">The pledge form will offer <strong>~20 mail-kit themes</strong>. Three picker treatments below, all running on the same 20-theme list. <strong>4 are real pages</strong> (yellow LIVE tag); 16 are stand-ins to test scale.</p>
+
+  <section aria-label="Picker A: search and grid">
+    <h2 class="section-title">A. Search + poster grid</h2>
+    <p class="section-note">type to filter, tap a genre, tap a poster</p>
+    <p class="verdict"><strong>Best at 20+:</strong> search keeps every theme one keystroke away; genre chips browse without typing.</p>
+    <div class="panel">
+      <div class="toolbar">
+        <input type="search" id="q" placeholder="Search themes: try &quot;dune&quot;..." aria-label="Search themes">
+      </div>
+      <div class="toolbar" id="chips" role="group" aria-label="Filter by genre"></div>
+      <div class="grid" id="grid"></div>
+      <p class="empty" id="empty">no themes match — try fewer words!</p>
+      <p class="readout" id="readA">Picked: none yet.</p>
+    </div>
+  </section>
+
+  <section aria-label="Picker B: grouped dropdown">
+    <h2 class="section-title">B. Grouped dropdown</h2>
+    <p class="section-note">smallest change from today's form</p>
+    <p class="verdict"><strong>Cheapest to build:</strong> one select with genre groups — but 20 options in a menu means a lot of scrolling and zero art.</p>
+    <div class="panel">
+      <label class="biglabel" for="grouped">Mail-kit theme</label>
+      <select id="grouped"></select>
+      <p class="readout" id="readB">Picked: none yet.</p>
+    </div>
+  </section>
+
+  <section aria-label="Picker C: filmstrip">
+    <h2 class="section-title">C. Filmstrip + surprise me</h2>
+    <p class="section-note">swipe the reel, or let fate decide</p>
+    <p class="verdict"><strong>Most fun, worst at finding one:</strong> great for browsing and the random button is a gag in itself — bad when someone wants one specific theme.</p>
+    <div class="panel">
+      <div class="strip-bar">
+        <button class="arrow" id="prev" type="button" aria-label="Scroll themes back">&larr;</button>
+        <button class="arrow" id="next" type="button" aria-label="Scroll themes forward">&rarr;</button>
+        <span class="strip-pos" id="pos">1&ndash;4 of 20</span>
+      </div>
+      <div class="strip" id="strip" tabindex="0" aria-label="Theme filmstrip"></div>
+      <button class="surprise" id="surprise" type="button">Surprise me</button>
+      <p class="readout" id="readC">Picked: none yet.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="caution"></div>
+    <div class="foot-row">
+      <span>samneedsram.com &bull; comp gallery</span>
+      <span>concept only &bull; 16 of 20 themes are stand-ins</span>
+    </div>
+  </footer>
+</div>
+<script>
+(function () {
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* 4 real pages + 16 stand-ins to test scale */
+  var THEMES = [
+    { name: "Classic Zine", genre: "house", target: "mailkit-b-zine.html", art: "homepage-b-zine.jpg", live: true },
+    { name: "Ramageddon", genre: "movies", target: "theme-ramageddon.html", art: "art-ramageddon.jpg", live: true },
+    { name: "Warhammer 40KB", genre: "games", target: "theme-warhammer40kb.html", art: "art-warhammer40kb.jpg", live: true },
+    { name: "The Beacons Are Lit", genre: "movies", target: "theme-gondor.html", art: "art-gondor.jpg", live: true },
+    { name: "Severance Protocol", genre: "tv", live: false },
+    { name: "The Matrix", genre: "movies", live: false },
+    { name: "2001: A RAM Odyssey", genre: "movies", live: false },
+    { name: "Blade Runner", genre: "movies", live: false },
+    { name: "Dune: Sticks Must Flow", genre: "movies", live: false },
+    { name: "Tron Grid", genre: "movies", live: false },
+    { name: "Brazil 27B/6", genre: "movies", live: false },
+    { name: "Office Space Memo", genre: "movies", live: false },
+    { name: "Mr. Robot Drop", genre: "tv", live: false },
+    { name: "WALL-E Sorter", genre: "movies", live: false },
+    { name: "Jurassic Paddock", genre: "movies", live: false },
+    { name: "Ghostbusters Trap", genre: "movies", live: false },
+    { name: "Fury Road Convoy", genre: "movies", live: false },
+    { name: "Stardew Co-op", genre: "games", live: false },
+    { name: "Dial-up BBS Door", genre: "retro", live: false },
+    { name: "Late-Night Infomercial", genre: "tv", live: false }
+  ];
+  var GENRES = ["all", "house", "movies", "tv", "games", "retro"];
+
+  function readout(el, theme) {
+    el.textContent = "";
+    var s = document.createElement("span");
+    if (theme.live) {
+      s.textContent = "Picked: " + theme.name + " \u2192 ";
+      var a = document.createElement("a");
+      a.href = theme.target;
+      a.textContent = theme.target;
+      el.appendChild(s);
+      el.appendChild(a);
+    } else {
+      s.textContent = "Picked: " + theme.name + " ";
+      var em = document.createElement("span");
+      em.className = "soon";
+      em.textContent = "(stand-in — no page yet)";
+      el.appendChild(s);
+      el.appendChild(em);
+    }
+  }
+
+  function card(theme, onPick) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "pcard";
+    b.setAttribute("data-name", theme.name.toLowerCase());
+    b.setAttribute("data-genre", theme.genre);
+    if (theme.art) {
+      var img = document.createElement("img");
+      img.className = "thumb";
+      img.src = theme.art;
+      img.alt = "";
+      img.loading = "lazy";
+      b.appendChild(img);
+    } else {
+      var m = document.createElement("span");
+      m.className = "mono " + theme.genre;
+      m.textContent = theme.name.charAt(0);
+      m.setAttribute("aria-hidden", "true");
+      b.appendChild(m);
+    }
+    if (theme.live) {
+      var tag = document.createElement("span");
+      tag.className = "live";
+      tag.textContent = "live";
+      b.appendChild(tag);
+    }
+    var n = document.createElement("span");
+    n.className = "name";
+    n.textContent = theme.name;
+    b.appendChild(n);
+    var g = document.createElement("span");
+    g.className = "genre";
+    g.textContent = theme.genre;
+    b.appendChild(g);
+    b.addEventListener("click", function () { onPick(theme, b); });
+    return b;
+  }
+
+  function markPicked(scope, btn) {
+    scope.querySelectorAll(".pcard.picked").forEach(function (el) { el.classList.remove("picked"); });
+    btn.classList.add("picked");
+  }
+
+  /* ---------- A: search + grid ---------- */
+  var grid = document.getElementById("grid");
+  var readA = document.getElementById("readA");
+  var empty = document.getElementById("empty");
+  var q = document.getElementById("q");
+  var activeGenre = "all";
+  THEMES.forEach(function (t) {
+    grid.appendChild(card(t, function (theme, btn) { markPicked(grid, btn); readout(readA, theme); }));
+  });
+  var chips = document.getElementById("chips");
+  GENRES.forEach(function (g) {
+    var c = document.createElement("button");
+    c.type = "button";
+    c.className = "gchip";
+    c.textContent = g;
+    c.setAttribute("aria-pressed", g === "all" ? "true" : "false");
+    c.addEventListener("click", function () {
+      activeGenre = g;
+      chips.querySelectorAll(".gchip").forEach(function (el) {
+        el.setAttribute("aria-pressed", el === c ? "true" : "false");
+      });
+      filter();
+    });
+    chips.appendChild(c);
+  });
+  function filter() {
+    var needle = q.value.trim().toLowerCase();
+    var shown = 0;
+    grid.querySelectorAll(".pcard").forEach(function (el) {
+      var okName = !needle || el.getAttribute("data-name").indexOf(needle) !== -1;
+      var okGenre = activeGenre === "all" || el.getAttribute("data-genre") === activeGenre;
+      var show = okName && okGenre;
+      el.style.display = show ? "" : "none";
+      if (show) shown++;
+    });
+    empty.style.display = shown === 0 ? "block" : "none";
+  }
+  q.addEventListener("input", filter);
+
+  /* ---------- B: grouped dropdown ---------- */
+  var grouped = document.getElementById("grouped");
+  var readB = document.getElementById("readB");
+  var groups = {};
+  GENRES.slice(1).forEach(function (g) {
+    var og = document.createElement("optgroup");
+    og.label = g.charAt(0).toUpperCase() + g.slice(1);
+    groups[g] = og;
+    grouped.appendChild(og);
+  });
+  THEMES.forEach(function (t) {
+    var o = document.createElement("option");
+    o.value = t.name;
+    o.textContent = t.name + (t.live ? "" : " (soon)");
+    groups[t.genre].appendChild(o);
+  });
+  grouped.addEventListener("change", function () {
+    var found = null;
+    THEMES.forEach(function (t) { if (t.name === grouped.value) found = t; });
+    if (found) readout(readB, found);
+  });
+
+  /* ---------- C: filmstrip ---------- */
+  var strip = document.getElementById("strip");
+  var readC = document.getElementById("readC");
+  var pos = document.getElementById("pos");
+  THEMES.forEach(function (t) {
+    strip.appendChild(card(t, function (theme, btn) { markPicked(strip, btn); readout(readC, theme); }));
+  });
+  function step() {
+    var first = strip.querySelector(".pcard");
+    return first ? first.offsetWidth + 15 : 200;
+  }
+  document.getElementById("prev").addEventListener("click", function () {
+    strip.scrollBy({ left: -step() * 3, behavior: reduceMotion ? "auto" : "smooth" });
+  });
+  document.getElementById("next").addEventListener("click", function () {
+    strip.scrollBy({ left: step() * 3, behavior: reduceMotion ? "auto" : "smooth" });
+  });
+  function updatePos() {
+    var s = step() || 1;
+    var first = Math.floor(strip.scrollLeft / s) + 1;
+    if (first < 1) first = 1;
+    if (first > THEMES.length) first = THEMES.length;
+    var visible = Math.max(1, Math.floor(strip.clientWidth / s));
+    var last = Math.min(THEMES.length, first + visible - 1);
+    pos.textContent = first + "\u2013" + last + " of " + THEMES.length;
+  }
+  strip.addEventListener("scroll", updatePos);
+  window.addEventListener("resize", updatePos);
+  updatePos();
+  document.getElementById("surprise").addEventListener("click", function () {
+    var i = (Math.random() * THEMES.length) | 0;
+    var btn = strip.querySelectorAll(".pcard")[i];
+    if (btn) {
+      btn.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", inline: "center", block: "nearest" });
+      markPicked(strip, btn);
+      readout(readC, THEMES[i]);
+    }
+  });
+})();
+</script>
+</body>
+</html>

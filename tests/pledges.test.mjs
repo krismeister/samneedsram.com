@@ -1,0 +1,170 @@
+import { describe, it, beforeEach, afterEach } from "node:test";
+import assert from "node:assert/strict";
+import { validatePledge, signPledge, verifyPledge } from "../lib/pledges.js";
+import {
+  escapeHtml,
+  fillTemplate,
+  getPledgeSecret,
+  getSiteUrl,
+  readThemes,
+} from "../lib/pledge-pages.js";
+
+const SECRET = "test-secret-with-32-plus-characters!!";
+
+const VALID = {
+  who: "Mabel",
+  kind: "ram",
+  type: "DDR3",
+  qty: 8,
+  eulogy: "she served 11 years",
+  theme: "ramageddon",
+};
+
+describe("validatePledge", () => {
+  it("accepts a valid pledge", () => {
+    const r = validatePledge(VALID);
+    assert.equal(r.ok, true);
+    assert.deepEqual(r.value, VALID);
+  });
+
+  it("accepts a missing eulogy", () => {
+    const { eulogy, ...rest } = VALID;
+    const r = validatePledge(rest);
+    assert.equal(r.ok, true);
+    assert.ok(!("eulogy" in r.value));
+  });
+
+  it("rejects unknown fields", () => {
+    const r = validatePledge({ ...VALID, n: 205 });
+    assert.equal(r.ok, false);
+    assert.ok(r.errors.some((e) => e.includes("unknown field: n")));
+  });
+
+  it("trims who and rejects empty", () => {
+    assert.equal(validatePledge({ ...VALID, who: "  Mabel  " }).value.who, "Mabel");
+    assert.equal(validatePledge({ ...VALID, who: "   " }).ok, false);
+    assert.equal(validatePledge({ ...VALID, who: "x".repeat(25) }).ok, false);
+  });
+
+  it("enforces kind/type/qty rules", () => {
+    assert.equal(validatePledge({ ...VALID, kind: "tape" }).ok, false);
+    assert.equal(validatePledge({ ...VALID, type: "USB-C" }).ok, false);
+    assert.equal(validatePledge({ ...VALID, qty: 0 }).ok, false);
+    assert.equal(validatePledge({ ...VALID, qty: 513 }).ok, false);
+    // qty arrives as a string in GET-style payloads
+    assert.equal(validatePledge({ ...VALID, qty: "8" }).value.qty, 8);
+    // floppy qty must be an integer within 1-500
+    const floppy = { ...VALID, kind: "floppy", type: '3.5" HD', qty: 12 };
+    assert.equal(validatePledge(floppy).ok, true);
+    assert.equal(validatePledge({ ...floppy, qty: 12.5 }).ok, false);
+  });
+
+  it("enforces eulogy and theme rules", () => {
+    assert.equal(validatePledge({ ...VALID, eulogy: "x".repeat(141) }).ok, false);
+    assert.equal(validatePledge({ ...VALID, theme: "nope" }).ok, false);
+  });
+});
+
+describe("pledge JWT", () => {
+  it("round-trips through sign and verify", () => {
+    const jwt = signPledge(VALID, SECRET);
+    assert.deepEqual(verifyPledge(jwt, SECRET), VALID);
+  });
+
+  it("rejects tampered and foreign tokens", () => {
+    const jwt = signPledge(VALID, SECRET);
+    const [h, p, sig] = jwt.split(".");
+    assert.equal(verifyPledge(`${h}.${p}.${sig.slice(0, -2)}xx`, SECRET), null);
+    assert.equal(verifyPledge(jwt, "a-different-32-plus-char-secret!"), null);
+    assert.equal(verifyPledge("not-a-jwt", SECRET), null);
+  });
+});
+
+describe("fillTemplate", () => {
+  const TPL =
+    "<title>{{meta_title}}</title><h1>{{who}} pledged {{qty}}{{qty_unit}} {{type}}</h1>" +
+    "{{#if_eulogy}}<blockquote>{{eulogy}}</blockquote>{{/if_eulogy}}" +
+    "<img src=\"{{meta_image}}\"><link href=\"{{page_url}}\">";
+
+  it("substitutes markers and derived values", () => {
+    const out = fillTemplate(TPL, VALID, {
+      siteUrl: "https://samneedsram.com",
+      jwt: "JWT",
+      theme: "ramageddon",
+      displayName: "Ramageddon",
+    });
+    assert.ok(out.includes("<title>Mabel pledged 8GB DDR3 to Sam</title>"));
+    assert.ok(out.includes("<blockquote>she served 11 years</blockquote>"));
+    assert.ok(
+      out.includes(
+        "https://samneedsram.com/pledges/art/ramageddon/og.jpg",
+      ),
+    );
+    assert.ok(
+      out.includes(
+        "https://samneedsram.com/pledges/ramageddon?content=JWT",
+      ),
+    );
+    assert.ok(!out.includes("{{"));
+  });
+
+  it("strips the eulogy block when empty and escapes HTML", () => {
+    const evil = { ...VALID, who: "<script>alert(1)</script>" };
+    delete evil.eulogy;
+    const out = fillTemplate(TPL, evil, {
+      siteUrl: "https://samneedsram.com",
+      jwt: "JWT",
+      theme: "ramageddon",
+      displayName: "Ramageddon",
+    });
+    assert.ok(!out.includes("<blockquote>"));
+    assert.ok(!out.includes("<script>"));
+    assert.ok(out.includes("&lt;script&gt;"));
+  });
+
+  it("uses disks as the floppy unit", () => {
+    const out = fillTemplate("{{qty}} {{qty_unit}}", {
+      ...VALID,
+      kind: "floppy",
+      type: '3.5" HD',
+      qty: 12,
+    }, { siteUrl: "https://x.test", jwt: "J", theme: "t", displayName: "T" });
+    assert.equal(out, "12 disks");
+  });
+});
+
+describe("env helpers", () => {
+  const saved = { ...process.env };
+  beforeEach(() => {
+    delete process.env.PLEDGE_JWT_SECRET;
+    delete process.env.SITE_URL;
+  });
+  afterEach(() => {
+    process.env = { ...saved };
+  });
+
+  it("getPledgeSecret rejects missing/placeholder/short secrets", () => {
+    assert.equal(getPledgeSecret(), null);
+    process.env.PLEDGE_JWT_SECRET = "change-me-to-32-plus-random-bytes";
+    assert.equal(getPledgeSecret(), null);
+    process.env.PLEDGE_JWT_SECRET = "short";
+    assert.equal(getPledgeSecret(), null);
+    process.env.PLEDGE_JWT_SECRET = SECRET;
+    assert.equal(getPledgeSecret(), SECRET);
+  });
+
+  it("getSiteUrl trims trailing slashes", () => {
+    assert.equal(getSiteUrl(), null);
+    process.env.SITE_URL = "https://samneedsram.com//";
+    assert.equal(getSiteUrl(), "https://samneedsram.com");
+  });
+});
+
+describe("readThemes", () => {
+  it("loads the registry slugs", async () => {
+    const map = await readThemes();
+    for (const slug of ["classic", "ramageddon", "warhammer40kb", "gondor"]) {
+      assert.ok(map[slug]?.display_name, `missing ${slug}`);
+    }
+  });
+});

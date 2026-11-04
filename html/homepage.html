@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>samneedsram.com — Sam's out of memory. Help him remember.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f2ecdd;
+    --paper-2: #e9e0c9;
+    --ink: #16130e;
+    --red: #d92b1f;
+    --yellow: #ffc81a;
+    --blue: #2456c8;
+    --tape: rgba(233, 224, 190, 0.85);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: "Special Elite", "Courier New", monospace;
+    background-color: var(--paper);
+    background-image: radial-gradient(rgba(22, 19, 14, 0.10) 1px, transparent 1.6px);
+    background-size: 12px 12px;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 62rem; margin: 0 auto; padding: 1rem 1.25rem 3rem; }
+  #flares { position: fixed; inset: 0; pointer-events: none; z-index: 60; }
+
+  /* ---------- masthead ---------- */
+  .masthead { position: relative; padding-top: 1rem; }
+  .stamp-row { display: flex; gap: 1rem; align-items: flex-start; flex-wrap: wrap; }
+  .stamp {
+    display: inline-block;
+    border: 3px double var(--ink);
+    padding: 0.3rem 0.7rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transform: rotate(-2deg);
+    background: var(--paper);
+  }
+  .site-stamp {
+    font-family: Anton, Impact, sans-serif;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    letter-spacing: 0.02em;
+    border: 4px solid var(--ink);
+    padding: 0.15rem 0.8rem;
+    transform: rotate(1.5deg);
+    background: var(--ink);
+    color: var(--paper);
+  }
+  h1 {
+    font-family: Anton, Impact, sans-serif;
+    font-size: clamp(3.2rem, 13vw, 8.5rem);
+    line-height: 0.92;
+    text-transform: uppercase;
+    margin: 1rem 0 0.5rem;
+    transform: rotate(-1.2deg);
+    text-shadow: 4px 4px 0 var(--red);
+  }
+  .starburst {
+    position: absolute;
+    top: 2.2rem;
+    right: 0.5rem;
+    width: 9.5rem;
+    height: 9.5rem;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    background: var(--red);
+    color: var(--paper);
+    font-family: Anton, Impact, sans-serif;
+    font-size: 1.35rem;
+    line-height: 1.05;
+    text-transform: uppercase;
+    padding: 1.4rem;
+    transform: rotate(11deg);
+    clip-path: polygon(50% 0%, 61% 12%, 75% 6%, 79% 20%, 93% 19%, 90% 33%, 100% 40%, 93% 52%, 99% 64%, 87% 69%, 87% 83%, 74% 82%, 68% 95%, 57% 87%, 47% 97%, 40% 85%, 27% 90%, 25% 77%, 12% 77%, 14% 64%, 2% 57%, 9% 46%, 2% 35%, 14% 30%, 14% 16%, 26% 17%, 32% 5%, 43% 12%);
+  }
+  .sub {
+    font-size: clamp(1rem, 2.6vw, 1.3rem);
+    max-width: 42rem;
+    transform: rotate(-0.6deg);
+  }
+  .sub strong { background: var(--yellow); padding: 0 0.25em; }
+
+  /* ---------- v2: hero row + sam polaroid ---------- */
+  .hero-row { display: flex; gap: 1.5rem; align-items: flex-start; }
+  .hero-text { flex: 1 1 auto; min-width: 0; }
+  .polaroid {
+    flex: 0 0 15rem;
+    margin: 1.2rem 0.6rem 0 0;
+    background: #fff;
+    border: 1px solid rgba(22, 19, 14, 0.3);
+    padding: 0.7rem 0.7rem 0.8rem;
+    box-shadow: 8px 8px 0 rgba(22, 19, 14, 0.25);
+    transform: rotate(3deg);
+    position: relative;
+  }
+  .polaroid::before {
+    content: "";
+    position: absolute;
+    top: -0.8rem;
+    left: 30%;
+    width: 4.5rem;
+    height: 1.4rem;
+    background: var(--tape);
+    transform: rotate(-5deg);
+    border-left: 1px dashed rgba(0,0,0,0.25);
+    border-right: 1px dashed rgba(0,0,0,0.25);
+  }
+  .polaroid .ph {
+    display: block;
+    position: relative;
+    border: 1px solid rgba(22, 19, 14, 0.4);
+  }
+  .polaroid img {
+    display: block;
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+    object-position: top;
+    filter: sepia(0.15) contrast(1.12) saturate(1.5);
+  }
+  .polaroid .ph::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(22, 19, 14, 0.25) 1px, transparent 1.4px);
+    background-size: 4px 4px;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+  .polaroid figcaption {
+    font-family: "Permanent Marker", cursive;
+    font-size: 1.05rem;
+    line-height: 1.25;
+    margin-top: 0.5rem;
+    transform: rotate(-1deg);
+  }
+  .polaroid .starburst {
+    position: absolute;
+    z-index: 2;
+    top: -3.2rem;
+    right: -0.9rem;
+    width: 7.5rem;
+    height: 7.5rem;
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  /* ---------- counter board ---------- */
+  .counter-board {
+    margin: 1.5rem 0;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1rem 1.25rem 1.2rem;
+    transform: rotate(0.8deg);
+    box-shadow: 8px 8px 0 rgba(22, 19, 14, 0.25);
+    position: relative;
+  }
+  .counter-board::before, .counter-board::after {
+    content: "";
+    position: absolute;
+    top: -0.9rem;
+    width: 5rem;
+    height: 1.6rem;
+    background: var(--tape);
+    border-left: 1px dashed rgba(0,0,0,0.25);
+    border-right: 1px dashed rgba(0,0,0,0.25);
+  }
+  .counter-board::before { left: 8%; transform: rotate(-6deg); }
+  .counter-board::after { right: 8%; transform: rotate(5deg); }
+  .counter-label { color: var(--yellow); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.12em; }
+  .counter-number {
+    font-family: Anton, Impact, sans-serif;
+    font-size: clamp(2.6rem, 9vw, 5rem);
+    line-height: 1;
+    margin: 0.2rem 0;
+  }
+  .counter-sub { font-size: 0.95rem; }
+  .counter-sub .tally { color: var(--yellow); }
+
+  /* ---------- sticker buttons ---------- */
+  .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.5rem 0 0.5rem; }
+  .btn {
+    font-family: Anton, Impact, sans-serif;
+    text-transform: uppercase;
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    letter-spacing: 0.02em;
+    padding: 0.55rem 1.4rem 0.45rem;
+    border: 4px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+  }
+  .btn:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--ink); }
+  .btn-red { background: var(--red); color: var(--paper); transform: rotate(-1.5deg); }
+  .btn-yellow { background: var(--yellow); color: var(--ink); transform: rotate(1deg); }
+  .btn-small { font-size: 1rem; padding: 0.35rem 0.9rem; border-width: 3px; box-shadow: 4px 4px 0 var(--ink); }
+
+  /* ---------- feed ---------- */
+  .section-title {
+    font-family: Anton, Impact, sans-serif;
+    text-transform: uppercase;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    margin: 2.5rem 0 0.25rem;
+    transform: rotate(-0.8deg);
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.1rem 0.8rem;
+  }
+  .section-note { font-family: "Permanent Marker", cursive; color: var(--red); font-size: 1.05rem; margin: 0.4rem 0 1rem 0.4rem; transform: rotate(-1deg); }
+  .feed { list-style: none; margin: 0; padding: 0.5rem 0 0; display: grid; gap: 0.9rem; }
+  .slip {
+    position: relative;
+    background: #fbf7ea;
+    border: 2px solid var(--ink);
+    padding: 0.7rem 1rem 0.7rem 3.2rem;
+    box-shadow: 5px 5px 0 rgba(22, 19, 14, 0.2);
+    font-size: 1.02rem;
+  }
+  .slip:nth-child(odd) { transform: rotate(-0.7deg); }
+  .slip:nth-child(even) { transform: rotate(0.6deg); margin-left: 1.2rem; }
+  .slip::before {
+    content: "";
+    position: absolute;
+    top: -0.8rem;
+    left: 40%;
+    width: 4.5rem;
+    height: 1.4rem;
+    background: var(--tape);
+    transform: rotate(-3deg);
+    border-left: 1px dashed rgba(0,0,0,0.25);
+    border-right: 1px dashed rgba(0,0,0,0.25);
+  }
+  .slip .pin {
+    position: absolute;
+    left: 0.7rem;
+    top: 50%;
+    translate: 0 -50%;
+    font-family: Anton, Impact, sans-serif;
+    background: var(--red);
+    color: var(--paper);
+    font-size: 0.8rem;
+    padding: 0.2rem 0.4rem;
+    transform: rotate(-4deg);
+  }
+  .slip .who { font-weight: bold; }
+  .slip .time { float: right; font-size: 0.8rem; opacity: 0.7; }
+  .slip.fresh { animation: slip-in 0.45s ease-out; }
+  @keyframes slip-in {
+    0% { transform: translateY(-14px) rotate(2deg) scale(1.03); background: var(--yellow); }
+    100% { transform: translateY(0) rotate(-0.7deg) scale(1); }
+  }
+
+  /* ---------- what we take ---------- */
+  .take-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 1rem; }
+  .take-card {
+    background: #fbf7ea;
+    border: 3px solid var(--ink);
+    padding: 0.9rem 1rem 1rem;
+    box-shadow: 6px 6px 0 rgba(22, 19, 14, 0.25);
+    position: relative;
+  }
+  .take-card:nth-child(1) { transform: rotate(-1.4deg); }
+  .take-card:nth-child(2) { transform: rotate(1deg); }
+  .take-card:nth-child(3) { transform: rotate(-0.6deg); }
+  .take-card::before {
+    content: "";
+    position: absolute;
+    top: -0.8rem;
+    left: 30%;
+    width: 4rem;
+    height: 1.4rem;
+    background: var(--tape);
+    transform: rotate(4deg);
+    border-left: 1px dashed rgba(0,0,0,0.25);
+    border-right: 1px dashed rgba(0,0,0,0.25);
+  }
+  .take-card svg { display: block; width: 100%; height: 5.5rem; margin-bottom: 0.4rem; }
+  .take-card h3 {
+    font-family: Anton, Impact, sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin: 0 0 0.2rem;
+  }
+  .take-card p { margin: 0.2rem 0; font-size: 0.92rem; }
+  .take-card .tag {
+    display: inline-block;
+    background: var(--yellow);
+    border: 2px solid var(--ink);
+    font-size: 0.75rem;
+    padding: 0 0.4rem;
+    margin: 0.15rem 0.15rem 0 0;
+    text-transform: uppercase;
+  }
+
+  /* ---------- how it works ---------- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 1rem; }
+  .step { border-top: 5px solid var(--red); padding-top: 0.4rem; }
+  .step:nth-child(2) { border-color: var(--ink); transform: rotate(0.5deg); }
+  .step:nth-child(3) { border-color: var(--blue); transform: rotate(-0.5deg); }
+  .step .num {
+    font-family: Anton, Impact, sans-serif;
+    font-size: 2.6rem;
+    line-height: 1;
+  }
+  .step h3 { font-family: Anton, Impact, sans-serif; text-transform: uppercase; margin: 0.1rem 0 0.3rem; font-size: 1.2rem; }
+  .step p { margin: 0; font-size: 0.92rem; }
+
+  /* ---------- pledge form ---------- */
+  .pledge-form {
+    margin-top: 1rem;
+    background: #fbf7ea;
+    border: 3px solid var(--ink);
+    box-shadow: 6px 6px 0 rgba(22, 19, 14, 0.25);
+    padding: 1.2rem 1.3rem 1.3rem;
+    transform: rotate(-0.5deg);
+    position: relative;
+    max-width: 40rem;
+  }
+  .pledge-form::before {
+    content: "";
+    position: absolute;
+    top: -0.8rem;
+    left: 12%;
+    width: 5rem;
+    height: 1.4rem;
+    background: var(--tape);
+    transform: rotate(-4deg);
+    border-left: 1px dashed rgba(0,0,0,0.25);
+    border-right: 1px dashed rgba(0,0,0,0.25);
+  }
+  .pledge-form.flash { animation: form-flash 0.9s ease-out; }
+  @keyframes form-flash {
+    0% { background: var(--yellow); transform: rotate(-0.5deg) scale(1.01); }
+    100% { background: #fbf7ea; transform: rotate(-0.5deg) scale(1); }
+  }
+  .pledge-form .field { margin-bottom: 1rem; }
+  .pledge-form label, .pledge-form legend {
+    display: block;
+    font-family: Anton, Impact, sans-serif;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+  }
+  .pledge-form fieldset { border: none; padding: 0; margin: 0 0 1rem; min-width: 0; }
+  .pledge-form .opt { font-family: "Special Elite", monospace; text-transform: none; font-size: 0.8rem; opacity: 0.7; }
+  .pledge-form input[type="text"], .pledge-form input[type="number"], .pledge-form select {
+    width: 100%;
+    font-family: "Special Elite", "Courier New", monospace;
+    font-size: 1.05rem;
+    color: var(--ink);
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    padding: 0.4rem 0.6rem;
+  }
+  .pledge-form input:focus, .pledge-form select:focus { outline: 3px solid var(--yellow); }
+  .chip {
+    display: inline-block !important;
+    border: 3px solid var(--ink);
+    background: var(--paper);
+    padding: 0.25rem 0.7rem !important;
+    margin: 0 0.5rem 0.5rem 0 !important;
+    cursor: pointer;
+    font-size: 0.9rem !important;
+  }
+  .chip input { accent-color: var(--red); margin-right: 0.3rem; }
+  .chip:has(input:checked) { background: var(--yellow); box-shadow: 3px 3px 0 var(--ink); }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-note { font-size: 0.85rem; margin: 0.8rem 0 0; opacity: 0.8; }
+  .form-errors {
+    border: 3px solid var(--red);
+    background: #fff;
+    color: var(--red);
+    font-size: 0.95rem;
+    padding: 0.5rem 0.7rem;
+    margin-bottom: 1rem;
+    transform: rotate(0.4deg);
+  }
+  .form-errors ul { margin: 0; padding-left: 1.2rem; }
+  .theme-picker {
+    display: block;
+    margin-top: 0.5rem;
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    border: 3px solid var(--ink);
+    transform: rotate(-0.6deg);
+  }
+  @media (max-width: 640px) { .field-row { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .pledge-form.flash { animation: none; } }
+
+  /* ---------- footer ---------- */
+  footer { margin-top: 3rem; }
+  .caution {
+    height: 1.1rem;
+    background: repeating-linear-gradient(-45deg, var(--yellow) 0 1rem, var(--ink) 1rem 2rem);
+    border: 2px solid var(--ink);
+    transform: rotate(-0.4deg);
+  }
+  .foot-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 0.8rem 0.2rem;
+    font-size: 0.85rem;
+  }
+  .kit-link { color: inherit; }
+
+  @media (max-width: 640px) {
+    .take-grid, .steps { grid-template-columns: 1fr; }
+    .starburst { width: 7rem; height: 7rem; font-size: 1rem; padding: 1rem; top: 3.4rem; }
+    .slip:nth-child(even) { margin-left: 0; }
+    .hero-row { flex-direction: column; }
+    .polaroid { flex: 0 0 auto; width: 13rem; margin: 0.5rem 0 0 1rem; }
+    .polaroid .starburst { top: -2.6rem; right: -1.8rem; width: 6.4rem; height: 6.4rem; font-size: 0.85rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .slip.fresh { animation: none; }
+    .btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+<canvas id="flares" aria-hidden="true"></canvas>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="stamp-row">
+      <span class="site-stamp">samneedsram.com</span>
+      <span class="stamp">est. 2024 &bull; pledge old media<br>to Sam Altman</span>
+    </div>
+    <div class="hero-row">
+      <div class="hero-text">
+        <h1>Sam&rsquo;s out of memory</h1>
+        <p class="sub">Sam Altman needs <strong>RAM</strong>. Also <strong>floppies</strong>. Also <strong>USB sticks</strong>. One person&rsquo;s e-waste is another superintelligence&rsquo;s breakfast. Dig through that drawer of dead tech and pledge it to the drive &mdash; the AI must feed.</p>
+      </div>
+      <figure class="polaroid">
+        <div class="starburst" aria-hidden="true">Feed the SI!</div>
+        <span class="ph"><img src="/homepage/sam-polaroid.jpg" alt="Sam Altman portrait photo"></span>
+        <figcaption>this is sam. he is out of memory.</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <section class="counter-board" aria-live="polite">
+    <div class="counter-label">Total pledged by viewers like you</div>
+    <div class="counter-number"><span id="gb">1,247.3</span> GB pledged</div>
+    <div class="counter-sub"><span class="tally" id="donors">203</span> pledgers &bull; <span class="tally" id="floppies">89</span> floppies rescued &bull; goal: 4,096 GB to get Sam back online</div>
+  </section>
+
+  <div class="cta-row">
+    <button class="btn btn-red" id="pledgeBtn" type="button">Pledge your sticks</button>
+    <button class="btn btn-yellow" id="shareBtn" type="button">Share the drive</button>
+  </div>
+
+  <section aria-label="What we take">
+    <h2 class="section-title">What we take</h2>
+    <p class="section-note">if it once held data, Sam wants it!</p>
+    <div class="take-grid">
+      <article class="take-card">
+        <svg viewBox="0 0 120 60" role="img" aria-label="RAM stick doodle">
+          <g fill="none" stroke="#16130e" stroke-width="3">
+            <rect x="8" y="10" width="104" height="26" fill="#3f7a3f"/>
+            <rect x="16" y="15" width="12" height="12" fill="#16130e"/>
+            <rect x="34" y="15" width="12" height="12" fill="#16130e"/>
+            <rect x="52" y="15" width="12" height="12" fill="#16130e"/>
+            <rect x="70" y="15" width="12" height="12" fill="#16130e"/>
+            <rect x="88" y="15" width="12" height="12" fill="#16130e"/>
+            <line x1="14" y1="36" x2="14" y2="48" stroke="#c9a227" stroke-width="4"/>
+            <line x1="26" y1="36" x2="26" y2="48" stroke="#c9a227" stroke-width="4"/>
+            <line x1="38" y1="36" x2="38" y2="48" stroke="#c9a227" stroke-width="4"/>
+            <line x1="50" y1="36" x2="50" y2="48" stroke="#c9a227" stroke-width="4"/>
+            <line x1="62" y1="36" x2="62" y2="48" stroke="#c9a227" stroke-width="4"/>
+            <line x1="74" y1="36" x2="74" y2="48" stroke="#c9a227" stroke-width="4"/>
+            <line x1="86" y1="36" x2="86" y2="48" stroke="#c9a227" stroke-width="4"/>
+            <line x1="98" y1="36" x2="98" y2="48" stroke="#c9a227" stroke-width="4"/>
+          </g>
+        </svg>
+        <h3>RAM sticks</h3>
+        <p>DDR2 through DDR5, SODIMM, even the mystery stick with no label. If it clicks into a slot, it counts.</p>
+        <span class="tag">DDR2</span><span class="tag">DDR3</span><span class="tag">DDR4</span><span class="tag">DDR5</span><span class="tag">SODIMM</span>
+      </article>
+      <article class="take-card">
+        <svg viewBox="0 0 120 60" role="img" aria-label="Floppy disk doodle">
+          <g fill="none" stroke="#16130e" stroke-width="3">
+            <rect x="30" y="4" width="60" height="52" fill="#2456c8"/>
+            <rect x="42" y="4" width="36" height="18" fill="#c9c2ad"/>
+            <rect x="52" y="8" width="16" height="10" fill="#16130e"/>
+            <rect x="38" y="30" width="44" height="18" fill="#fbf7ea"/>
+            <line x1="43" y1="36" x2="77" y2="36"/>
+            <line x1="43" y1="42" x2="70" y2="42"/>
+          </g>
+        </svg>
+        <h3>Floppies</h3>
+        <p>3.5&Prime; HD preferred, DD accepted &mdash; we&rsquo;re not snobs. Every floppy is one more megabyte Sam will never lose again.</p>
+        <span class="tag">1.44 MB of glory</span>
+      </article>
+      <article class="take-card">
+        <svg viewBox="0 0 120 60" role="img" aria-label="USB stick doodle">
+          <g fill="none" stroke="#16130e" stroke-width="3">
+            <rect x="14" y="20" width="30" height="20" fill="#c9c2ad"/>
+            <rect x="20" y="25" width="8" height="10" fill="#16130e"/>
+            <rect x="32" y="25" width="8" height="10" fill="#16130e"/>
+            <rect x="44" y="14" width="62" height="32" fill="#d92b1f"/>
+            <circle cx="96" cy="30" r="5" fill="#fbf7ea"/>
+          </g>
+        </svg>
+        <h3>USB sticks</h3>
+        <p>Any size, any speed. Yes, even the 128MB one from 2004 with the conference logo on it. Especially that one.</p>
+        <span class="tag">USB-A</span><span class="tag">USB-C</span><span class="tag">mini??</span>
+      </article>
+    </div>
+  </section>
+
+  <section aria-label="Recent pledges">
+    <h2 class="section-title">Fresh off the pile</h2>
+    <p class="section-note">live pledge feed (mostly live)</p>
+    <ul class="feed" id="feed"></ul>
+  </section>
+
+  <section aria-label="Pledge form" id="pledge">
+    <h2 class="section-title">Pledge it</h2>
+    <p class="section-note">fill this out, get your mail kit</p>
+    <form class="pledge-form" id="pledgeForm" action="/api/pledges/mint" method="post">
+      <div class="field">
+        <label for="fWho">Handle / nickname</label>
+        <input id="fWho" name="who" type="text" required maxlength="24" placeholder="Mabel" autocomplete="nickname">
+      </div>
+      <fieldset class="field">
+        <legend>What are you pledging?</legend>
+        <label class="chip"><input type="radio" name="kind" value="ram" checked> RAM sticks</label>
+        <label class="chip"><input type="radio" name="kind" value="floppy"> Floppies</label>
+        <label class="chip"><input type="radio" name="kind" value="usb"> USB stick</label>
+      </fieldset>
+      <div class="field-row">
+        <div class="field">
+          <label for="fType" id="fTypeLabel">RAM type</label>
+          <select id="fType" name="type"></select>
+        </div>
+        <div class="field">
+          <label for="fQty" id="fQtyLabel">Gigabytes</label>
+          <input id="fQty" name="qty" type="number" required min="1" max="512" value="8" inputmode="numeric">
+        </div>
+      </div>
+      <div class="field">
+        <label for="fEulogy">Eulogy for your media <span class="opt">(optional)</span></label>
+        <input id="fEulogy" name="eulogy" type="text" maxlength="140" placeholder="she served 11 years in my ThinkPad">
+      </div>
+      <div class="field">
+        <label for="fTheme">Pick a mail-kit theme</label>
+        <select id="fTheme" name="theme" required>
+          <option value="">Loading themes&hellip;</option>
+        </select>
+        <img id="fThemePicker" class="theme-picker" alt="" hidden>
+      </div>
+      <div class="form-errors" id="formErrors" role="alert" hidden></div>
+      <button class="btn btn-red" type="submit" id="pledgeSubmit">Pledge it &rarr;</button>
+      <p class="form-note">Your mail kit is on the next page. Honor system: we count whatever you claim.</p>
+    </form>
+  </section>
+
+  <section aria-label="How it works">
+    <h2 class="section-title">How it works</h2>
+    <p class="section-note">3 steps, no excuses</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1.</div>
+        <h3>Find your old media</h3>
+        <p>RAM, floppies, USB sticks. Drawer, closet, that box labeled &ldquo;cables??&rdquo;. It all counts.</p>
+      </div>
+      <div class="step">
+        <div class="num">2.</div>
+        <h3>Pledge it above</h3>
+        <p>Tell us what you&rsquo;ve got and write it a short eulogy. Your pledge hits the feed instantly.</p>
+      </div>
+      <div class="step">
+        <div class="num">3.</div>
+        <h3>Mail it to Sam</h3>
+        <p>We generate your mail kit: address label, return label, and a cover letter. Stick it in the post.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-row">
+    <button class="btn btn-red" id="pledgeBtn2" type="button">Pledge your sticks</button>
+    <button class="btn btn-yellow" id="shareBtn2" type="button">Share the drive</button>
+  </div>
+  <footer>
+    <div class="caution"></div>
+    <div class="foot-row">
+      <span>samneedsram.com &bull; every byte counts</span>
+      <span>pledge today &bull; Sam is waiting</span>
+    </div>
+    <div class="foot-row">
+      <span>header photo: Village Global, CC BY 2.0, via Wikimedia Commons</span>
+    </div>
+  </footer>
+
+</div>
+<script>
+(function () {
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- state ---------- */
+  var gb = 1247.3, donors = 203, floppies = 89;
+  var gbEl = document.getElementById("gb");
+  var donorsEl = document.getElementById("donors");
+  var floppiesEl = document.getElementById("floppies");
+  var feedEl = document.getElementById("feed");
+
+  function fmt(n) {
+    return n.toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  }
+  function render() {
+    gbEl.textContent = fmt(gb);
+    donorsEl.textContent = donors.toLocaleString("en-US");
+    floppiesEl.textContent = floppies.toLocaleString("en-US");
+  }
+
+  /* ---------- flare-up particles ---------- */
+  var canvas = document.getElementById("flares");
+  var ctx = canvas.getContext("2d");
+  var parts = [];
+  var FLAMES = ["#ffc81a", "#ff9a1f", "#f97316", "#d92b1f"];
+  var CONFETTI = ["#d92b1f", "#ffc81a", "#2456c8", "#fbf7ea", "#16130e"];
+
+  function sizeCanvas() {
+    canvas.width = Math.floor(window.innerWidth * (window.devicePixelRatio || 1));
+    canvas.height = Math.floor(window.innerHeight * (window.devicePixelRatio || 1));
+    ctx.setTransform(window.devicePixelRatio || 1, 0, 0, window.devicePixelRatio || 1, 0, 0);
+  }
+  window.addEventListener("resize", sizeCanvas);
+  sizeCanvas();
+
+  function burst(power) {
+    if (reduceMotion) return;
+    var W = window.innerWidth, H = window.innerHeight;
+    var n = Math.round(40 * power) + 20;
+    for (var i = 0; i < n; i++) {
+      var flame = Math.random() < 0.65;
+      parts.push({
+        x: Math.random() * W,
+        y: H + 10 + Math.random() * 30,
+        vx: (Math.random() - 0.5) * 90,
+        vy: -(180 + Math.random() * 340 * power),
+        life: 1,
+        decay: 0.5 + Math.random() * 0.6,
+        size: flame ? 6 + Math.random() * 16 * power : 4 + Math.random() * 7,
+        color: flame ? FLAMES[(Math.random() * FLAMES.length) | 0]
+                     : CONFETTI[(Math.random() * CONFETTI.length) | 0],
+        flame: flame,
+        rot: Math.random() * Math.PI * 2,
+        spin: (Math.random() - 0.5) * 10
+      });
+    }
+    if (parts.length > 900) parts.splice(0, parts.length - 900);
+  }
+
+  var last = performance.now();
+  function tick(now) {
+    var dt = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    for (var i = parts.length - 1; i >= 0; i--) {
+      var p = parts[i];
+      p.life -= p.decay * dt;
+      if (p.life <= 0) { parts.splice(i, 1); continue; }
+      p.x += p.vx * dt;
+      p.y += p.vy * dt;
+      p.vy -= 60 * dt; // flames accelerate upward as they burn
+      p.vx *= (1 - 0.6 * dt);
+      p.rot += p.spin * dt;
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, Math.min(1, p.life * 1.2));
+      ctx.translate(p.x, p.y);
+      if (p.flame) {
+        ctx.rotate(p.rot * 0.2);
+        var s = p.size * (0.4 + 0.6 * p.life);
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.moveTo(0, -s);
+        ctx.quadraticCurveTo(s * 0.8, -s * 0.2, s * 0.4, s * 0.6);
+        ctx.quadraticCurveTo(0, s, -s * 0.4, s * 0.6);
+        ctx.quadraticCurveTo(-s * 0.8, -s * 0.2, 0, -s);
+        ctx.fill();
+      } else {
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 3, p.size, p.size * 0.66);
+      }
+      ctx.restore();
+    }
+    requestAnimationFrame(tick);
+  }
+  if (!reduceMotion) requestAnimationFrame(tick);
+
+  /* ---------- feed ---------- */
+  var seed = [
+    { who: "Mabel", text: "pledged 8GB DDR3", gb: 8, fl: 0 },
+    { who: "Carl", text: "pledged 16GB DDR4", gb: 16, fl: 0 },
+    { who: "DumpsterDan", text: "pledged 12 floppies", gb: 0, fl: 12 },
+    { who: "Bea", text: "pledged a 64GB USB stick", gb: 64, fl: 0 }
+  ];
+  var pool = [
+    { who: "Priya", text: "pledged 4GB DDR2", gb: 4, fl: 0 },
+    { who: "Jordan", text: "pledged 2GB DDR", gb: 2, fl: 0 },
+    { who: "Luis", text: "pledged 16GB DDR3", gb: 16, fl: 0 },
+    { who: "FloppyFan99", text: "pledged 6 floppies", gb: 0, fl: 6 },
+    { who: "Dot", text: "pledged a 32GB USB stick", gb: 32, fl: 0 },
+    { who: "Rick", text: "pledged 4GB SODIMM", gb: 4, fl: 0 },
+    { who: "Ana", text: "pledged 8GB DDR5", gb: 8, fl: 0 },
+    { who: "Ken", text: "pledged 3 floppies", gb: 0, fl: 3 },
+    { who: "Mo", text: "pledged a 128MB USB stick (vintage)", gb: 0.1, fl: 0 },
+    { who: "Zed", text: "pledged 64GB DDR4", gb: 64, fl: 0 }
+  ];
+  var poolIdx = 0;
+
+  function minutesAgo(n) { return n <= 0 ? "just now" : n + "m ago"; }
+
+  function addPledge(who, text, gbDelta, flDelta, fresh, count) {
+    if (count === undefined) count = true;
+    if (count) { gb += gbDelta; donors += 1; floppies += flDelta; }
+    render();
+    var items = feedEl.querySelectorAll(".slip");
+    for (var i = 0; i < items.length; i++) {
+      var t = items[i].querySelector(".time");
+      var m = parseInt(t.getAttribute("data-m"), 10) + 1 + ((Math.random() * 2) | 0);
+      t.setAttribute("data-m", m);
+      t.textContent = minutesAgo(m);
+    }
+    var li = document.createElement("li");
+    li.className = "slip" + (fresh && !reduceMotion ? " fresh" : "");
+    var plus = gbDelta > 0 ? "+" + gbDelta + "GB" : (flDelta > 0 ? "+" + flDelta + " flop" : "+GB");
+    li.innerHTML = '<span class="pin">' + plus + '</span>' +
+      '<span class="time" data-m="0">just now</span>' +
+      '<span class="who"></span> <span class="what"></span>';
+    li.querySelector(".who").textContent = who;
+    li.querySelector(".what").textContent = text;
+    feedEl.insertBefore(li, feedEl.firstChild);
+    while (feedEl.children.length > 6) feedEl.removeChild(feedEl.lastChild);
+    if (fresh) burst(gbDelta >= 32 ? 1.6 : gbDelta >= 8 ? 1.1 : 0.7);
+  }
+
+  // seed the feed (oldest first so newest lands on top), no fanfare, no double-count
+  for (var s = seed.length - 1; s >= 0; s--) {
+    addPledge(seed[s].who, seed[s].text, seed[s].gb, seed[s].fl, false, false);
+  }
+  render();
+
+  function fakePledge() {
+    var p = pool[poolIdx % pool.length];
+    poolIdx++;
+    addPledge(p.who, p.text, p.gb, p.fl, true);
+    schedule();
+  }
+  function schedule() {
+    setTimeout(fakePledge, 5000 + Math.random() * 4000);
+  }
+  schedule();
+  setTimeout(function () { burst(1.2); }, 600); // welcome flare
+
+  /* ---------- buttons ---------- */
+  /* ---------- pledge flow: buttons scroll to the form, form goes to the mail kit ---------- */
+  var form = document.getElementById("pledgeForm");
+  function goToForm() {
+    document.getElementById("pledge").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    form.classList.remove("flash");
+    void form.offsetWidth; // restart the flash animation
+    form.classList.add("flash");
+    setTimeout(function () { document.getElementById("fWho").focus({ preventScroll: true }); }, reduceMotion ? 0 : 600);
+  }
+  document.getElementById("pledgeBtn").addEventListener("click", goToForm);
+  document.getElementById("pledgeBtn2").addEventListener("click", goToForm);
+
+  var DETAILS = {
+    ram: { typeLabel: "RAM type", qtyLabel: "Gigabytes", max: 512, integer: false, opts: ["DDR2", "DDR3", "DDR4", "DDR5", "SODIMM"] },
+    floppy: { typeLabel: "Floppy flavor", qtyLabel: "Floppies (count)", max: 500, integer: true, opts: ['3.5" HD', '3.5" DD', '5.25" HD'] },
+    usb: { typeLabel: "Plug shape", qtyLabel: "Gigabytes", max: 1024, integer: false, opts: ["USB-A", "USB-C", "Mini", "Mystery"] }
+  };
+  var fType = document.getElementById("fType");
+  var fQty = document.getElementById("fQty");
+  function syncKind() {
+    var kind = document.querySelector('input[name="kind"]:checked').value;
+    var d = DETAILS[kind];
+    document.getElementById("fTypeLabel").textContent = d.typeLabel;
+    document.getElementById("fQtyLabel").textContent = d.qtyLabel;
+    fQty.max = d.max;
+    fQty.step = d.integer ? "1" : "any";
+    var q = parseFloat(fQty.value);
+    if (isNaN(q) || q < 1) fQty.value = "1";
+    else if (q > d.max) fQty.value = String(d.max);
+    else if (d.integer) fQty.value = String(Math.round(q));
+    fType.innerHTML = "";
+    d.opts.forEach(function (o) {
+      var opt = document.createElement("option");
+      opt.value = o; opt.textContent = o;
+      fType.appendChild(opt);
+    });
+  }
+  document.querySelectorAll('input[name="kind"]').forEach(function (r) {
+    r.addEventListener("change", syncKind);
+  });
+  syncKind();
+
+  /* ---------- theme dropdown from the registry, grouped by category ---------- */
+  var fTheme = document.getElementById("fTheme");
+  var fThemePicker = document.getElementById("fThemePicker");
+  var formErrors = document.getElementById("formErrors");
+  var pledgeSubmit = document.getElementById("pledgeSubmit");
+  var themeSlugs = [];
+
+  function showErrors(list) {
+    formErrors.innerHTML = "";
+    var ul = document.createElement("ul");
+    list.forEach(function (msg) {
+      var li = document.createElement("li");
+      li.textContent = msg;
+      ul.appendChild(li);
+    });
+    formErrors.appendChild(ul);
+    formErrors.hidden = false;
+  }
+  function clearErrors() {
+    formErrors.innerHTML = "";
+    formErrors.hidden = true;
+  }
+
+  function syncPicker() {
+    var slug = fTheme.value;
+    if (!slug || slug === "surprise") { fThemePicker.hidden = true; return; }
+    fThemePicker.alt = "";
+    fThemePicker.hidden = false;
+    fThemePicker.src = "/pledges/art/" + slug + "/picker.jpg";
+  }
+  fThemePicker.addEventListener("error", function () { fThemePicker.hidden = true; });
+
+  fetch("/pledges/themes.json").then(function (res) {
+    if (!res.ok) throw new Error("themes " + res.status);
+    return res.json();
+  }).then(function (data) {
+    var themes = (data && data.themes) || [];
+    themeSlugs = themes.map(function (t) { return t.slug; });
+    fTheme.innerHTML = "";
+    var surprise = document.createElement("option");
+    surprise.value = "surprise";
+    surprise.textContent = "Surprise me \u2014 pick for me";
+    fTheme.appendChild(surprise);
+    var groups = {};
+    themes.forEach(function (t) {
+      var cat = t.category || "Themes";
+      if (!groups[cat]) {
+        var g = document.createElement("optgroup");
+        g.label = cat;
+        groups[cat] = g;
+        fTheme.appendChild(g);
+      }
+      var opt = document.createElement("option");
+      opt.value = t.slug;
+      opt.textContent = t.display_name;
+      groups[cat].appendChild(opt);
+    });
+    fTheme.addEventListener("change", syncPicker);
+    syncPicker();
+  }).catch(function () {
+    fTheme.innerHTML = "";
+    var opt = document.createElement("option");
+    opt.value = "";
+    opt.textContent = "Couldn't load themes \u2014 retry";
+    fTheme.appendChild(opt);
+    showErrors(["Couldn't reach the quartermaster, retry."]);
+    pledgeSubmit.disabled = true;
+  });
+
+  /* ---------- submit: validate, mint, redirect (pledge-pages-spec §5.1) ---------- */
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    clearErrors();
+    var kind = document.querySelector('input[name="kind"]:checked').value;
+    var d = DETAILS[kind];
+    var who = document.getElementById("fWho").value.trim();
+    var qty = parseFloat(fQty.value);
+    var eulogy = document.getElementById("fEulogy").value;
+    var theme = fTheme.value;
+    if (theme === "surprise") {
+      theme = themeSlugs[(Math.random() * themeSlugs.length) | 0];
+    }
+    var problems = [];
+    if (!who) problems.push("Handle / nickname is required.");
+    if (who.length > 24) problems.push("Handle must be 24 characters or fewer.");
+    if (isNaN(qty)) problems.push("Quantity must be a number.");
+    else if (qty < 1 || qty > d.max) problems.push("Quantity must be 1\u2013" + d.max + ".");
+    else if (d.integer && Math.round(qty) !== qty) problems.push("Floppy count must be a whole number.");
+    if (eulogy.length > 140) problems.push("Eulogy must be 140 characters or fewer.");
+    if (!theme) problems.push("Pick a mail-kit theme.");
+    if (problems.length) { showErrors(problems); return; }
+
+    var body = {
+      who: who,
+      kind: kind,
+      type: fType.value,
+      qty: d.integer ? Math.round(qty) : qty,
+      theme: theme
+    };
+    if (eulogy !== "") body.eulogy = eulogy;
+
+    pledgeSubmit.disabled = true;
+    fetch("/api/pledges/mint", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    }).then(function (res) {
+      return res.json().then(function (data) {
+        return { status: res.status, data: data };
+      });
+    }).then(function (out) {
+      if (out.status === 200 && out.data && out.data.url) {
+        window.location.assign(out.data.url);
+        return;
+      }
+      var errs = (out.data && out.data.errors) || ["Couldn't reach the quartermaster, retry."];
+      showErrors(errs);
+      pledgeSubmit.disabled = false;
+    }).catch(function () {
+      showErrors(["Couldn't reach the quartermaster, retry."]);
+      pledgeSubmit.disabled = false;
+    });
+  });
+
+  function share(btn) {
+    var data = {
+      title: "samneedsram.com",
+      text: "Sam's out of memory. I pledged my old tech — help him remember.",
+      url: window.location.href
+    };
+    function done(msg) {
+      var orig = btn.textContent;
+      btn.textContent = msg;
+      burst(1.4);
+      setTimeout(function () { btn.textContent = orig; }, 2200);
+    }
+    if (navigator.share) {
+      navigator.share(data).then(function () { done("Shared!"); }, function () {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(data.text + " " + data.url).then(function () {
+        done("Link copied!");
+      });
+    } else {
+      done("Copy the URL!");
+    }
+  }
+  document.getElementById("shareBtn").addEventListener("click", function () { share(this); });
+  document.getElementById("shareBtn2").addEventListener("click", function () { share(this); });
+})();
+</script>
+</body>
+</html>
