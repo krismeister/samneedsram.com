@@ -112,7 +112,7 @@ Required `<head>` (templates include verbatim, route fills values):
 ## 4. Artwork brief (design agent)
 
 One set per theme (`classic`, `ramageddon`, `warhammer40kb`, `gondor`).
-All art: original or AI-generated, no real-person likenesses, no text baked
+All art: original or AI-generated, no text baked
 in except where noted (route/template supply all text).
 
 | File | Spec | Notes per theme |

@@ -6,7 +6,12 @@
 //
 // Usage:
 //   node scripts/process-pledge-art.mjs <theme> \
-//     --hero <src> --og <src> --picker <src> [--seal-svg <src>]
+//     --hero <src> --og <src> --picker <src> [--seal-svg <src>] \
+//     [--picker-top <px>]
+//
+// --picker-top shifts the 300x74 crop band down from the source top edge
+// (source pixels; default centers). Use it when the motif that must read
+// at tiny size sits above/below center (e.g. faces).
 //
 // Writes to public/pledges/art/<theme>/{hero.jpg,og.jpg,picker.jpg,seal.png}.
 // Exits non-zero if any weight cap still fails after quality stepdown.
@@ -27,7 +32,7 @@ const SEAL_SIZE = 512;
 
 function usageAndExit() {
   console.error(
-    "usage: node scripts/process-pledge-art.mjs <theme> --hero <src> --og <src> --picker <src> [--seal-svg <src>]"
+    "usage: node scripts/process-pledge-art.mjs <theme> --hero <src> --og <src> --picker <src> [--seal-svg <src>] [--picker-top <px>]"
   );
   process.exit(2);
 }
@@ -57,13 +62,19 @@ const OUT = path.join(ROOT, "public/pledges/art", theme);
 mkdirSync(OUT, { recursive: true });
 
 let failed = false;
+const pickerTopRaw = flag("--picker-top");
 for (const [kind, spec] of Object.entries(SPECS)) {
   const meta0 = await sharp(srcs[kind]).metadata();
   let q = spec.q;
   let buf = null;
   for (let attempt = 0; attempt < 3; attempt++) {
     let pipe = sharp(srcs[kind]);
-    if (spec.h) pipe = pipe.resize(spec.w, spec.h, { fit: "cover", position: "centre" });
+    if (kind === "picker" && pickerTopRaw !== null) {
+      const bandH = Math.round(meta0.width * spec.h / spec.w);
+      const top = Math.max(0, Math.min(meta0.height - bandH, parseInt(pickerTopRaw, 10) || 0));
+      pipe = pipe.extract({ left: 0, top, width: meta0.width, height: bandH }).resize(spec.w, spec.h);
+    }
+    else if (spec.h) pipe = pipe.resize(spec.w, spec.h, { fit: "cover", position: "centre" });
     else pipe = pipe.resize({ width: Math.min(spec.w, meta0.width), withoutEnlargement: true });
     buf = await pipe.jpeg({ quality: q }).toBuffer();
     if (buf.length <= spec.maxKB * 1024 || q <= 50) break;

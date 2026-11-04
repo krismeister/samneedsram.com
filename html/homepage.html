@@ -550,7 +550,7 @@
         </div>
         <div class="field">
           <label for="fQty" id="fQtyLabel">Gigabytes</label>
-          <input id="fQty" name="qty" type="number" required min="1" max="512" value="8" inputmode="numeric">
+          <input id="fQty" name="qty" type="text" required value="8" inputmode="numeric">
         </div>
       </div>
       <div class="field">
@@ -791,14 +791,18 @@
   };
   var fType = document.getElementById("fType");
   var fQty = document.getElementById("fQty");
+  function strictNum(raw) {
+    var s = String(raw).trim();
+    if (s === "") return NaN;
+    var n = Number(s);
+    return isFinite(n) ? n : NaN;
+  }
   function syncKind() {
     var kind = document.querySelector('input[name="kind"]:checked').value;
     var d = DETAILS[kind];
     document.getElementById("fTypeLabel").textContent = d.typeLabel;
     document.getElementById("fQtyLabel").textContent = d.qtyLabel;
-    fQty.max = d.max;
-    fQty.step = d.integer ? "1" : "any";
-    var q = parseFloat(fQty.value);
+    var q = strictNum(fQty.value);
     if (isNaN(q) || q < 1) fQty.value = "1";
     else if (q > d.max) fQty.value = String(d.max);
     else if (d.integer) fQty.value = String(Math.round(q));
@@ -890,7 +894,7 @@
     var kind = document.querySelector('input[name="kind"]:checked').value;
     var d = DETAILS[kind];
     var who = document.getElementById("fWho").value.trim();
-    var qty = parseFloat(fQty.value);
+    var qty = strictNum(fQty.value);
     var eulogy = document.getElementById("fEulogy").value;
     var theme = fTheme.value;
     if (theme === "surprise") {
