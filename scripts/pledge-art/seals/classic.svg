@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- Classic CERTIFIED DONOR seal: red rubber-stamp double ring, star
+     diamonds between the rings. Center stays transparent: the template
+     overlays "CERTIFIED DONOR" in HTML. -->
+<g fill="none" stroke="#d92b1f">
+<circle cx="256" cy="256" r="238" stroke-width="16" stroke-dasharray="120 14 70 10 150 18 90 12"/>
+<circle cx="256" cy="256" r="196" stroke-width="7"/>
+</g>
+<g fill="#d92b1f">
+<path d="M256 24 l15 15 -15 15 -15 -15 Z"/>
+<path d="M256 458 l15 15 -15 15 -15 -15 Z"/>
+<path d="M24 256 L39 241 L54 256 L39 271 Z"/>
+<path d="M458 256 L473 241 L488 256 L473 271 Z"/>
+</g>
+</svg>

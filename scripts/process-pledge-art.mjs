@@ -13,6 +13,10 @@
 // (source pixels; default centers). Use it when the motif that must read
 // at tiny size sits above/below center (e.g. faces).
 //
+// The og step always composites public/pledges/art/shared/logo.png at
+// top-left (36,30) so every share card carries the site brand. Missing
+// logo file = hard error.
+//
 // Writes to public/pledges/art/<theme>/{hero.jpg,og.jpg,picker.jpg,seal.png}.
 // Exits non-zero if any weight cap still fails after quality stepdown.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -76,6 +80,12 @@ for (const [kind, spec] of Object.entries(SPECS)) {
     }
     else if (spec.h) pipe = pipe.resize(spec.w, spec.h, { fit: "cover", position: "centre" });
     else pipe = pipe.resize({ width: Math.min(spec.w, meta0.width), withoutEnlargement: true });
+    if (kind === "og") {
+      const logoPath = path.join(ROOT, "public/pledges/art/shared/logo.png");
+      if (!existsSync(logoPath)) { console.error("missing shared og logo: " + logoPath); process.exit(2); }
+      const logoBuf = await sharp(logoPath).resize(360).toBuffer();
+      pipe = pipe.composite([{ input: logoBuf, left: 28, top: 24 }]);
+    }
     buf = await pipe.jpeg({ quality: q }).toBuffer();
     if (buf.length <= spec.maxKB * 1024 || q <= 50) break;
     q -= 10;

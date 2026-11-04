@@ -106,8 +106,17 @@ Required `<head>` (templates include verbatim, route fills values):
 <meta property="og:description" content="{{meta_description}}">
 <meta property="og:image" content="{{meta_image}}">
 <meta property="og:url" content="{{page_url}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="samneedsram.com">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maxquesar">
+<meta name="twitter:title" content="{{meta_title}}">
+<meta name="twitter:description" content="{{meta_description}}">
+<meta name="twitter:image" content="{{meta_image}}">
 ```
+
+(`twitter:site` is the site X handle — update it here and in every
+template if the handle ever changes.)
 
 ## 4. Artwork brief (design agent)
 
