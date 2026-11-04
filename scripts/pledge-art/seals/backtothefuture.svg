@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- Back-to-the-future seal: amber double ring, clock-face glyph top,
+     RAM-stick glyph bottom, lightning bolts at the sides. Center stays
+     transparent: the template overlays the word OUTATIME in HTML. -->
+<g fill="none" stroke="#c77f1a">
+<circle cx="256" cy="256" r="238" stroke-width="10"/>
+<circle cx="256" cy="256" r="150" stroke-width="5"/>
+<circle cx="256" cy="62" r="30" stroke-width="6"/>
+</g>
+<g stroke="#c77f1a" stroke-width="6" stroke-linecap="round">
+<line x1="256" y1="62" x2="256" y2="40"/>
+<line x1="256" y1="62" x2="270" y2="70"/>
+</g>
+<g fill="none" stroke="#c77f1a" stroke-width="5">
+<rect x="196" y="436" width="120" height="30" rx="3"/>
+</g>
+<g stroke="#c77f1a" stroke-width="3">
+<line x1="210" y1="466" x2="210" y2="474"/>
+<line x1="224" y1="466" x2="224" y2="474"/>
+<line x1="238" y1="466" x2="238" y2="474"/>
+<line x1="252" y1="466" x2="252" y2="474"/>
+<line x1="274" y1="466" x2="274" y2="474"/>
+<line x1="288" y1="466" x2="288" y2="474"/>
+<line x1="302" y1="466" x2="302" y2="474"/>
+</g>
+<g fill="#c77f1a">
+<rect x="204" y="443" width="22" height="16"/>
+<rect x="232" y="443" width="22" height="16"/>
+<rect x="286" y="443" width="22" height="16"/>
+<path d="M52 232 L62 232 L50 254 L58 254 L42 280 L46 256 L38 256 Z"/>
+<path d="M470 232 L480 232 L468 254 L476 254 L460 280 L464 256 L456 256 Z"/>
+</g>
+</svg>

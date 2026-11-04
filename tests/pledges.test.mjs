@@ -68,6 +68,18 @@ describe("validatePledge", () => {
     assert.equal(validatePledge({ ...floppy, qty: 12.5 }).ok, false);
   });
 
+  it("allows sub-1GB quantities for ram and usb, not floppy", () => {
+    assert.equal(validatePledge({ ...VALID, qty: 0.5 }).value.qty, 0.5);
+    assert.equal(
+      validatePledge({ ...VALID, kind: "usb", type: "USB-A", qty: 0.1 }).value.qty,
+      0.1,
+    );
+    assert.equal(validatePledge({ ...VALID, qty: 0 }).ok, false);
+    const floppy = { ...VALID, kind: "floppy", type: '3.5" HD', qty: 12 };
+    assert.equal(validatePledge({ ...floppy, qty: 0.5 }).ok, false);
+    assert.equal(validatePledge({ ...VALID, qty: 600 }).ok, false);
+  });
+
   it("enforces eulogy and theme rules", () => {
     assert.equal(validatePledge({ ...VALID, eulogy: "x".repeat(141) }).ok, false);
     assert.equal(validatePledge({ ...VALID, theme: "nope" }).ok, false);

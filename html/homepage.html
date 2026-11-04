@@ -869,7 +869,7 @@
     document.getElementById("fTypeLabel").textContent = d.typeLabel;
     document.getElementById("fQtyLabel").textContent = d.qtyLabel;
     var q = strictNum(fQty.value);
-    if (isNaN(q) || q < 1) fQty.value = "1";
+    if (isNaN(q) || q <= 0) fQty.value = "1";
     else if (q > d.max) fQty.value = String(d.max);
     else if (d.integer) fQty.value = String(Math.round(q));
     fType.innerHTML = "";
@@ -952,6 +952,16 @@
     fTheme.appendChild(opt);
   });
 
+  /* ---------- eulogy suggestions: random placeholder on load ---------- */
+  var fEulogy = document.getElementById("fEulogy");
+  fetch("/eulogies.json").then(function (res) {
+    if (!res.ok) throw new Error("eulogies " + res.status);
+    return res.json();
+  }).then(function (list) {
+    if (!Array.isArray(list) || !list.length) return;
+    fEulogy.placeholder = list[(Math.random() * list.length) | 0];
+  }).catch(function () { /* keep the static placeholder */ });
+
   /* ---------- submit: validate, mint, redirect (pledge-pages-spec §5.1) ---------- */
   form.addEventListener("submit", function (ev) {
     ev.preventDefault();
@@ -960,7 +970,8 @@
     var d = DETAILS[kind];
     var who = document.getElementById("fWho").value.trim();
     var qty = strictNum(fQty.value);
-    var eulogy = document.getElementById("fEulogy").value;
+    var eulogy = fEulogy.value;
+    if (eulogy.trim() === "") eulogy = fEulogy.placeholder || "";
     var theme = fTheme.value;
     if (theme === "surprise") {
       theme = themeSlugs[(Math.random() * themeSlugs.length) | 0];
@@ -970,7 +981,7 @@
     if (!who) problems.push("Handle / nickname is required.");
     if (who.length > 24) problems.push("Handle must be 24 characters or fewer.");
     if (isNaN(qty)) problems.push("Quantity must be a number.");
-    else if (qty < 1 || qty > d.max) problems.push("Quantity must be 1\u2013" + d.max + ".");
+    else if (qty <= 0 || qty > d.max) problems.push("Quantity must be a positive number up to " + d.max + ".");
     else if (d.integer && Math.round(qty) !== qty) problems.push("Floppy count must be a whole number.");
     if (eulogy.length > 140) problems.push("Eulogy must be 140 characters or fewer.");
     if (problems.length) { showErrors(problems); return; }
