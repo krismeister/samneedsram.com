@@ -81,12 +81,12 @@ String fields arrive HTML-escaped. Numbers/enums arrive validated.
 | `{{type}}` | `type` | `DDR3` |
 | `{{qty}}` | `qty` (number) | `8` |
 | `{{qty_unit}}` | derived: `GB` for ram/usb, `disks` for floppy | `GB` |
-| `{{eulogy}}` | `eulogy` or empty string | `she served 11 years…` |
+| `{{eulogy}}` | `eulogy` (mint fills `she served 11 years in my ThinkPad` when the form sends none) | `she served 11 years…` |
 | `{{theme}}` | `theme` slug | `ramageddon` |
 | `{{theme_display_name}}` | from registry `display_name` | `Ramageddon` |
 | `{{page_url}}` | derived absolute canonical URL (incl. JWT) | `https://samneedsram.com/pledges/…` |
 | `{{meta_title}}` | derived: `{who} pledged {qty}{unit} {type} to Sam` | `Mabel pledged 8GB DDR3 to Sam` |
-| `{{meta_description}}` | derived: eulogy if present, else `{who} donated {qty} {unit} of {type}. Sam's out of memory. Help him remember.` | — |
+| `{{meta_description}}` | derived: eulogy (mint always supplies one; the `{who} donated…` fallback only fires for hand-built payloads) | — |
 | `{{meta_image}}` | derived absolute URL of the theme og art | `https://…/pledges/art/ramageddon/og.jpg` |
 
 Conditional (only one supported):
@@ -95,7 +95,7 @@ Conditional (only one supported):
 {{#if_eulogy}}<blockquote class="eulogy">{{eulogy}}</blockquote>{{/if_eulogy}}
 ```
 
-The route strips the whole block when `eulogy` is empty/missing.
+The route strips the whole block when `eulogy` is empty/missing (only reachable with hand-built payloads — mint fills the default).
 
 Required `<head>` (templates include verbatim, route fills values):
 
@@ -172,7 +172,7 @@ server re-validates everything (never trust the form).
 | `kind` | radio/segmented, required, default `ram` | Exactly `ram` / `floppy` / `usb` |
 | `type` | select, required | Options swap by `kind`: ram → DDR2/3/4/5/SODIMM; floppy → 3.5" HD, 3.5" DD, 5.25" HD; usb → USB-A, USB-C, Mini, Mystery. Switching `kind` resets to that kind's first option |
 | `qty` | number input, required | Form floor min 1 (feed accepts fractional <1, form clamps to ≥1). Max by kind: ram 512, floppy 500 (integer, step 1), usb 1024. Switching `kind` clamps into range |
-| `eulogy` | textarea, `maxlength=140`, optional | Empty string = omit from payload |
+| `eulogy` | textarea, `maxlength=140`, optional | Empty string = omit from payload; backend fills the default eulogy |
 | `theme` | picker grouped by `category`, required | Fetch `/pledges/themes.json`; each option shows `/pledges/art/<slug>/picker.jpg` + `display_name`; submit the `slug` (control must have a real `name="theme"` attribute) |
 
 Never submit `n` (server-assigned; comps may fake it client-side for display).

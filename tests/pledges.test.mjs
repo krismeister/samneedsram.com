@@ -27,11 +27,20 @@ describe("validatePledge", () => {
     assert.deepEqual(r.value, VALID);
   });
 
-  it("accepts a missing eulogy", () => {
+  it("fills the default eulogy when missing or blank", () => {
     const { eulogy, ...rest } = VALID;
-    const r = validatePledge(rest);
-    assert.equal(r.ok, true);
-    assert.ok(!("eulogy" in r.value));
+    assert.equal(
+      validatePledge(rest).value.eulogy,
+      "she served 11 years in my ThinkPad",
+    );
+    assert.equal(
+      validatePledge({ ...VALID, eulogy: "" }).value.eulogy,
+      "she served 11 years in my ThinkPad",
+    );
+    assert.equal(
+      validatePledge({ ...VALID, eulogy: "   " }).value.eulogy,
+      "she served 11 years in my ThinkPad",
+    );
   });
 
   it("rejects unknown fields", () => {
