@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{NAME}} — Sam Needs RAM mailer</title>
+<link rel="stylesheet" href="./mailer.css">
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <h1>Sam Needs RAM</h1>
+      <p class="tagline">Sam's out of memory. Help him remember.</p>
+    </header>
+
+    <section class="labels">
+      <div class="label mail-to">
+        <h2>Mail to</h2>
+        <!-- Public corporate address only. The generating session fills in
+             OpenAI's verified public corporate mailing address here. -->
+        <p>{{OPENAI_PUBLIC_ADDRESS}}</p>
+      </div>
+      <div class="label return">
+        <h2>From</h2>
+        <p>{{NAME}}<br>{{RETURN_ADDRESS}}</p>
+      </div>
+    </section>
+
+    <section class="letter">
+      <h2>A plea from Sam (probably)</h2>
+      <div class="cover-letter">{{COVER_LETTER_HTML}}</div>
+    </section>
+
+    <section class="eulogy">
+      <h2>Eulogy for a brave stick</h2>
+      <div class="eulogy-text">{{EULOGY_HTML}}</div>
+    </section>
+
+    <!-- Deliberately NOT the letter's voice: handwritten, dashed, crooked,
+         reads as scribbled on after printing. -->
+    <aside class="donation-box" aria-label="Donor claim">
+      <p class="donation-hand">YO I SENT: &ldquo;{{DONATION_SAYS}}&rdquo; &mdash; {{GB}} GB (trust me) &#10003;</p>
+      <p class="donation-meta">{{NAME}} &middot; {{RAM_TYPE}} &middot; {{DATE}}</p>
+    </aside>
+
+    <footer class="credits">
+      <div class="powered"><img class="muse-logo" src="muse-logo.svg" alt="Muse logo">Powered by Muse</div>
+      <ul class="photo-credits">{{PHOTO_CREDITS_HTML}}</ul>
+      <p class="disclaimer">Parody project. Not affiliated with OpenAI or Sam Altman.</p>
+    </footer>
+  </div>
+</body>
+</html>

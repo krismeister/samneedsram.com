@@ -1,0 +1,1 @@
+{"devDependencies":{"puppeteer":"^25.16.0","sharp":"^0.35.5"},"name":"samneedsram.com","private":true,"scripts":{"render-mailer-pdf":"node scripts/render-mailer-pdf.mjs"},"type":"module"}
