@@ -20,9 +20,13 @@ steps in order; each one builds on the last.
 
 ## Steps
 
-1. Claim the idea: move `docs/planning/ideas/<slug>.md` to
+1. Claim the idea: never ask which idea to build. Unless the
+   invoking request names a slug explicitly, pick the oldest pending
+   file in `docs/planning/ideas/*.md` (excluding `done/`) by
+   filesystem mtime, oldest first. Move it to
    `docs/planning/ideas/done/<slug>.md` (create `done/` if missing).
-   The move signals the idea is being worked on. Work from the moved file.
+   The move signals the idea is being worked on. Work from the moved
+   file. If no pending idea file exists, stop and report that.
 2. Generate art sources with image generation, one per asset:
    - hero source: per the idea's art direction; must leave room for the
      overlaid title.
@@ -74,5 +78,9 @@ steps in order; each one builds on the last.
    test, screenshot the filled renders (desktop plus 390px mobile;
    confirm hero, seal, letter, share card, no overflow, zero page
    errors), then run the full `npm test` once.
-9. Report every path created. Do not commit or push unless Kris
-   explicitly asks.
+9. Land and continue: report every path created. Run the full
+   `npm test` once more — it must be green; never commit on red.
+   Commit the theme artifacts to `main` with a Conventional Commits
+   message, push to `main`, then immediately start the next oldest
+   pending idea (back to step 1). Stop only when no pending idea
+   file exists.

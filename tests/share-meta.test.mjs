@@ -102,6 +102,17 @@ describe("homepage share meta", () => {
     assert.equal(meta(html, "og:url"), `${SITE}/`);
     assert.equal(meta(html, "og:image"), `${SITE}/homepage/og.jpg`);
     assert.equal(meta(html, "twitter:site"), HANDLE);
+    assert.equal(meta(html, "og:locale"), "en_US");
+    assert.equal(meta(html, "og:image:width"), "1200");
+    assert.equal(meta(html, "og:image:height"), "630");
+    assert.ok(
+      meta(html, "og:image:alt")?.length > 0,
+      "homepage: og:image:alt must be set",
+    );
+    assert.ok(
+      meta(html, "twitter:image:alt")?.length > 0,
+      "homepage: twitter:image:alt must be set",
+    );
     await assert.doesNotReject(
       fs.stat(path.join(root, "public", "homepage", "og.jpg")),
       "homepage og.jpg exists",

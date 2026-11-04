@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- SeverRAM SEVERED seal motif. Rings + RAM-pin ticks only, no
+     text: the template overlays the word SEVERED in HTML. Transparent bg.
+     Center left empty for the word. -->
+<g fill="none" stroke="#0e7c8c">
+<circle cx="256" cy="256" r="240" stroke-width="16"/>
+<circle cx="256" cy="256" r="219" stroke-width="26" stroke-dasharray="10 18.66"/>
+<circle cx="256" cy="256" r="200" stroke-width="5"/>
+</g>
+<g fill="none" stroke="#14324a">
+<circle cx="256" cy="256" r="150" stroke-width="3"/>
+</g>
+<g fill="#0e7c8c">
+<path d="M256 6 l12 12 -12 12 -12 -12 Z"/>
+<path d="M256 482 l12 12 -12 12 -12 -12 Z"/>
+<path d="M6 256 L18 244 L30 256 L18 268 Z"/>
+<path d="M482 256 L494 244 L506 256 L494 268 Z"/>
+</g>
+</svg>
