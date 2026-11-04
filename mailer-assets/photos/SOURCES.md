@@ -3,7 +3,7 @@
 Nothing here is public domain: all are CC-licensed, free to use and modify,
 including the polaroid treatment, **with credit**. Put the credit line in the
 mailer (small print under the polaroid works: `.photo-credit`).
-Photos 1–3 and 6 are **CC BY 2.0**; the rest are **CC BY-SA 4.0**
+Photos 1–3 and 6 are **CC BY 2.0**; #10 is **CC BY-SA 3.0**; the rest are **CC BY-SA 4.0**
 (derivatives like polaroids stay BY-SA — fine for the mailers, just keep
 the credit attached).
 
@@ -62,3 +62,9 @@ Resized to max 1200px (mozjpeg q85) from the Commons originals; EXIF stripped.
 - File page: <https://commons.wikimedia.org/wiki/File:Mark_Zuckerberg_(2025).jpg>
 - Author: Jeff Sainlar, Meta — License: CC BY-SA 4.0
 - Credit: `Photo: Jeff Sainlar / Meta, CC BY-SA 4.0, via Wikimedia Commons`
+
+## 10. elon-royalsociety-2018.jpg
+
+- File page: <https://commons.wikimedia.org/wiki/File:Elon_Musk_Royal_Society_crop.jpg>
+- Author: Debbie Rowe — License: CC BY-SA 3.0
+- Credit: `Photo: Debbie Rowe, CC BY-SA 3.0, via Wikimedia Commons`

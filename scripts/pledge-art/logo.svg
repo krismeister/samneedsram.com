@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="84" viewBox="0 0 512 84">
-<!-- Site logo badge, composited onto every og image (see pledge-art script).
-     Rebuild the PNG with: npm run build-logo -->
-<rect x="4" y="4" width="504" height="76" rx="14" fill="#0a0a0a" stroke="#ffffff" stroke-width="4"/>
-<rect x="24" y="26" width="32" height="32" rx="6" fill="#d92b1f"/>
-<text x="68" y="57" font-family="Liberation Sans, sans-serif" font-weight="bold" font-size="38" fill="#ffffff" letter-spacing="0.5">sam needs ram.com</text>
-</svg>

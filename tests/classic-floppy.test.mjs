@@ -23,7 +23,7 @@ describe("classic theme art", () => {
     );
     assert.equal(
       sha256(og),
-      "c592b8e0b657961585dfb4bf4bf284bb24efee9700c994869ef6ca280f68da55",
+      "0cbb1cc0fbc3cd3e022034cb5c524a21119e4d4ee9ceeb95dd7d6f3dde048ac0",
     );
   });
 });
