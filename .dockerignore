@@ -1,0 +1,11 @@
+node_modules
+.next
+.git
+.gitignore
+.cache
+npm-debug.log*
+Dockerfile
+.dockerignore
+docs
+mailer-assets/thumbnail-originals
+generated_images
