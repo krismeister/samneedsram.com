@@ -9,3 +9,6 @@ Dockerfile
 docs
 mailer-assets/thumbnail-originals
 generated_images
+# Secrets stay out; runtime env comes from the host.
+.env*
+!.env.example
