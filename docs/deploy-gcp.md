@@ -39,3 +39,16 @@ Useful flags: `--min-instances 0` (scale to zero, cheapest),
 - Custom domain (`samneedsram.com`): after the first deploy,
   `gcloud run domain-mappings create --service samneedsram --domain samneedsram.com --region <REGION>`
   and add the DNS records it prints.
+
+## Firestore
+
+Database: Firestore Native in `us-central1` (same region as the service).
+The app connects via `lib/db.js` with Application Default Credentials — no
+keys. The Cloud Run runtime account needs `roles/datastore.user`:
+
+```sh
+gcloud projects add-iam-policy-binding project-5f5da873-2152-4c60-9aa --member=serviceAccount:859731070244-compute@developer.gserviceaccount.com --role=roles/datastore.user --condition=None
+```
+
+Local dev needs `gcloud auth application-default login`.
+Connectivity probe: `GET /api/health`.
