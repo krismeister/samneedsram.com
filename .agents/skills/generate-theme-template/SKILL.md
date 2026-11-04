@@ -78,9 +78,14 @@ steps in order; each one builds on the last.
    test, screenshot the filled renders (desktop plus 390px mobile;
    confirm hero, seal, letter, share card, no overflow, zero page
    errors), then run the full `npm test` once.
-9. Land and continue: report every path created. Run the full
-   `npm test` once more — it must be green; never commit on red.
-   Commit the theme artifacts to `main` with a Conventional Commits
-   message, push to `main`, then immediately start the next oldest
-   pending idea (back to step 1). Stop only when no pending idea
-   file exists.
+9. Register last: only after art, template, CSS, test, and
+   screenshots are all done and passing, append one entry to
+   `public/pledges/themes.json` (`slug` + `display_name` +
+   `category` from the idea's Spec notes Registry line). Keep the
+   file valid JSON; change nothing else in it. Re-run `npm test`
+   to confirm the registry edit broke nothing.
+10. Land and continue: report every path created. The full
+   `npm test` must be green; never commit on red. Commit the theme
+   artifacts to `main` with a Conventional Commits message, push to
+   `main`, then immediately start the next oldest pending idea
+   (back to step 1). Stop only when no pending idea file exists.
