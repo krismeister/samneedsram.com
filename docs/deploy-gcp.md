@@ -52,3 +52,12 @@ gcloud projects add-iam-policy-binding project-5f5da873-2152-4c60-9aa --member=s
 
 Local dev needs `gcloud auth application-default login`.
 Connectivity probe: `GET /api/health`.
+
+## Secrets
+
+Runtime secrets live in Secret Manager, injected via `--set-secrets` in
+`deploy.yml` (never baked into the image or committed):
+
+- `PLEDGE_JWT_SECRET` — 32-char token for signing pledge JWTs, stored in
+  Secret Manager and injected via `--set-secrets`. The secret must exist
+  before a deploy referencing it, or the deploy fails.
