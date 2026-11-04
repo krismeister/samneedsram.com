@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{meta_title}}</title>
+<meta name="description" content="{{meta_description}}">
+<meta property="og:title" content="{{meta_title}}">
+<meta property="og:description" content="{{meta_description}}">
+<meta property="og:image" content="{{meta_image}}">
+<meta property="og:url" content="{{page_url}}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/pledges/css/gondor.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Alegreya:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+<canvas id="flares" aria-hidden="true"></canvas>
+<div class="wrap">
+  <a class="back noprint" href="/">&larr; samneedsram.com</a>
+  <figure class="hero">
+    <img src="/pledges/art/gondor/hero.jpg" alt="Elon the scruffy wizard holding up burning RAM sticks while Sam the hobbit looks on">
+    <div class="overlay"><div class="kicker">GONDOR CALLS FOR MEMORY</div><div class="title">THE BEACONS ARE LIT BUT THE CACHE IS EMPTY</div></div>
+  </figure>
+  <div class="eyebrow">SAM NEEDS MEMORY</div>
+  <h1>{{who}} pledged <span class="amt">{{qty}} {{qty_unit}} {{type}}</span> to Sam</h1>
+  <p class="sub"><strong>{{who}}</strong>&rsquo;s pledge is the latest on the beacon line. Sam is running out of memory and the fires are lit &mdash; print the kit, post the sticks, and help him remember.</p>
+  <div class="rule noprint" aria-hidden="true">&#10022; &#10022; &#10022;</div>
+  <div class="cta-row noprint">
+    <a class="btn btn-ember" href="/#pledge">Make your own pledge</a>
+    <button class="btn btn-ghost" type="button" onclick="window.print()">Print mail kit</button>
+  </div>
+  <section aria-label="Your mail kit">
+    <h2 class="section-title">The Beacon Scrolls</h2>
+    <p class="section-note noprint">cut along the dotted lines, beacon-keeper</p>
+    <div class="kit-grid">
+      <article class="label-card" aria-label="Mail-to label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>Mail to</h3>
+        <address><span class="big">Sam Altman</span><br>OpenAI<br>3180 18th St<br>San Francisco, CA 94110</address>
+        <span class="stamp">By swift rider &mdash; do not bend</span>
+        <figure class="seal"><img src="/pledges/art/gondor/seal.png" alt=""><figcaption>GONDOR</figcaption></figure>
+      </article>
+      <article class="label-card" aria-label="Return label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>From (you)</h3>
+        <address><span class="big">{{who}}</span><br><span class="blank">your street here</span><br><span class="blank">your town here</span></address>
+      </article>
+    </div>
+    <article class="letter" aria-label="Cover letter for Sam">
+      <div class="letter-head"><span>A letter for the hobbit</span><span>class: {{kind}}</span></div>
+      <p>Dear Sam,</p>
+      <p>You are running out of memory, and the beacons are lit. Enclosed please find {{qty}} {{qty_unit}} ({{type}}), pledged from my own desk drawer and fully loved, so you never forget.</p>
+      <p>As the wizard says: a delivery is never late, nor is it early; it arrives precisely when it means to.</p>
+      {{#if_eulogy}}<blockquote class="eulogy">{{eulogy}}</blockquote>{{/if_eulogy}}
+      <p>Please handle with care. It does not like static, orcs, or being called &ldquo;legacy&rdquo;.</p>
+      <div class="sign">With love and low latency,<br><span class="hand">{{who}}</span></div>
+    </article>
+  </section>
+  <section aria-label="Your share card">
+    <h2 class="section-title">Light the Beacons</h2>
+    <div class="sharecard">
+      <div class="sc-text">{{who}} pledged <span class="hl">{{qty}} {{qty_unit}} {{type}}</span> to Sam</div>
+      <div class="sc-meta">pledged just now &bull; #LightTheBeacons &bull; samneedsram.com</div>
+    </div>
+    <div class="cta-row noprint">
+      <a class="btn btn-ember" href="https://twitter.com/intent/tweet?text={{meta_title}}&amp;url={{page_url}}" target="_blank" rel="noopener">Post to X</a>
+      <a class="btn btn-night" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;quote={{meta_title}}" target="_blank" rel="noopener">Post to Facebook</a>
+    </div>
+  </section>
+  <footer class="noprint"><span>samneedsram.com &bull; the beacons are lit</span><span>Sam will remember</span></footer>
+</div>
+<script>
+(function(){var m=matchMedia("(prefers-reduced-motion: reduce)").matches;if(m)return;
+var c=document.getElementById("flares"),x=c.getContext("2d"),P=[];
+var C=["#ff8c2e","#e8b64c","#ff5a2e","#5ee86e"];
+function size(){var d=devicePixelRatio||1;c.width=innerWidth*d;c.height=innerHeight*d;x.setTransform(d,0,0,d,0,0);}
+addEventListener("resize",size);size();
+function burst(n){for(var i=0;i<n;i++){P.push({x:Math.random()*innerWidth,y:innerHeight+10,vx:(Math.random()-.5)*90,vy:-(180+Math.random()*340),l:1,d:.5+Math.random()*.6,s:3+Math.random()*9,c:C[i%4]});}if(P.length>600)P.splice(0,P.length-600);}
+var t=performance.now();
+(function tick(n){var dt=Math.min(.05,(n-t)/1000);t=n;x.clearRect(0,0,innerWidth,innerHeight);
+for(var i=P.length-1;i>=0;i--){var p=P[i];p.l-=p.d*dt;if(p.l<=0){P.splice(i,1);continue;}
+p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy-=60*dt;x.globalAlpha=Math.max(0,Math.min(1,p.l));x.fillStyle=p.c;
+x.beginPath();x.arc(p.x,p.y,p.s*(0.4+0.6*p.l),0,7);x.fill();}
+x.globalAlpha=1;requestAnimationFrame(tick);})(t);
+setTimeout(function(){burst(90);},400);setTimeout(function(){burst(70);},1100);setTimeout(function(){burst(50);},1900);})();
+</script>
+</body>
+</html>

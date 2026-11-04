@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- Warhammer40KB wax seal: dark-red disc, skull crest top, RAM glyph
+     bottom. Center stays dark and empty: the template overlays "40KB". -->
+<circle cx="256" cy="256" r="240" fill="#6e1414"/>
+<circle cx="256" cy="256" r="240" fill="none" stroke="#4a0d0d" stroke-width="10" stroke-dasharray="150 20 90 14 170 22"/>
+<circle cx="256" cy="256" r="150" fill="#0d0b08"/>
+<circle cx="256" cy="256" r="150" fill="none" stroke="#c9a227" stroke-width="6"/>
+<g transform="translate(256,76)">
+<circle cx="0" cy="-6" r="26" fill="#e8dcc0"/>
+<rect x="-16" y="8" width="32" height="18" rx="4" fill="#e8dcc0"/>
+<circle cx="-10" cy="-8" r="7" fill="#6e1414"/>
+<circle cx="10" cy="-8" r="7" fill="#6e1414"/>
+<path d="M0 2 l6 10 -12 0 Z" fill="#6e1414"/>
+</g>
+<g transform="translate(256,424)">
+<rect x="-45" y="-14" width="90" height="28" fill="#3f7a3f" stroke="#c9a227" stroke-width="3"/>
+<rect x="-30" y="-8" width="12" height="12" fill="#0d0b08"/>
+<rect x="-6" y="-8" width="12" height="12" fill="#0d0b08"/>
+<rect x="18" y="-8" width="12" height="12" fill="#0d0b08"/>
+<g stroke="#c9a227" stroke-width="3">
+<line x1="-36" y1="14" x2="-36" y2="24"/>
+<line x1="-18" y1="14" x2="-18" y2="24"/>
+<line x1="0" y1="14" x2="0" y2="24"/>
+<line x1="18" y1="14" x2="18" y2="24"/>
+<line x1="36" y1="14" x2="36" y2="24"/>
+</g>
+</g>
+</svg>
