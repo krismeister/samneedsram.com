@@ -31,4 +31,4 @@ jobs:
           service: ${{ env.SERVICE }}
           region: ${{ env.REGION }}
           source: .
-          flags: --allow-unauthenticated --min-instances=0 --max-instances=2 --memory=512Mi --set-secrets=PLEDGE_JWT_SECRET=PLEDGE_JWT_SECRET:latest
+          flags: --allow-unauthenticated --min-instances=0 --max-instances=2 --memory=512Mi --set-secrets=PLEDGE_JWT_SECRET=PLEDGE_JWT_SECRET:latest --set-env-vars=SITE_URL=https://samneedsram.com
