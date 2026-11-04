@@ -4,6 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>samneedsram.com — Sam's out of memory. Help him remember.</title>
+<meta name="description" content="Sam Altman is out of memory. Pledge your old RAM, floppies, and USB sticks to the drive — honor system, every byte counts.">
+<link rel="canonical" href="https://samneedsram.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="samneedsram.com">
+<meta property="og:title" content="samneedsram.com — Sam's out of memory. Help him remember.">
+<meta property="og:description" content="Sam Altman is out of memory. Pledge your old RAM, floppies, and USB sticks to the drive — honor system, every byte counts.">
+<meta property="og:url" content="https://samneedsram.com/">
+<meta property="og:image" content="https://samneedsram.com/homepage/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maxquesar">
+<meta name="twitter:title" content="samneedsram.com — Sam's out of memory. Help him remember.">
+<meta name="twitter:description" content="Sam Altman is out of memory. Pledge your old RAM, floppies, and USB sticks to the drive — honor system, every byte counts.">
+<meta name="twitter:image" content="https://samneedsram.com/homepage/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Special+Elite&display=swap" rel="stylesheet">
@@ -443,7 +456,7 @@
     <div class="hero-row">
       <div class="hero-text">
         <h1>Sam&rsquo;s out of memory</h1>
-        <p class="sub">Sam Altman needs <strong>RAM</strong>. Also <strong>floppies</strong>. Also <strong>USB sticks</strong>. One person&rsquo;s e-waste is another superintelligence&rsquo;s breakfast. Dig through that drawer of dead tech and pledge it to the drive &mdash; the AI must feed.</p>
+        <p class="sub">Somewhere in San Francisco, an AI is buffering &mdash; because <strong>Sam needs RAM</strong>. The cure is in your junk drawer: the 2GB DDR2 stick from 2009, the floppy holding your high-school essay, the conference-swag USB stick still in the wrapper. Pledge it all to the drive. The superintelligence must feed.</p>
       </div>
       <figure class="polaroid">
         <div class="starburst" aria-hidden="true">Feed the SI!</div>
@@ -532,7 +545,7 @@
   <section aria-label="Pledge form" id="pledge">
     <h2 class="section-title">Pledge it</h2>
     <p class="section-note">fill this out, get your mail kit</p>
-    <form class="pledge-form" id="pledgeForm" action="/api/pledges/mint" method="post">
+    <form class="pledge-form" id="pledgeForm" action="/api/pledges/mint" method="post" novalidate>
       <div class="field">
         <label for="fWho">Handle / nickname</label>
         <input id="fWho" name="who" type="text" required maxlength="24" placeholder="Mabel" autocomplete="nickname">
@@ -878,13 +891,12 @@
     fTheme.addEventListener("change", syncPicker);
     syncPicker();
   }).catch(function () {
+    themeSlugs = ["classic"];
     fTheme.innerHTML = "";
     var opt = document.createElement("option");
-    opt.value = "";
-    opt.textContent = "Couldn't load themes \u2014 retry";
+    opt.value = "classic";
+    opt.textContent = "Classic (default)";
     fTheme.appendChild(opt);
-    showErrors(["Couldn't reach the quartermaster, retry."]);
-    pledgeSubmit.disabled = true;
   });
 
   /* ---------- submit: validate, mint, redirect (pledge-pages-spec §5.1) ---------- */
@@ -900,6 +912,7 @@
     if (theme === "surprise") {
       theme = themeSlugs[(Math.random() * themeSlugs.length) | 0];
     }
+    if (!theme) theme = themeSlugs[0] || "classic";
     var problems = [];
     if (!who) problems.push("Handle / nickname is required.");
     if (who.length > 24) problems.push("Handle must be 24 characters or fewer.");
@@ -907,7 +920,6 @@
     else if (qty < 1 || qty > d.max) problems.push("Quantity must be 1\u2013" + d.max + ".");
     else if (d.integer && Math.round(qty) !== qty) problems.push("Floppy count must be a whole number.");
     if (eulogy.length > 140) problems.push("Eulogy must be 140 characters or fewer.");
-    if (!theme) problems.push("Pick a mail-kit theme.");
     if (problems.length) { showErrors(problems); return; }
 
     var body = {
@@ -940,6 +952,15 @@
       showErrors(["Couldn't reach the quartermaster, retry."]);
       pledgeSubmit.disabled = false;
     });
+  });
+
+  /* Back-button: a successful pledge leaves the button disabled, and bfcache
+     restores that exact state — so reset the form controls on return. */
+  window.addEventListener("pageshow", function (ev) {
+    if (ev.persisted) {
+      pledgeSubmit.disabled = false;
+      clearErrors();
+    }
   });
 
   function share(btn) {
