@@ -1,0 +1,56 @@
+:root { --bg:#0a0a0c; --panel:#141416; --beige:#e4dcc4; --ink:#ece7d4; --dim:#9a957f; --red:#e03224; --deepred:#a31f14; --slime:#5fd968; --line:#2e2c26; }
+* { box-sizing: border-box; }
+body { margin:0; color:var(--ink); background-color:var(--bg);
+  background-image:repeating-linear-gradient(-45deg, transparent 0 18px, rgba(95,217,104,.045) 18px 20px);
+  font-family:Barlow, "Segoe UI", system-ui, sans-serif; font-size:1.1rem; overflow-x:hidden; }
+.wrap { max-width:56rem; margin:0 auto; padding:1rem 1.25rem 3rem; }
+#flares { position:fixed; inset:0; pointer-events:none; z-index:60; }
+.back { display:inline-block; color:var(--dim); font-size:.95rem; margin:.5rem 0 0; text-decoration:none; font-weight:600; }
+.hero { position:relative; border:2px solid var(--line); outline:1px solid var(--slime); outline-offset:4px; margin:1rem 0 0; }
+.hero img { display:block; width:100%; height:auto; }
+.hero .overlay { position:absolute; inset:auto 0 0 0; padding:3rem 1.4rem 1rem; background:linear-gradient(transparent, rgba(0,0,0,.94)); text-align:center; }
+.hero .kicker { color:var(--slime); font-size:.85rem; letter-spacing:.25em; font-family:Oswald, "Segoe UI", sans-serif; }
+.hero .title { font-family:Oswald, "Segoe UI", sans-serif; font-weight:700; font-size:clamp(1.6rem,6vw,2.8rem); line-height:1.1; color:#fff; text-shadow:0 0 26px rgba(95,217,104,.55), 0 2px 0 #000; margin:.2rem auto 0; max-width:36rem; text-transform:uppercase; }
+.eyebrow { color:var(--red); letter-spacing:.2em; font-size:.8rem; margin:1.2rem 0 0; font-family:Oswald, "Segoe UI", sans-serif; text-align:center; }
+h1 { font-family:Oswald, "Segoe UI", sans-serif; font-weight:600; font-size:clamp(1.5rem,5.5vw,2.6rem); line-height:1.2; color:#fff; margin:.5rem 0 .6rem; text-align:center; }
+h1 .amt { color:var(--slime); }
+.sub { max-width:42rem; margin:0 auto; text-align:center; } .sub strong { color:var(--red); }
+.rule { text-align:center; color:var(--red); letter-spacing:.3em; margin:1rem 0 0; font-weight:700; }
+.cta-row { display:flex; gap:1rem; flex-wrap:wrap; margin:1.3rem 0 .5rem; align-items:center; justify-content:center; }
+.btn { font-family:Oswald, "Segoe UI", sans-serif; font-weight:600; font-size:1rem; letter-spacing:.05em; padding:.6rem 1.4rem; cursor:pointer; text-decoration:none; display:inline-block; border-radius:4px; color:var(--ink); text-transform:uppercase; }
+.btn-red { background:var(--red); color:#fff; border:2px solid #ff6b5e; box-shadow:0 0 22px rgba(224,50,36,.5); }
+.btn-slime { background:transparent; color:var(--slime); border:2px solid var(--slime); }
+.btn-ghost { background:transparent; color:var(--dim); border:1px solid var(--dim); font-size:.85rem; font-family:Barlow, "Segoe UI", sans-serif; font-weight:600; text-transform:none; }
+.section-title { font-family:Oswald, "Segoe UI", sans-serif; font-weight:600; font-size:clamp(1.2rem,4.5vw,1.7rem); color:var(--beige); margin:2.4rem 0 .2rem; text-align:center; text-transform:uppercase; letter-spacing:.05em; }
+.section-note { color:var(--dim); font-style:italic; margin:.2rem 0 1rem; text-align:center; }
+.kit-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:1.2rem; margin-top:1rem; }
+.label-card { background:var(--beige); color:#23211a; border-radius:4px; padding:0 1.2rem 1.2rem; box-shadow:0 6px 24px rgba(0,0,0,.5); overflow:hidden; }
+.label-card::before { content:""; display:block; height:.7rem; margin:0 -1.2rem 1rem; background:repeating-linear-gradient(-45deg, var(--red) 0 1rem, #23211a 1rem 2rem); }
+.cut-hint { border-bottom:1px dashed #8a8264; font-size:.72rem; letter-spacing:.12em; padding-bottom:.3rem; margin-bottom:.7rem; color:#8a8264; font-weight:600; }
+.label-card h3 { font-family:Oswald, "Segoe UI", sans-serif; font-size:.9rem; letter-spacing:.12em; margin:0 0 .4rem; color:var(--deepred); text-transform:uppercase; }
+.label-card address { font-style:normal; font-size:1.15rem; line-height:1.55; }
+.label-card address .big { font-family:Oswald, "Segoe UI", sans-serif; font-weight:600; font-size:1.25rem; }
+.label-card .blank { color:#8a8264; font-style:italic; }
+.stamp { display:inline-block; margin-top:.8rem; border:2px solid #2e7d3a; color:#2e7d3a; font-weight:700; font-size:.72rem; letter-spacing:.06em; padding:.25rem .6rem; border-radius:4px; transform:rotate(-2deg); }
+.seal { position:relative; width:6.5rem; height:6.5rem; margin:.9rem 0 0; transform:rotate(-6deg); }
+.seal img { position:absolute; inset:0; width:100%; height:100%; }
+.seal figcaption { position:absolute; inset:0; display:grid; place-items:center; text-align:center; font-family:Oswald, "Segoe UI", sans-serif; font-weight:600; font-size:.68rem; letter-spacing:.04em; line-height:1.1; color:var(--deepred); padding:0 1.2rem; }
+.letter { margin-top:1.2rem; background:var(--beige); color:#23211a; border-radius:4px; box-shadow:0 6px 24px rgba(0,0,0,.5); padding:1.3rem 1.6rem 1.5rem; line-height:1.75; font-size:1.12rem; }
+.letter-head { font-family:Oswald, "Segoe UI", sans-serif; font-size:.76rem; letter-spacing:.12em; border-bottom:3px double #23211a; padding-bottom:.4rem; margin-bottom:1rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; text-transform:uppercase; }
+.letter p { margin:0 0 1rem; }
+.letter blockquote.eulogy { margin:0 0 1rem; padding:.8rem 1rem; border-left:6px solid var(--red); background:rgba(224,50,36,.08); color:#23211a; font-style:italic; font-size:1.15rem; }
+.letter blockquote.eulogy::before { content:"\201C"; }
+.letter blockquote.eulogy::after { content:"\201D \2014 witness statement, in memory of the departed"; }
+.sign .hand { font-size:1.4rem; font-style:italic; font-weight:700; }
+.sharecard { margin-top:1rem; background:#000; border:2px solid var(--red); border-radius:6px; padding:1.2rem 1.4rem; text-align:center; box-shadow:0 0 30px rgba(224,50,36,.25); }
+.sharecard .sc-text { font-family:Oswald, "Segoe UI", sans-serif; font-weight:600; font-size:clamp(1.1rem,4.5vw,1.7rem); line-height:1.25; color:#fff; }
+.sharecard .sc-text .hl { color:var(--slime); }
+.sharecard .sc-meta { font-size:.95rem; margin-top:.4rem; color:var(--dim); }
+footer { margin-top:3rem; color:var(--dim); font-size:.9rem; border-top:1px solid var(--line); padding-top:.8rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+@media (max-width:640px) { .kit-grid { grid-template-columns:1fr; } }
+@media print {
+  body { background:#fff; color:#000; }
+  #flares, .noprint, .hero { display:none !important; }
+  .label-card, .letter, .sharecard { border:2px solid #000; background:#fff; color:#000; box-shadow:none; }
+  h1, .section-title { color:#000; }
+}
