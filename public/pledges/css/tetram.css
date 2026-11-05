@@ -1,0 +1,60 @@
+:root { --bg:#06070c; --panel:#0d1018; --ink:#eef2ff; --dim:#8b93a7; --cyan:#22d3ee; --magenta:#e84393; --yellow:#ffd60a; --line:#1e2635; }
+* { box-sizing: border-box; }
+body { margin:0; color:var(--ink); background-color:var(--bg);
+  background-image:repeating-linear-gradient(transparent 0 34px, rgba(34,211,238,.06) 34px 35px), repeating-linear-gradient(90deg, transparent 0 34px, rgba(34,211,238,.06) 34px 35px);
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; overflow-x:hidden; }
+.wrap { max-width:56rem; margin:0 auto; padding:1rem 1.25rem 3rem; }
+#blocks { position:fixed; inset:0; pointer-events:none; z-index:60; }
+.back { display:inline-block; color:var(--cyan); font-size:.9rem; margin:.5rem 0 0; text-decoration:none; }
+.back:hover { color:var(--yellow); }
+.hero { position:relative; border:2px solid var(--line); margin:1rem 0 0; }
+.hero img { display:block; width:100%; height:auto; }
+.hero .overlay { position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); padding:.6rem 1rem; text-align:center; }
+.hero .presents { color:#fff; font-size:.72rem; font-weight:700; letter-spacing:.35em; text-shadow:0 2px 0 #000, 0 0 18px rgba(0,0,0,.9); }
+.hero .kicker { color:var(--magenta); font-size:.8rem; font-weight:700; letter-spacing:.2em; margin-top:.3rem; text-shadow:0 2px 0 #000, 0 0 14px rgba(0,0,0,.95); }
+.hero .title { font-family:"Bungee", "Arial Black", Impact, sans-serif; font-size:clamp(1.5rem,6vw,3rem); line-height:1.15; color:#fff; text-shadow:0 0 24px rgba(34,211,238,.7), 0 3px 0 #000; margin:.2rem auto 0; max-width:44rem; text-transform:uppercase; }
+.hero .tagline { color:var(--yellow); font-size:.85rem; font-weight:700; letter-spacing:.18em; margin-top:.4rem; text-shadow:0 2px 0 #000, 0 0 12px rgba(0,0,0,.95); }
+.eyebrow { color:var(--cyan); letter-spacing:.15em; font-size:.85rem; margin:1.2rem 0 0; font-weight:700; }
+h1 { font-family:"Bungee", "Arial Black", Impact, sans-serif; font-weight:400; font-size:clamp(1.25rem,4.4vw,2.1rem); line-height:1.3; color:#fff; margin:.4rem 0 .6rem; }
+h1 .amt { color:var(--cyan); }
+.sub { max-width:42rem; line-height:1.65; } .sub strong { color:var(--yellow); }
+.score { color:var(--dim); font-size:.82rem; letter-spacing:.18em; margin:.9rem 0 0; }
+.score strong { color:var(--ink); }
+.cabinet { display:inline-block; border:2px solid var(--dim); border-radius:6px; padding:.3rem .7rem; font-size:.72rem; letter-spacing:.1em; margin-top:.7rem; color:var(--dim); }
+.cabinet strong { color:var(--magenta); }
+.cta-row { display:flex; gap:1rem; flex-wrap:wrap; margin:1.3rem 0 .5rem; align-items:center; }
+.btn { font-family:"Bungee", "Arial Black", Impact, sans-serif; font-size:.8rem; letter-spacing:.05em; padding:.75rem 1.3rem; cursor:pointer; border:none; border-radius:6px; text-decoration:none; display:inline-block; }
+.btn-cyan { background:var(--cyan); color:#062a30; }
+.btn-ghost { background:transparent; color:var(--ink); box-shadow:inset 0 0 0 2px var(--dim); }
+.section-title { font-family:"Bungee", "Arial Black", Impact, sans-serif; font-weight:400; font-size:clamp(1rem,3.6vw,1.4rem); color:var(--yellow); margin:2.2rem 0 .2rem; border-bottom:2px solid var(--line); padding-bottom:.3rem; }
+.section-note { color:var(--magenta); font-size:.9rem; margin:.35rem 0 1rem; letter-spacing:.1em; font-weight:700; }
+.kit-grid { display:grid; grid-template-columns:1fr; gap:1.2rem; margin-top:1rem; }
+.label-card { background:var(--panel); border:1px solid var(--line); border-top:4px solid var(--cyan); border-radius:8px; padding:1rem 1.2rem 1.2rem; }
+.cut-hint { border-bottom:1px dashed var(--dim); font-size:.72rem; letter-spacing:.12em; padding-bottom:.3rem; margin-bottom:.7rem; color:var(--dim); }
+.label-card h3 { font-family:"Bungee", "Arial Black", Impact, sans-serif; font-weight:400; font-size:.9rem; letter-spacing:.06em; margin:0 0 .4rem; color:var(--cyan); }
+.label-card address { font-style:normal; font-size:1.1rem; line-height:1.55; }
+.label-card address .big { font-weight:700; font-size:1.35rem; color:#fff; }
+.label-card .blank { color:var(--dim); }
+.stamp { display:inline-block; margin-top:.8rem; border:2px solid var(--magenta); border-radius:4px; color:var(--magenta); font-size:.8rem; letter-spacing:.12em; padding:.2rem .6rem; transform:rotate(-2deg); }
+.seal { position:relative; width:6.5rem; height:6.5rem; margin:.9rem 0 0; transform:rotate(-6deg); }
+.seal img { position:absolute; inset:0; width:100%; height:100%; }
+.seal figcaption { position:absolute; inset:0; display:grid; place-items:center; text-align:center; font-family:"Bungee", "Arial Black", Impact, sans-serif; font-size:.62rem; letter-spacing:.06em; line-height:1.1; color:var(--yellow); padding:0 1.3rem; }
+.letter { margin-top:1.2rem; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:1.2rem 1.4rem 1.4rem; line-height:1.7; }
+.letter-head { font-size:.85rem; letter-spacing:.15em; color:var(--cyan); border-bottom:1px solid var(--line); padding-bottom:.4rem; margin-bottom:.9rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.letter p { margin:0 0 1rem; }
+.letter blockquote.eulogy { margin:0 0 1rem; padding:0; border:none; color:var(--yellow); font-size:1.1rem; }
+.letter blockquote.eulogy::before { content:"\201C"; }
+.letter blockquote.eulogy::after { content:"\201D \2014 initials entry"; }
+.sign .hand { color:var(--magenta); font-size:1.2rem; font-weight:700; }
+.sharecard { margin-top:1rem; background:#000; border:1px solid var(--cyan); border-radius:8px; padding:1.2rem 1.4rem; box-shadow:0 0 26px rgba(34,211,238,.12); }
+.sharecard .sc-text { font-family:"Bungee", "Arial Black", Impact, sans-serif; font-size:clamp(.95rem,3.6vw,1.5rem); line-height:1.35; color:#fff; }
+.sharecard .sc-text .hl { color:var(--cyan); }
+.sharecard .sc-meta { font-size:.85rem; margin-top:.4rem; color:var(--dim); }
+.billing { font-size:.62rem; line-height:1.5; color:var(--dim); text-align:center; max-width:52rem; margin:2.5rem auto 0; letter-spacing:.02em; }
+footer { margin-top:1.5rem; color:var(--dim); font-size:.85rem; border-top:2px solid var(--cyan); padding-top:.8rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+@media (min-width:640px) { .kit-grid { grid-template-columns:1.2fr 1fr; } }
+@media print {
+  body { background:#fff; color:#000; }
+  #blocks, .noprint, .hero { display:none !important; }
+  .label-card, .letter, .sharecard { border:2px solid #000; background:#fff; color:#000; box-shadow:none; }
+}

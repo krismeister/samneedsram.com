@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- TetRAM seal: neon double ring, T-tetromino outline top, RAM-stick glyph
+     bottom, diamonds at the sides. Center stays transparent: the template
+     overlays the word TETRIS in HTML. No text in this file. -->
+<g fill="none" stroke="#22d3ee">
+<circle cx="256" cy="256" r="238" stroke-width="10"/>
+<circle cx="256" cy="256" r="150" stroke-width="5"/>
+</g>
+<g fill="none" stroke="#e84393" stroke-width="6" stroke-linejoin="round">
+<path d="M196 120 h120 v40 h-40 v40 h-40 v-40 h-40 Z"/>
+</g>
+<g fill="none" stroke="#22d3ee" stroke-width="5">
+<rect x="196" y="322" width="120" height="30" rx="3"/>
+</g>
+<g stroke="#22d3ee" stroke-width="3">
+<line x1="210" y1="352" x2="210" y2="360"/>
+<line x1="224" y1="352" x2="224" y2="360"/>
+<line x1="238" y1="352" x2="238" y2="360"/>
+<line x1="252" y1="352" x2="252" y2="360"/>
+<line x1="274" y1="352" x2="274" y2="360"/>
+<line x1="288" y1="352" x2="288" y2="360"/>
+<line x1="302" y1="352" x2="302" y2="360"/>
+</g>
+<g fill="#22d3ee">
+<rect x="204" y="329" width="22" height="16"/>
+<rect x="240" y="329" width="22" height="16"/>
+<rect x="276" y="329" width="22" height="16"/>
+<path d="M46 256 l14 14 -14 14 -14 -14 Z"/>
+<path d="M466 256 l14 14 -14 14 -14 -14 Z"/>
+</g>
+</svg>

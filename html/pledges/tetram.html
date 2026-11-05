@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{meta_title}}</title>
+<meta name="description" content="{{meta_description}}">
+<meta property="og:title" content="{{meta_title}}">
+<meta property="og:description" content="{{meta_description}}">
+<meta property="og:image" content="{{meta_image}}">
+<meta property="og:url" content="{{page_url}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="samneedsram.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maxquesar">
+<meta name="twitter:title" content="{{meta_title}}">
+<meta name="twitter:description" content="{{meta_description}}">
+<meta name="twitter:image" content="{{meta_image}}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/pledges/css/tetram.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+</head>
+<body>
+<canvas id="blocks" aria-hidden="true"></canvas>
+<div class="wrap">
+  <a class="back noprint" href="/">&larr; samneedsram.com</a>
+  <figure class="hero">
+    <img src="/pledges/art/tetram/hero.jpg" alt="Sam the arcade champion slotting a giant glowing RAM long-bar into the memory well">
+    <div class="overlay"><div class="presents noprint">THE MEMORY ARCADE PRESENTS</div><div class="kicker">// INSERT STICK &bull; PRESS START //</div><div class="title">Clear four lines at once</div><div class="tagline">{{theme_display_name}} &bull; NEW HIGH SCORE</div></div>
+  </figure>
+  <div class="eyebrow">LEVEL 9 &mdash; MEMORY WELL CRITICAL &bull; {{theme_display_name}}</div>
+  <h1>{{who}} pledged <span class="amt">{{qty}} {{qty_unit}} {{type}}</span> to clear Sam&rsquo;s well</h1>
+  <p class="sub">New high score. <strong>{{who}}</strong>&rsquo;s tribute drops perfectly into the well and four lines vanish at once. The stack is nearly at the top and the next piece is already falling &mdash; stack flat and keep the well low.</p>
+  <p class="score">LEVEL <strong>09</strong> &bull; LINES <strong>004</strong> &bull; NEXT PIECE <strong>LONG BAR</strong></p>
+  <div class="cabinet"><strong>1UP</strong> &bull; INSERT STICK TO CONTINUE &bull; NO GAME OVER</div>
+  <div class="cta-row noprint">
+    <a class="btn btn-cyan" href="/#pledge">Make your own pledge</a>
+    <button class="btn btn-ghost" type="button" onclick="window.print()">Print mail kit</button>
+  </div>
+  <section aria-label="Your mail kit">
+    <h2 class="section-title">Prize counter mail kit</h2>
+    <p class="section-note noprint">WINNER INSTRUCTIONS: CUT ALONG THE DOTTED LINES</p>
+    <div class="kit-grid">
+      <article class="label-card" aria-label="Mail-to label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>Mail to</h3>
+        <address><span class="big">Sam Altman</span><br>OpenAI<br>3180 18th St<br>San Francisco, CA 94110</address>
+        <span class="stamp">Priority: prize freight &mdash; do not tilt</span>
+        <figure class="seal"><img src="/pledges/art/tetram/seal.png" alt=""><figcaption>TETRIS</figcaption></figure>
+      </article>
+      <article class="label-card" aria-label="Return label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>From (you)</h3>
+        <address><span class="big">{{who}}</span><br><span class="blank">your street here</span><br><span class="blank">your town here</span></address>
+      </article>
+    </div>
+    <article class="letter" aria-label="Cover letter for Sam">
+      <div class="letter-head"><span>High-score entry, verified</span><span>class: {{kind}}</span></div>
+      <p>Dear Sam,</p>
+      <p>New high-score entry, witnessed at the cabinet. Enclosed please find {{qty}} {{qty_unit}} ({{type}}), a perfect long bar, certified straight and ready to slot. It clears four lines at once and keeps the well low for the next hundred pieces.</p>
+      {{#if_eulogy}}<blockquote class="eulogy">{{eulogy}}</blockquote>{{/if_eulogy}}
+      <p>Stack flat, spin often, and save room for the long bar. The well is yours to clear.</p>
+      <div class="sign">Game on,<br><span class="hand">{{who}}</span></div>
+    </article>
+  </section>
+  <section aria-label="Your share card">
+    <h2 class="section-title">Leaderboard broadcast</h2>
+    <div class="sharecard">
+      <div class="sc-text">{{who}} pledged <span class="hl">{{qty}} {{qty_unit}} {{type}}</span> to clear Sam&rsquo;s well</div>
+      <div class="sc-meta">posted just now &bull; #TetRAM &bull; samneedsram.com</div>
+    </div>
+    <div class="cta-row noprint">
+      <a class="btn btn-cyan" href="https://twitter.com/intent/tweet?text={{meta_title}}&amp;url={{page_url}}" target="_blank" rel="noopener">Post to X</a>
+      <a class="btn btn-ghost" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;quote={{meta_title}}" target="_blank" rel="noopener">Post to Facebook</a>
+    </div>
+  </section>
+  <p class="billing noprint">THE MEMORY ARCADE presents a SAM ALTMAN production TETRAM &bull; starring SAM ALTMAN as THE CHAMPION &bull; memory by VIEWERS LIKE YOU &bull; catering by THE PIZZA ARCADE &bull; played on location at CABINET 09 &bull; no RAM was harmed in the making of this pledge</p>
+  <footer class="noprint"><span>samneedsram.com &bull; arcade quartermaster</span><span>game on</span></footer>
+</div>
+<script>
+(function(){var m=matchMedia("(prefers-reduced-motion: reduce)").matches;if(m)return;
+var c=document.getElementById("blocks"),x=c.getContext("2d"),P=[];
+var C=["#22d3ee","#e84393","#ffd60a","#7dff5e"];
+function size(){var d=devicePixelRatio||1;c.width=innerWidth*d;c.height=innerHeight*d;x.setTransform(d,0,0,d,0,0);}
+addEventListener("resize",size);size();
+function drop(){P.push({x:Math.floor(Math.random()*12)*Math.floor(innerWidth/12)+4,y:-30,v:120+Math.random()*220,s:14+Math.random()*14,c:C[Math.random()*4|0],r:Math.random()*.6});if(P.length>120)P.splice(0,P.length-120);}
+var t=performance.now(),run=0;
+(function tick(n){var dt=Math.min(.05,(n-t)/1000);t=n;run+=dt;x.clearRect(0,0,innerWidth,innerHeight);
+for(var i=P.length-1;i>=0;i--){var p=P[i];p.y+=p.v*dt;p.r+=dt;
+if(p.y>innerHeight+30){P.splice(i,1);continue;}
+x.save();x.translate(p.x+p.s/2,p.y);x.rotate(Math.sin(p.r)*.3);x.globalAlpha=.75;x.fillStyle=p.c;
+x.fillRect(-p.s/2,-p.s/2,p.s,p.s);x.restore();}
+x.globalAlpha=1;if(run<10)requestAnimationFrame(tick);else x.clearRect(0,0,innerWidth,innerHeight);})(t);
+var iv=setInterval(function(){if(run>8){clearInterval(iv);return;}if(!document.hidden){drop();drop();}},250);drop();drop();})();
+</script>
+</body>
+</html>
