@@ -1,0 +1,59 @@
+:root { --bg:#efe3cc; --panel:#fffaf0; --ink:#2b2118; --dim:#7a6f5f; --orange:#d65412; --red:#c1272d; --smoke:#5c5c5c; --line:#d3c29e; }
+* { box-sizing: border-box; }
+body { margin:0; color:var(--ink); background-color:var(--bg);
+  background-image:repeating-linear-gradient(transparent 0 26px, rgba(122,111,95,.12) 26px 27px);
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; overflow-x:hidden; }
+.wrap { max-width:56rem; margin:0 auto; padding:1rem 1.25rem 3rem; }
+#embers { position:fixed; inset:0; pointer-events:none; z-index:60; }
+.back { display:inline-block; color:var(--red); font-size:.9rem; margin:.5rem 0 0; text-decoration:none; }
+.hero { position:relative; border:2px solid var(--line); margin:1rem 0 0; }
+.hero img { display:block; width:100%; height:auto; }
+.hero .overlay { position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); padding:.6rem 1rem; text-align:center; }
+.hero .presents { color:#fff; font-size:.72rem; font-weight:700; letter-spacing:.35em; text-shadow:0 2px 0 #000, 0 0 18px rgba(0,0,0,.9); }
+.hero .kicker { color:#ffd9a8; font-size:.8rem; font-weight:700; letter-spacing:.2em; margin-top:.3rem; text-shadow:0 2px 0 #000, 0 0 14px rgba(0,0,0,.95); }
+.hero .title { font-family:"Fredoka", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif; font-weight:700; font-size:clamp(2rem,8vw,4rem); line-height:1.1; color:#fff; text-shadow:0 0 24px rgba(214,84,18,.8), 0 3px 0 #000; margin:.2rem auto 0; text-transform:uppercase; }
+.hero .tagline { color:#ffe9d2; font-size:.85rem; font-weight:700; letter-spacing:.18em; margin-top:.4rem; text-shadow:0 2px 0 #000, 0 0 12px rgba(0,0,0,.95); }
+.eyebrow { color:var(--red); letter-spacing:.15em; font-size:.85rem; margin:1.2rem 0 0; font-weight:700; }
+h1 { font-family:"Fredoka", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif; font-weight:700; font-size:clamp(1.4rem,4.8vw,2.4rem); line-height:1.2; color:var(--ink); margin:.4rem 0 .6rem; }
+h1 .amt { color:var(--orange); }
+.sub { max-width:42rem; line-height:1.65; } .sub strong { color:var(--red); }
+.vitals { color:var(--dim); font-size:.82rem; letter-spacing:.18em; margin:.9rem 0 0; }
+.vitals strong { color:var(--ink); }
+.notice { display:inline-block; border:2px solid var(--dim); border-radius:6px; padding:.3rem .7rem; font-size:.72rem; letter-spacing:.1em; margin-top:.7rem; color:var(--dim); background:var(--panel); }
+.notice strong { color:var(--red); }
+.cta-row { display:flex; gap:1rem; flex-wrap:wrap; margin:1.3rem 0 .5rem; align-items:center; }
+.btn { font-family:"Fredoka", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif; font-weight:700; font-size:1rem; letter-spacing:.03em; padding:.65rem 1.3rem; cursor:pointer; border:none; border-radius:999px; text-decoration:none; display:inline-block; }
+.btn-fire { background:var(--orange); color:#fff; }
+.btn-ghost { background:transparent; color:var(--ink); box-shadow:inset 0 0 0 2px var(--dim); }
+.section-title { font-family:"Fredoka", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif; font-weight:700; font-size:clamp(1.2rem,4vw,1.7rem); color:var(--red); margin:2.2rem 0 .2rem; border-bottom:2px solid var(--line); padding-bottom:.3rem; }
+.section-note { color:var(--orange); font-size:.9rem; margin:.35rem 0 1rem; letter-spacing:.1em; font-weight:700; }
+.kit-grid { display:grid; grid-template-columns:1fr; gap:1.2rem; margin-top:1rem; }
+.label-card { background:var(--panel); border:1px solid var(--line); border-top:4px solid var(--orange); border-radius:8px; padding:1rem 1.2rem 1.2rem; }
+.cut-hint { border-bottom:1px dashed var(--dim); font-size:.72rem; letter-spacing:.12em; padding-bottom:.3rem; margin-bottom:.7rem; color:var(--dim); }
+.label-card h3 { font-family:"Fredoka", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif; font-weight:700; font-size:1rem; letter-spacing:.06em; margin:0 0 .4rem; color:var(--orange); }
+.label-card address { font-style:normal; font-size:1.1rem; line-height:1.55; }
+.label-card address .big { font-weight:700; font-size:1.35rem; color:var(--ink); }
+.label-card .blank { color:var(--dim); }
+.stamp { display:inline-block; margin-top:.8rem; border:2px solid var(--red); border-radius:4px; color:var(--red); font-size:.8rem; letter-spacing:.12em; padding:.2rem .6rem; transform:rotate(-2deg); }
+.seal { position:relative; width:6.5rem; height:6.5rem; margin:.9rem 0 0; transform:rotate(-6deg); }
+.seal img { position:absolute; inset:0; width:100%; height:100%; }
+.seal figcaption { position:absolute; inset:0; display:grid; place-items:center; text-align:center; font-family:"Fredoka", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif; font-weight:700; font-size:.85rem; letter-spacing:.08em; line-height:1.1; color:var(--red); padding:0 1.3rem; }
+.letter { margin-top:1.2rem; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:1.2rem 1.4rem 1.4rem; line-height:1.7; }
+.letter-head { font-size:.85rem; letter-spacing:.15em; color:var(--orange); border-bottom:1px solid var(--line); padding-bottom:.4rem; margin-bottom:.9rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.letter p { margin:0 0 1rem; }
+.letter blockquote.eulogy { margin:0 0 1rem; padding:0; border:none; color:var(--red); font-size:1.1rem; }
+.letter blockquote.eulogy::before { content:"\201C"; }
+.letter blockquote.eulogy::after { content:"\201D \2014 eyewitness calm statement"; }
+.sign .hand { color:var(--orange); font-size:1.2rem; font-weight:700; }
+.sharecard { margin-top:1rem; background:var(--ink); border:1px solid var(--orange); border-radius:8px; padding:1.2rem 1.4rem; }
+.sharecard .sc-text { font-family:"Fredoka", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif; font-weight:700; font-size:clamp(1.1rem,4vw,1.7rem); line-height:1.25; color:#fff; }
+.sharecard .sc-text .hl { color:#ffb066; }
+.sharecard .sc-meta { font-size:.85rem; margin-top:.4rem; color:#c9bfae; }
+.billing { font-size:.62rem; line-height:1.5; color:var(--dim); text-align:center; max-width:52rem; margin:2.5rem auto 0; letter-spacing:.02em; }
+footer { margin-top:1.5rem; color:var(--dim); font-size:.85rem; border-top:2px solid var(--orange); padding-top:.8rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+@media (min-width:640px) { .kit-grid { grid-template-columns:1.2fr 1fr; } }
+@media print {
+  body { background:#fff; color:#000; }
+  #embers, .noprint, .hero { display:none !important; }
+  .label-card, .letter, .sharecard { border:2px solid #000; background:#fff; color:#000; box-shadow:none; }
+}
