@@ -1,9 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "samneedsram.com — Sam's out of memory",
+  title: "Sam Needs Your RAM",
   description:
-    "Pledge old RAM sticks and mail them to Sam.",
+    "The superintelligence must feed. Pledge your old sticks and mail them to Sam.",
 };
 
 export default function RootLayout({ children }) {
