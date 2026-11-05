@@ -84,6 +84,11 @@ describe("validatePledge", () => {
     assert.equal(validatePledge({ ...VALID, eulogy: "x".repeat(141) }).ok, false);
     assert.equal(validatePledge({ ...VALID, theme: "nope" }).ok, false);
   });
+
+  it("rejects deprecated themes for new mints", () => {
+    const r = validatePledge({ ...VALID, theme: "thisisfine" });
+    assert.equal(r.ok, false);
+  });
 });
 
 describe("pledge JWT", () => {
@@ -98,6 +103,12 @@ describe("pledge JWT", () => {
     assert.equal(verifyPledge(`${h}.${p}.${sig.slice(0, -2)}xx`, SECRET), null);
     assert.equal(verifyPledge(jwt, "a-different-32-plus-char-secret!"), null);
     assert.equal(verifyPledge("not-a-jwt", SECRET), null);
+  });
+
+  it("still verifies old links for deprecated themes", () => {
+    const old = { ...VALID, theme: "thisisfine" };
+    const jwt = signPledge(old, SECRET);
+    assert.deepEqual(verifyPledge(jwt, SECRET), old);
   });
 });
 
@@ -187,5 +198,10 @@ describe("readThemes", () => {
     for (const slug of ["classic", "ramageddon", "warhammer40kb", "gondor"]) {
       assert.ok(map[slug]?.display_name, `missing ${slug}`);
     }
+  });
+
+  it("resolves display names for deprecated themes", async () => {
+    const map = await readThemes();
+    assert.equal(map["thisisfine"]?.display_name, "This RAM Is Fine");
   });
 });
