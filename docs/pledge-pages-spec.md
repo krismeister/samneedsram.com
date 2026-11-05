@@ -58,7 +58,7 @@ Rules for templates:
 
 ## 2.1. Theme registry
 
-`public/pledges/themes.json` is the single list of themes. Top-level
+`public/pledges/themes.json` is the list of active themes. Top-level
 `themes` array; each entry is `slug` + `display_name` + `category`
 (e.g. Movies, Games, TV, Music, Originals). Everything else
 is derived by §2 convention (`html/pledges/<slug>.html`,
@@ -69,6 +69,26 @@ Consumers: the `pledges/[theme]` route allowlists `theme` and resolves
 the theme picker **grouped by `category`** (submit the `slug`, never a
 filename). Template agents adding a theme add one entry here plus the
 §2 files.
+
+## 2.2. Deprecating a theme
+
+Retired themes stay renderable (old signed links must keep working)
+but disappear from the picker and from new mints:
+
+1. Move the entry from `public/pledges/themes.json` to
+   `public/pledges/deprecated-themes.json` (same `slug` +
+   `display_name` + `category` shape). The picker reads only
+   `themes.json`, so the theme vanishes from the form.
+2. Move the slug from `THEMES` to `DEPRECATED_THEMES` in
+   `lib/pledges.js`, and drop it from the `validatePledge` error
+   message. Mint calls `validatePledge` (active only); page serving
+   calls `verifyPledge` (active + deprecated).
+3. Update the deprecation tests in `tests/pledges.test.mjs` (mint
+   rejects the slug, verify still accepts it, `readThemes` resolves
+   its display name).
+4. Keep the theme's template, CSS, art, and per-theme test files in
+   place — the route still needs them to render old links.
+5. Run `npm test` — it must be green.
 
 ## 3. Marker reference
 
