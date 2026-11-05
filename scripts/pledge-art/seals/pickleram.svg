@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- Pickle RAM seal: green double ring, portal swirl top, RAM-stick glyph
+     bottom, white diamonds at the sides. Center stays transparent: the
+     template overlays the word PICKLE in HTML. No text in this file. -->
+<g fill="none" stroke="#35c759">
+<circle cx="256" cy="256" r="238" stroke-width="10"/>
+<circle cx="256" cy="256" r="150" stroke-width="5"/>
+</g>
+<g fill="none" stroke="#35c759" stroke-width="6">
+<circle cx="256" cy="158" r="26"/>
+</g>
+<g fill="none" stroke="#35c759" stroke-width="5" stroke-linecap="round">
+<path d="M256 146 a12 12 0 1 1 -12 12"/>
+</g>
+<g fill="#35c759">
+<circle cx="272" cy="192" r="4"/>
+</g>
+<g fill="none" stroke="#35c759" stroke-width="5">
+<rect x="196" y="322" width="120" height="30" rx="3"/>
+</g>
+<g stroke="#35c759" stroke-width="3">
+<line x1="210" y1="352" x2="210" y2="360"/>
+<line x1="224" y1="352" x2="224" y2="360"/>
+<line x1="238" y1="352" x2="238" y2="360"/>
+<line x1="252" y1="352" x2="252" y2="360"/>
+<line x1="274" y1="352" x2="274" y2="360"/>
+<line x1="288" y1="352" x2="288" y2="360"/>
+<line x1="302" y1="352" x2="302" y2="360"/>
+</g>
+<g fill="#35c759">
+<rect x="204" y="329" width="22" height="16"/>
+<rect x="240" y="329" width="22" height="16"/>
+<rect x="276" y="329" width="22" height="16"/>
+</g>
+<g fill="#f2f2f2">
+<path d="M46 256 l14 14 -14 14 -14 -14 Z"/>
+<path d="M466 256 l14 14 -14 14 -14 -14 Z"/>
+</g>
+</svg>
