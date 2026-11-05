@@ -29,7 +29,10 @@ steps in order; each one builds on the last.
    file. If no pending idea file exists, stop and report that.
 2. Generate art sources with image generation, one per asset:
    - hero source: per the idea's art direction; must leave room for the
-     overlaid title. RAM hardware must be unmistakable in the frame:
+     overlaid title. When the idea puts Sam Altman in the hero, compose
+     the frame so his face sits fully clear of the title safe area (open
+     space for the title; face off to one side). RAM hardware must be
+     unmistakable in the frame:
      at least one clearly recognizable RAM stick (green PCB, gold
      contact pins, black memory chips) held, worn, or featured by the
      subject, plus supporting RAM set dressing where the scene allows
@@ -75,7 +78,10 @@ steps in order; each one builds on the last.
    so ram/floppy/usb all read right; no pledge numbers; corporate
    mail-to address only (OpenAI, 3180 18th St, San Francisco, CA 94110);
    share actions as static anchors (`target="_blank"`, escape `&` as
-   `&amp;`); deadpan copy, no joke/parody disclaimers. Optional inline
+   `&amp;`); deadpan copy, no joke/parody disclaimers. When the hero
+   shows Sam Altman's face, position and size the overlaid text block
+   so no text touches his face at desktop or 390px widths; shorten or
+   adjust the copy as needed to keep his face clear. Optional inline
    JS: under 50 lines, no dependencies, page fully works with JS
    disabled.
 8. Prove it: add a maintained test following
@@ -84,7 +90,8 @@ steps in order; each one builds on the last.
    with and without eulogy; assert no leftover markers). Run the focused
    test, screenshot the filled renders (desktop plus 390px mobile;
    confirm hero, seal, letter, share card, no overflow, zero page
-   errors), then run the full `npm test` once.
+   errors, and — when Sam Altman is in the hero — no text over his
+   face), then run the full `npm test` once.
 9. Register last: only after art, template, CSS, test, and
    screenshots are all done and passing, append one entry to
    `public/pledges/themes.json` (`slug` + `display_name` +
