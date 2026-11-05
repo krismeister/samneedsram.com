@@ -29,7 +29,13 @@ steps in order; each one builds on the last.
    file. If no pending idea file exists, stop and report that.
 2. Generate art sources with image generation, one per asset:
    - hero source: per the idea's art direction; must leave room for the
-     overlaid title.
+     overlaid title. RAM hardware must be unmistakable in the frame:
+     at least one clearly recognizable RAM stick (green PCB, gold
+     contact pins, black memory chips) held, worn, or featured by the
+     subject, plus supporting RAM set dressing where the scene allows
+     (scattered sticks, RAM-shaped props, DIMM-slot architecture). A
+     generic glow or tech backdrop with no readable hardware fails
+     this step — regenerate the source.
    - og source: huge simple shapes, high contrast, reads at thumbnail size.
    - picker source: single bold centered motif.
    - Rules: original or AI-generated; no baked-in text anywhere (the
@@ -53,9 +59,10 @@ steps in order; each one builds on the last.
    (e.g. faces). Every line must report OK; fix inputs and re-run until
    they do.
 5. Visually check every output (hero, og, picker, seal): no baked-in
-   text, the motif survives its crop, the logo badge doesn't cover faces
-   or key shapes, seal rings render. Regenerate or adjust and re-run
-   step 4 as needed.
+   text, the hero shows a clearly recognizable RAM stick (reject and
+   regenerate if the hardware doesn't read), the motif survives its
+   crop, the logo badge doesn't cover faces or key shapes, seal rings
+   render. Regenerate or adjust and re-run step 4 as needed.
 6. Write `public/pledges/css/<slug>.css`: the theme look per the idea
    (Google Fonts allowed, must degrade to system fonts), mobile-first
    with a 640px breakpoint, print stylesheet hiding canvas/noprint/hero,

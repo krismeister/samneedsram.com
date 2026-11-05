@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- You've Got RAM seal: blue-and-silver double ring, modem box top,
+     RAM-stick glyph bottom, diamonds at the sides. Center stays
+     transparent: the template overlays the word 56K in HTML. No text here. -->
+<g fill="none" stroke="#1f5fa8">
+<circle cx="256" cy="256" r="238" stroke-width="10"/>
+</g>
+<g fill="none" stroke="#9aa3b2">
+<circle cx="256" cy="256" r="150" stroke-width="5"/>
+</g>
+<g fill="none" stroke="#1f5fa8" stroke-width="6">
+<rect x="196" y="140" width="120" height="44" rx="8"/>
+</g>
+<g fill="#1f5fa8">
+<circle cx="226" cy="162" r="7"/>
+<circle cx="256" cy="162" r="7"/>
+<circle cx="286" cy="162" r="7"/>
+</g>
+<g fill="none" stroke="#1f5fa8" stroke-width="5">
+<rect x="196" y="322" width="120" height="30" rx="3"/>
+</g>
+<g stroke="#1f5fa8" stroke-width="3">
+<line x1="210" y1="352" x2="210" y2="360"/>
+<line x1="224" y1="352" x2="224" y2="360"/>
+<line x1="238" y1="352" x2="238" y2="360"/>
+<line x1="252" y1="352" x2="252" y2="360"/>
+<line x1="274" y1="352" x2="274" y2="360"/>
+<line x1="288" y1="352" x2="288" y2="360"/>
+<line x1="302" y1="352" x2="302" y2="360"/>
+</g>
+<g fill="#1f5fa8">
+<rect x="204" y="329" width="22" height="16"/>
+<rect x="240" y="329" width="22" height="16"/>
+<rect x="276" y="329" width="22" height="16"/>
+<path d="M46 256 l14 14 -14 14 -14 -14 Z"/>
+<path d="M466 256 l14 14 -14 14 -14 -14 Z"/>
+</g>
+</svg>
