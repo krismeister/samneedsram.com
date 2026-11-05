@@ -29,10 +29,12 @@ steps in order; each one builds on the last.
    file. If no pending idea file exists, stop and report that.
 2. Generate art sources with image generation, one per asset:
    - hero source: per the idea's art direction; must leave room for the
-     overlaid title. When the idea puts Sam Altman in the hero, compose
-     the frame so his face sits fully clear of the title safe area (open
-     space for the title; face off to one side). RAM hardware must be
-     unmistakable in the frame:
+     overlaid title along the TOP or BOTTOM edge of the frame (never
+     the middle). That safe area must be simple dark open background —
+     never a painted stripe, bar, or band, which reads as a glitch.
+     When the idea puts Sam Altman in the hero, compose the frame so
+     his face sits fully clear of the safe area (face in the opposite
+     half). RAM hardware must be unmistakable in the frame:
      at least one clearly recognizable RAM stick (green PCB, gold
      contact pins, black memory chips) held, worn, or featured by the
      subject, plus supporting RAM set dressing where the scene allows
@@ -71,6 +73,10 @@ steps in order; each one builds on the last.
    with a 640px breakpoint, print stylesheet hiding canvas/noprint/hero,
    eulogy quotes via `blockquote.eulogy::before/::after` (the
    conditional's inner HTML stays byte-exact), seal overlay styles.
+   Anchor the hero overlay to the top or bottom edge (matching the
+   art's safe area), never the vertical middle; on ≤640px widths hide
+   the decorative overlay lines so the kicker + title never touch
+   Sam's face.
 7. Write `html/pledges/<slug>.html`: valid HTML5; required `<head>`
    block verbatim from §3; absolute asset paths only (`/pledges/...`);
    only allowlisted `{{markers}}`; the eulogy conditional byte-exact;

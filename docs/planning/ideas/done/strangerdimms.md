@@ -8,7 +8,7 @@ Sam's sticks have vanished into a flickering parallel lab, and the wall lights s
 Voice: 1983 basement campaign plus missing-person flyer. Party roles, walkie-talkie brevity, flashlight-under-chin dread. Brave and loyal, never snarky.
 Palette/type: Christmas-light red and bike-headlamp yellow on Upside-Down navy-black with spore-gray mist. Headers in a glowing red marquee serif (Benguiat-like), body in a typewriter-adjacent serif. System-serif fallback must stay legible.
 Art direction:
-- hero.jpg: Sam in-character as the party's dungeon master at a basement table, holding a glowing RAM stick over scattered dice, Christmas-light alphabet wall behind. Red bulb glow center, dark-safe area middle for overlaid title.
+- hero.jpg: Sam in-character as the party's dungeon master at a basement table, holding a glowing RAM stick over scattered dice, Christmas-light alphabet wall behind. Red bulb glow center, overlaid title along the bottom edge over the desk.
 - og.jpg: Sam holding one giant glowing RAM stick before a wall of Christmas lights, plain navy-black behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone RAM stick tangled in one glowing light string on navy-black, centered. Must read at tiny size: one bold motif, no text.
 - seal.png: round red-and-navy stamp, bike-light-and-RAM motif at center.

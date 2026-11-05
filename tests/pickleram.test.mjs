@@ -36,7 +36,7 @@ describe("pickleram theme art", () => {
     const seal = await fs.readFile(path.join(art, "seal.png"));
     assert.equal(
       sha256(hero),
-      "3740a01220d8afc3d0f8d3e3a4211a798aec76d0d45b5778d403a2f71c463b4e",
+      "b3c6d9ddf83d3d2cb9ace0f06c83fadb277b556713b7fc29824ef5eab8ddffbc",
     );
     assert.equal(
       sha256(og),

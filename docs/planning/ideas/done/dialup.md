@@ -8,7 +8,7 @@ Sam is still on dial-up, and every stick must squeeze through a 56K line one scr
 Voice: 1997 ISP welcome disc plus modem manual. Cheerful trial-offer promises, connection-status narration, busy-signal dread. Earnest and nostalgic, never snarky.
 Palette/type: CD-ROM silver and welcome-screen blue on warm beige plastic with hyperlink-purple accents. Headers in a chunky 90s software sans (Tahoma-like), body in a plain clean sans. System-sans fallback must stay legible.
 Art direction:
-- hero.jpg: Sam in-character at a beige CRT desk buried in free-trial discs, holding a RAM stick to the phone line, modem lights blinking. Warm desk-lamp glow center, dark-safe area middle for overlaid title.
+- hero.jpg: Sam in-character at a beige CRT desk buried in free-trial discs, holding a RAM stick to the phone line, modem lights blinking. Warm desk-lamp glow center, dark open desk front along the bottom edge for the overlaid title.
 - og.jpg: Sam holding one giant free-trial disc with a RAM stick across it, plain welcome-screen blue behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone gold RAM stick on welcome-screen blue, centered. Must read at tiny size: one bold motif, no text.
 - seal.png: round blue-and-silver stamp, modem-and-RAM motif at center.

@@ -8,7 +8,7 @@ body { margin:0; color:var(--ink); background-color:var(--bg);
 .back { display:inline-block; color:var(--yellow); font-size:.9rem; margin:.5rem 0 0; text-decoration:none; }
 .hero { position:relative; border:2px solid var(--line); margin:1rem 0 0; }
 .hero img { display:block; width:100%; height:auto; }
-.hero .overlay { position:absolute; inset:0 0 auto 0; padding:.8rem 1.2rem 2.6rem; background:linear-gradient(rgba(0,0,0,.88), transparent); text-align:center; }
+.hero .overlay { position:absolute; inset:auto 0 0 0; padding:3rem 1.4rem 1rem; background:linear-gradient(transparent, rgba(0,0,0,.94)); text-align:center; }
 .hero .presents { color:#fff; font-size:.72rem; font-weight:700; letter-spacing:.35em; text-shadow:0 2px 0 #000, 0 0 18px rgba(0,0,0,.9); }
 .hero .kicker { color:var(--yellow); font-size:.8rem; font-weight:700; letter-spacing:.2em; margin-top:.4rem; text-shadow:0 2px 0 #000, 0 0 14px rgba(0,0,0,.95); }
 .hero .title { font-family:"Limelight", Georgia, serif; font-size:clamp(1.3rem,5.4vw,2.8rem); line-height:1.2; color:var(--red); text-shadow:0 0 26px rgba(224,49,49,.75), 0 3px 0 #000; margin:.4rem auto 0; max-width:44rem; text-transform:uppercase; }
@@ -52,6 +52,7 @@ h1 .amt { color:var(--red); }
 .billing { font-size:.62rem; line-height:1.5; color:var(--dim); text-align:center; max-width:52rem; margin:2.5rem auto 0; letter-spacing:.02em; }
 footer { margin-top:1.5rem; color:var(--dim); font-size:.85rem; border-top:2px solid var(--red); padding-top:.8rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
 @media (min-width:640px) { .kit-grid { grid-template-columns:1.2fr 1fr; } }
+@media (max-width:640px) { .hero .presents, .hero .tagline { display:none; } }
 @media print {
   body { background:#fff; color:#000; }
   #lights, .noprint, .hero { display:none !important; }

@@ -36,7 +36,7 @@ describe("tetram theme art", () => {
     const seal = await fs.readFile(path.join(art, "seal.png"));
     assert.equal(
       sha256(hero),
-      "0259d5aaa2662bb99a0bb9cab80e7c222ebdef46833930bfecf46e138ba7a19c",
+      "ae85d4bdf3bcc985778afa4247505afb7c9201fe07f80339c0233d31fa13f06c",
     );
     assert.equal(
       sha256(og),

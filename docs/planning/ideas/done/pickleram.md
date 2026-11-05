@@ -8,7 +8,7 @@ Rick burned through the memory reserves of dimension C-137 on portal fluid and n
 Voice: nihilistic garage-inventor rant plus deadpan interdimensional cable ad. Manic scientific babble, sudden sincere sentiment about old hardware, catchphrase energy. Frantic and brilliant, never snarky.
 Palette/type: portal green and lab-coat white on garage-concrete gray with plumbus-pink accents. Headers in an oozing cartoon sci-fi display sans, body in a plain marker-scrawl-adjacent sans. System-sans fallback must stay legible.
 Art direction:
-- hero.jpg: Sam in-character as a wild-haired garage inventor in a lab coat, holding a glowing RAM portal device, green portal and cluttered workbench behind. Sickly green glow center, dark-safe area middle for overlaid title.
+- hero.jpg: Sam in-character as a wild-haired garage inventor in a lab coat, holding a glowing RAM portal device, green portal and cluttered workbench behind. Sickly green glow center, dark open workbench along the bottom edge for the overlaid title.
 - og.jpg: Sam in lab coat holding one giant pickle-green RAM stick, plain portal-green behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone green portal swirl on garage-black, centered. Must read at tiny size: one bold motif, no text.
 - seal.png: round green-and-white stamp, portal-and-RAM motif at center.

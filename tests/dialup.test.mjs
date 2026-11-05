@@ -35,7 +35,7 @@ describe("dialup theme art", () => {
     const seal = await fs.readFile(path.join(art, "seal.png"));
     assert.equal(
       sha256(hero),
-      "639aa4c54584b486a20b2b0b9d8a3f6b41b8d6e2a7d7b68160ce054503012547",
+      "f263bda47f0a69c2ec95088c1a522d06436432ec28e8748152aa7db6c42e1b98",
     );
     assert.equal(
       sha256(og),

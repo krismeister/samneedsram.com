@@ -8,7 +8,7 @@ Sam commands a starship whose core memory is nearly empty, and the next star sys
 Voice: captain's log plus Starfleet regulation. Stardates, numbered directives, calm-under-pressure declarations. Dutiful and optimistic, never snarky.
 Palette/type: command gold and science blue on deep space black with viewscreen-star white. Headers in a sleek wide futuristic sans (Michroma or similar), body in a clean neutral sans. System-sans fallback must stay legible.
 Art direction:
-- hero.jpg: Sam in-character as a starship captain on the bridge, holding a glowing RAM core before the viewscreen, starfield and planet curve behind. Cool blue light center, dark-safe area middle for overlaid title.
+- hero.jpg: Sam in-character as a starship captain on the bridge, holding a glowing RAM core before the viewscreen, starfield and planet curve behind. Cool blue light center, dark empty starfield across the top edge for the overlaid title.
 - og.jpg: Sam in uniform holding one giant glowing RAM core, plain starfield behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone gold delta badge on deep space black, centered. Must read at tiny size: one bold motif, no text.
 - seal.png: round gold-and-black stamp, delta-and-RAM motif at center.

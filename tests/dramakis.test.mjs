@@ -36,7 +36,7 @@ describe("dramakis theme art", () => {
     const seal = await fs.readFile(path.join(art, "seal.png"));
     assert.equal(
       sha256(hero),
-      "0b7af7fd1caefdb1f1c51b824ee91044f76471802b32e9bf68a284b7d913d4f8",
+      "13956d760625894a06535cc2e90ddf6cdd39cb8a5081ee52d04d5250f0459777",
     );
     assert.equal(
       sha256(og),

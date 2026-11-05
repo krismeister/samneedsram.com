@@ -36,7 +36,7 @@ describe("thisisfine theme art", () => {
     const seal = await fs.readFile(path.join(art, "seal.png"));
     assert.equal(
       sha256(hero),
-      "68664adfae8060dd3f2edf01f86d79ca8fc4826d1a52ed0797dcc0ab7a663e15",
+      "366ac57b6d455d3f17b9fe3e205f1c2df5ba7c58880c3b09473887ecec6fee54",
     );
     assert.equal(
       sha256(og),

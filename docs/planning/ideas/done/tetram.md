@@ -8,7 +8,7 @@ Sam stacks every incoming stick in a bottomless well, but the pieces are falling
 Voice: arcade cabinet marquee plus strategy guide. Short punchy lines, line-clear celebrations, escalating level warnings. Energetic and encouraging, never snarky.
 Palette/type: neon block cyan, magenta, and yellow on deep well black with faint grid lines. Headers in a chunky arcade sans (Bungee or similar), body in a clean neutral sans. System-sans fallback must stay legible.
 Art direction:
-- hero.jpg: Sam in-character as a retro arcade champion in a neon arcade, slotting a giant glowing RAM long-bar into a towering well, stacked blocks and score marquee behind. Neon cyan light center, dark-safe area middle for overlaid title.
+- hero.jpg: Sam in-character as a retro arcade champion in a neon arcade, slotting a giant glowing RAM long-bar into a towering well, stacked blocks and score marquee behind. Neon cyan light center, dark empty ceiling across the top edge for the overlaid title.
 - og.jpg: Sam slotting one giant cyan RAM long-bar, plain well-black behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone cyan long-bar on well-black, centered. Must read at tiny size: one bold motif, no text.
 - seal.png: round neon-on-black stamp, tetromino-and-RAM motif at center.

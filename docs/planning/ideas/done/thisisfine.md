@@ -8,7 +8,7 @@ Sam sits at his desk in a burning server room, calmly watching the memory melt o
 Voice: aggressively calm office optimism plus incident report. Soothing reassurances, escalating fire, total denial. Serene and sincere, never snarky.
 Palette/type: fire orange and smoke gray on office beige with extinguisher-red accents. Headers in a friendly cartoon-round sans, body in a plain office sans. System-sans fallback must stay legible.
 Art direction:
-- hero.jpg: Sam in-character sitting calmly at a desk in a burning server room, sipping coffee and holding a RAM stick, flames and melting racks all around. Warm fire glow center, dark-safe area middle for overlaid title.
+- hero.jpg: Sam in-character sitting calmly at a desk in a burning server room, sipping coffee and holding a RAM stick, flames and melting racks all around. Warm fire glow center, dark smoky ceiling across the top edge for the overlaid title.
 - og.jpg: Sam's calm face with a coffee mug and one RAM stick, plain fire-orange behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone coffee mug on fire-orange, centered. Must read at tiny size: one bold motif, no text.
 - seal.png: round orange-and-cream stamp, flame-and-RAM motif at center.

@@ -35,7 +35,7 @@ describe("ramtrek theme art", () => {
     const seal = await fs.readFile(path.join(art, "seal.png"));
     assert.equal(
       sha256(hero),
-      "745aad40a8d23c28a59846ee401c2cc71ab7e6fb548343cbf894c8925c5c38ea",
+      "098f1393e8c5ff42a855d1ba4db759908b36127d34a3b2d683db9d7c456d6b15",
     );
     assert.equal(
       sha256(og),

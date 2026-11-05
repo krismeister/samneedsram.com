@@ -8,7 +8,7 @@ body { margin:0; color:var(--ink); background-color:var(--bg);
 .back { display:inline-block; color:var(--green); font-size:.9rem; margin:.5rem 0 0; text-decoration:none; }
 .hero { position:relative; border:2px solid var(--line); margin:1rem 0 0; }
 .hero img { display:block; width:100%; height:auto; }
-.hero .overlay { position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); padding:.6rem 1rem; text-align:center; }
+.hero .overlay { position:absolute; inset:auto 0 0 0; padding:3rem 1.4rem 1rem; background:linear-gradient(transparent, rgba(0,0,0,.94)); text-align:center; }
 .hero .presents { color:#fff; font-size:.72rem; font-weight:700; letter-spacing:.35em; text-shadow:0 2px 0 #000, 0 0 18px rgba(0,0,0,.9); }
 .hero .kicker { color:var(--pink); font-size:.8rem; font-weight:700; letter-spacing:.2em; margin-top:.3rem; text-shadow:0 2px 0 #000, 0 0 14px rgba(0,0,0,.95); }
 .hero .title { font-family:"Creepster", "Arial Black", Impact, sans-serif; font-size:clamp(1.8rem,7vw,3.6rem); line-height:1.1; color:var(--green); text-shadow:0 0 26px rgba(77,255,106,.6), 0 3px 0 #000; margin:.2rem auto 0; max-width:44rem; }
@@ -52,6 +52,7 @@ h1 .amt { color:var(--green); }
 .billing { font-size:.62rem; line-height:1.5; color:var(--dim); text-align:center; max-width:52rem; margin:2.5rem auto 0; letter-spacing:.02em; }
 footer { margin-top:1.5rem; color:var(--dim); font-size:.85rem; border-top:2px solid var(--green); padding-top:.8rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
 @media (min-width:640px) { .kit-grid { grid-template-columns:1.2fr 1fr; } }
+@media (max-width:640px) { .hero .presents, .hero .tagline { display:none; } }
 @media print {
   body { background:#fff; color:#000; }
   #portal, .noprint, .hero { display:none !important; }

@@ -8,7 +8,7 @@ On Arrakis, memory is the scarcest resource in the known universe, and Sam's res
 Voice: prophetic desert epic with Fremen solemnity. Litany-like cadence, sworn-oath declarations, total reverence for old hardware. Grave and ceremonial, never snarky.
 Palette/type: burnt orange sand and deep brown-black with pale sun-gold accents. Headers in a monumental inscriptional serif (Cinzel or similar), body in a readable old-style serif (Alegreya or similar). System-serif fallback must stay legible.
 Art direction:
-- hero.jpg: Sam in-character as a desert prophet in a stillsuit on a great dune, holding a glowing RAM stick skyward, sandworm ridge and twin moons behind. Warm gold light center, dark-safe area middle for overlaid title.
+- hero.jpg: Sam in-character as a desert prophet in a stillsuit on a great dune, holding a glowing RAM stick skyward, sandworm ridge and twin moons behind. Warm gold light center, dark open dune foreground along the bottom edge for the overlaid title.
 - og.jpg: Sam in stillsuit holding one giant glowing RAM stick aloft, plain desert dusk behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone glowing RAM stick planted upright in sand on burnt orange, centered. Must read at tiny size: one bold motif, no text.
 - seal.png: round sand-and-black stamp, worm-and-RAM motif at center.
