@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- DRAMakis seal: sun-gold double ring, sandworm-maw glyph top, RAM-stick
+     glyph bottom, twin-moon crescents at the sides. Center stays
+     transparent: the template overlays the word ARRAKIS in HTML. No text
+     in this file. -->
+<g fill="none" stroke="#e0a458">
+<circle cx="256" cy="256" r="238" stroke-width="10"/>
+<circle cx="256" cy="256" r="150" stroke-width="5"/>
+<circle cx="256" cy="62" r="28" stroke-width="6"/>
+<circle cx="256" cy="62" r="15" stroke-width="9" stroke-dasharray="8 7"/>
+</g>
+<g fill="none" stroke="#e0a458" stroke-width="5">
+<rect x="196" y="436" width="120" height="30" rx="3"/>
+</g>
+<g stroke="#e0a458" stroke-width="3">
+<line x1="210" y1="466" x2="210" y2="474"/>
+<line x1="224" y1="466" x2="224" y2="474"/>
+<line x1="238" y1="466" x2="238" y2="474"/>
+<line x1="252" y1="466" x2="252" y2="474"/>
+<line x1="274" y1="466" x2="274" y2="474"/>
+<line x1="288" y1="466" x2="288" y2="474"/>
+<line x1="302" y1="466" x2="302" y2="474"/>
+</g>
+<g fill="#e0a458">
+<rect x="204" y="443" width="22" height="16"/>
+<rect x="232" y="443" width="22" height="16"/>
+<rect x="286" y="443" width="22" height="16"/>
+<path fill-rule="evenodd" d="M34 256 a18 18 0 1 0 36 0 a18 18 0 1 0 -36 0 M44 250 a15 15 0 1 0 30 0 a15 15 0 1 0 -30 0"/>
+<path fill-rule="evenodd" d="M442 256 a18 18 0 1 0 36 0 a18 18 0 1 0 -36 0 M438 250 a15 15 0 1 0 30 0 a15 15 0 1 0 -30 0"/>
+</g>
+</svg>
