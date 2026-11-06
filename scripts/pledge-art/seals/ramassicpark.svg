@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- RAMassic Park seal: amber double ring, raptor claw slashes top,
+     RAM-stick glyph bottom, fence-post diamonds at the sides. Center stays
+     transparent: the template overlays the words FENCES ON in HTML. No text here. -->
+<g fill="none" stroke="#f5a623">
+<circle cx="256" cy="256" r="238" stroke-width="12"/>
+<circle cx="256" cy="256" r="206" stroke-width="4"/>
+</g>
+<g fill="#f5a623">
+<path d="M176 108 L208 66 L216 72 L192 118 Z"/>
+<path d="M240 100 L278 52 L287 57 L257 107 Z"/>
+<path d="M306 100 L344 52 L353 57 L323 107 Z"/>
+<path d="M46 236 l7 14 14 7 -14 7 -7 14 -7 -14 -14 -7 14 -7 Z"/>
+<path d="M466 236 l7 14 14 7 -14 7 -7 14 -7 -14 -14 -7 14 -7 Z"/>
+</g>
+<g fill="none" stroke="#f5a623" stroke-width="6">
+<rect x="186" y="392" width="140" height="34" rx="3"/>
+</g>
+<g stroke="#f5a623" stroke-width="4">
+<line x1="202" y1="426" x2="202" y2="438"/>
+<line x1="218" y1="426" x2="218" y2="438"/>
+<line x1="234" y1="426" x2="234" y2="438"/>
+<line x1="250" y1="426" x2="250" y2="438"/>
+<line x1="272" y1="426" x2="272" y2="438"/>
+<line x1="288" y1="426" x2="288" y2="438"/>
+<line x1="304" y1="426" x2="304" y2="438"/>
+</g>
+<g fill="#f5a623">
+<rect x="196" y="400" width="26" height="18"/>
+<rect x="236" y="400" width="26" height="18"/>
+<rect x="276" y="400" width="26" height="18"/>
+</g>
+</svg>
