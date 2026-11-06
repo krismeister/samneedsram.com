@@ -17,6 +17,7 @@ steps in order; each one builds on the last.
   structural reference: marker use, byte-exact eulogy conditional, CTA
   layout, compact celebration script.
 - A seal SVG in `scripts/pledge-art/seals/` for the seal pattern.
+- The `generate-hero-image` skill for the hero source (step 2).
 
 ## Steps
 
@@ -27,31 +28,19 @@ steps in order; each one builds on the last.
    `docs/planning/ideas/done/<slug>.md` (create `done/` if missing).
    The move signals the idea is being worked on. Work from the moved
    file. If no pending idea file exists, stop and report that.
-2. Generate art sources with image generation, one per asset:
-   - hero source: per the idea's art direction; must leave room for the
-     overlaid title along the TOP or BOTTOM edge of the frame (never
-     the middle). That safe area must be simple dark open background —
-     never a painted stripe, bar, or band, which reads as a glitch.
-     When the idea puts Sam Altman in the hero, compose the frame so
-     his face sits fully clear of the safe area (face in the opposite
-     half). RAM hardware must be unmistakable in the frame:
-     at least one clearly recognizable RAM stick (green PCB, gold
-     contact pins, black memory chips) held, worn, or featured by the
-     subject, plus supporting RAM set dressing where the scene allows
-     (scattered sticks, RAM-shaped props, DIMM-slot architecture). A
-     generic glow or tech backdrop with no readable hardware fails
-     this step — regenerate the source.
+2. Generate the hero source via the `generate-hero-image` skill (it
+   enforces Sam likeness, named-CEO cast completeness, safe area, and
+   RAM hardware). Then generate og/picker sources with image
+   generation, one per asset:
    - og source: huge simple shapes, high contrast, reads at thumbnail size.
    - picker source: single bold centered motif.
    - Rules: original or AI-generated; no baked-in text anywhere (the
      template and the shared logo supply all text); follow §4 as written
      for everything else. Sources land in `generated_images/` by default.
-   - Face likeness: when the idea puts Sam, Elon, Zuck, or Jensen in
-     the art, pass the matching portrait from `mailer-assets/photos/`
-     as a generation reference so the model matches the face. Sam:
-     `sam-villageglobal-2022.jpg`; Elon:
-     `elon-royalsociety-2018.jpg`; Zuck: `zuck-2025.jpg`; Jensen:
-     `jensen-stanford-2026.jpg`.
+   - Face likeness for og/picker: when the idea puts Sam, Elon, Zuck,
+     or Jensen in the og/picker art, pass the matching portrait from
+     `mailer-assets/photos/` as a generation reference (same portraits
+     as the hero skill) so the model matches the face.
 3. Draw the seal: write `scripts/pledge-art/seals/<slug>.svg` — 512
    viewBox, transparent background, motif only, NO text (the template
    overlays the seal word in HTML). Keep the center empty for the word.
@@ -64,7 +53,9 @@ steps in order; each one builds on the last.
    (e.g. faces). Every line must report OK; fix inputs and re-run until
    they do.
 5. Visually check every output (hero, og, picker, seal): no baked-in
-   text, the hero shows a clearly recognizable RAM stick (reject and
+   text, the hero still reads as Sam with every named CEO present
+   (reject and regenerate via the hero skill on likeness or cast
+   drift), the hero shows a clearly recognizable RAM stick (reject and
    regenerate if the hardware doesn't read), the motif survives its
    crop, the logo badge doesn't cover faces or key shapes, seal rings
    render. Regenerate or adjust and re-run step 4 as needed.
@@ -104,8 +95,9 @@ steps in order; each one builds on the last.
    `category` from the idea's Spec notes Registry line). Keep the
    file valid JSON; change nothing else in it. Re-run `npm test`
    to confirm the registry edit broke nothing.
-10. Land and continue: report every path created. The full
+10. Land and stop: report every path created. The full
    `npm test` must be green; never commit on red. Commit the theme
    artifacts to `main` with a Conventional Commits message, push to
-   `main`, then immediately start the next oldest pending idea
-   (back to step 1). Stop only when no pending idea file exists.
+   `main`, then stop — never start the next idea in this session.
+   The `generate-theme-manager` workflow owns the queue and launches
+   one fresh worker per theme.
