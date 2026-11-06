@@ -41,12 +41,14 @@ export async function GET(request, { params }) {
   const themes = await readThemes();
   const activeSlugs = await readActiveThemeSlugs();
   const displayName = themes[theme]?.display_name ?? theme;
+  const shareSuffix = themes[theme]?.share_suffix;
   const html = fillTemplate(template, payload, {
     siteUrl,
     jwt,
     theme,
     displayName,
     randomTheme: pickRandomThemeSlug(activeSlugs, theme),
+    shareSuffix,
   });
   return new Response(injectGlobalHead(html), {
     headers: { "content-type": "text/html; charset=utf-8" },
