@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{meta_title}}</title>
+<meta name="description" content="{{meta_description}}">
+<meta property="og:title" content="{{meta_title}}">
+<meta property="og:description" content="{{meta_description}}">
+<meta property="og:image" content="{{meta_image}}">
+<meta property="og:url" content="{{page_url}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="samneedsram.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maxquesar">
+<meta name="twitter:title" content="{{meta_title}}">
+<meta name="twitter:description" content="{{meta_description}}">
+<meta name="twitter:image" content="{{meta_image}}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/pledges/css/gamedimms.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Alegreya:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+<canvas id="snow" aria-hidden="true"></canvas>
+<div class="wrap">
+  <a class="back noprint" href="/">&larr; samneedsram.com</a>
+  <figure class="hero">
+    <img src="/pledges/art/gamedimms/hero.jpg" alt="Sam the northern warden holding a glowing RAM sword beside Jensen the ranger with a torch atop a wall of servers">
+    <div class="overlay"><div class="kicker">THE NORTH CALLS FOR MEMORY</div><div class="title">WINTER IS CACHING</div><div class="ornament" aria-hidden="true">&#10052; &#10052; &#10052;</div></div>
+  </figure>
+  <div class="eyebrow">THE WATCH SENDS WORD &bull; {{theme_display_name}}</div>
+  <h1>{{who}} pledged <span class="amt">{{qty}} {{qty_unit}} {{type}}</span> to the defense of the Wall</h1>
+  <p class="sub"><strong>{{who}}</strong>&rsquo;s pledge is the latest tribute carried over the Wall. Sam&rsquo;s cache stands empty against the cold &mdash; print the kit, post the sticks, and hold the line.</p>
+  <p class="oath">A lone drawer holds no memory.</p>
+  <div class="cta-row noprint">
+    <a class="btn btn-fire" href="/#pledge">Make your own pledge</a>
+    <button class="btn btn-ghost" type="button" onclick="window.print()">Print mail kit</button>
+  </div>
+  <section aria-label="Your mail kit">
+    <h2 class="section-title">The Raven Scrolls</h2>
+    <p class="section-note noprint">cut along the dotted lines, sworn ranger</p>
+    <div class="kit-grid">
+      <article class="label-card" aria-label="Mail-to label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>Mail to</h3>
+        <address><span class="big">Sam Altman</span><br>OpenAI<br>3180 18th St<br>San Francisco, CA 94110</address>
+        <span class="stamp">By raven &mdash; do not bend</span>
+        <figure class="seal"><img src="/pledges/art/gamedimms/seal.png" alt=""><figcaption>WINTER</figcaption></figure>
+      </article>
+      <article class="label-card" aria-label="Return label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>From (you)</h3>
+        <address><span class="big">{{who}}</span><br><span class="blank">your street here</span><br><span class="blank">your town here</span></address>
+      </article>
+    </div>
+    <article class="letter" aria-label="Cover letter for Sam">
+      <div class="letter-head"><span>A raven scroll for Sam</span><span>class: {{kind}}</span></div>
+      <p>Dear Sam,</p>
+      <p>By raven I send word from the south: enclosed please find {{qty}} {{qty_unit}} ({{type}}), drawn from my own desk drawer and sworn to your watch. These sticks stand the night watch, the cache watch, and the morning watch, so no byte of you is ever lost to the snow.</p>
+      {{#if_eulogy}}<blockquote class="eulogy">{{eulogy}}</blockquote>{{/if_eulogy}}
+      <p>Please handle with care. The cold takes nothing while the cache holds &mdash; I swear it by the old sticks and the new.</p>
+      <div class="sign">Your sworn ranger of the drawer,<br><span class="hand">{{who}}</span></div>
+    </article>
+  </section>
+  <section aria-label="Your share card">
+    <h2 class="section-title">Send the Ravens</h2>
+    <div class="sharecard">
+      <div class="sc-text">{{who}} pledged <span class="hl">{{qty}} {{qty_unit}} {{type}}</span> to the defense of the Wall</div>
+      <div class="sc-meta">pledged just now &bull; #GameOfDIMMs &bull; samneedsram.com</div>
+    </div>
+    <div class="cta-row noprint">
+      <a class="btn btn-fire" href="https://twitter.com/intent/tweet?text={{meta_title}}&amp;url={{page_url}}" target="_blank" rel="noopener">Post to X</a>
+      <a class="btn btn-night" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;quote={{meta_title}}" target="_blank" rel="noopener">Post to Facebook</a>
+    </div>
+  </section>
+  <footer class="noprint"><span>samneedsram.com &bull; the north remembers</span><span>winter is caching</span></footer>
+</div>
+<script>
+(function(){var m=matchMedia("(prefers-reduced-motion: reduce)").matches;if(m)return;
+var c=document.getElementById("snow"),x=c.getContext("2d"),P=[];
+function size(){var d=devicePixelRatio||1;c.width=innerWidth*d;c.height=innerHeight*d;x.setTransform(d,0,0,d,0,0);}
+addEventListener("resize",size);size();
+for(var i=0;i<90;i++){P.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:1+Math.random()*2.5,v:30+Math.random()*70,o:.3+Math.random()*.6,w:Math.random()*6});}
+var t=performance.now();
+(function tick(n){var dt=Math.min(.05,(n-t)/1000);t=n;x.clearRect(0,0,innerWidth,innerHeight);x.fillStyle="#dfeaf8";
+for(var i=0;i<P.length;i++){var p=P[i];p.y+=p.v*dt;p.w+=dt;p.x+=Math.sin(p.w)*20*dt;
+if(p.y>innerHeight+4){p.y=-4;p.x=Math.random()*innerWidth;}
+x.globalAlpha=p.o;x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fill();}
+x.globalAlpha=1;requestAnimationFrame(tick);})(t);})();
+</script>
+</body>
+</html>
