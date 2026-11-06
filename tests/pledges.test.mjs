@@ -91,6 +91,35 @@ describe("validatePledge", () => {
     }
   });
 
+  it("rejects HTML, JavaScript, and links in who and eulogy", () => {
+    assert.equal(validatePledge({ ...VALID, who: "<b>Mabel</b>" }).ok, false);
+    assert.equal(validatePledge({ ...VALID, who: "x <img src=x>" }).ok, false);
+    assert.equal(
+      validatePledge({ ...VALID, eulogy: "<script>alert(1)</script>" }).ok,
+      false,
+    );
+    assert.equal(
+      validatePledge({ ...VALID, eulogy: "see javascript:alert(1)" }).ok,
+      false,
+    );
+    assert.equal(
+      validatePledge({ ...VALID, eulogy: "see JaVaScRiPt:alert(1)" }).ok,
+      false,
+    );
+    assert.equal(
+      validatePledge({ ...VALID, who: "see http://evil.test" }).ok,
+      false,
+    );
+    assert.equal(
+      validatePledge({ ...VALID, eulogy: "visit https://evil.test/x" }).ok,
+      false,
+    );
+    assert.equal(
+      validatePledge({ ...VALID, who: "Mabel", eulogy: "plain words, 100% & symbols!" }).ok,
+      true,
+    );
+  });
+
   it("leaves retirement to the mint route; old links still verify", async () => {
     // thisisfine is deprecated: well-formed, so validation passes — the
     // mint route rejects it via themeStatus while old links keep working.
