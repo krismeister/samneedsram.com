@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- Super Sambio Bros WAHOO seal: red outer ring, gold inner ring, question
+     block glyph top, RAM stick glyph bottom, star accents on the sides. No
+     text: the template overlays the word WAHOO in HTML. Center stays empty.
+     Transparent bg. -->
+<g fill="none" stroke="#e52521">
+<circle cx="256" cy="256" r="238" stroke-width="12"/>
+<circle cx="256" cy="256" r="152" stroke-width="5"/>
+</g>
+<g fill="none" stroke="#f5c518" stroke-width="4">
+<circle cx="256" cy="256" r="216" stroke-width="3"/>
+</g>
+<g fill="#f5c518">
+<rect x="208" y="52" width="96" height="96" rx="14"/>
+</g>
+<g fill="#c88f00">
+<circle cx="222" cy="66" r="6"/>
+<circle cx="290" cy="66" r="6"/>
+<circle cx="222" cy="134" r="6"/>
+<circle cx="290" cy="134" r="6"/>
+</g>
+<g fill="#fff3c4">
+<path d="M256 74 L264 92 L283 92 L268 103 L273 122 L256 111 L239 122 L244 103 L229 92 L248 92 Z"/>
+</g>
+<g fill="none" stroke="#f5c518" stroke-width="7">
+<rect x="192" y="412" width="128" height="40" rx="4"/>
+</g>
+<g fill="#f5c518">
+<rect x="201" y="420" width="20" height="14"/>
+<rect x="229" y="420" width="20" height="14"/>
+<rect x="257" y="420" width="20" height="14"/>
+<rect x="285" y="420" width="20" height="14"/>
+<rect x="201" y="440" width="110" height="4"/>
+</g>
+<g fill="#e52521">
+<path d="M66 218 L74 236 L93 236 L78 247 L83 266 L66 255 L49 266 L54 247 L39 236 L58 236 Z"/>
+<path d="M446 218 L454 236 L473 236 L458 247 L463 266 L446 255 L429 266 L434 247 L419 236 L438 236 Z"/>
+<path d="M66 268 L71 279 L83 279 L73 286 L77 298 L66 291 L55 298 L59 286 L49 279 L61 279 Z"/>
+<path d="M446 268 L451 279 L463 279 L453 286 L457 298 L446 291 L435 298 L439 286 L429 279 L441 279 Z"/>
+</g>
+</svg>
