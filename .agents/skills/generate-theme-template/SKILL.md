@@ -80,7 +80,9 @@ steps in order; each one builds on the last.
    so ram/floppy/usb all read right; no pledge numbers; corporate
    mail-to address only (OpenAI, 3180 18th St, San Francisco, CA 94110);
    share actions as static anchors (`target="_blank"`, escape `&` as
-   `&amp;`); deadpan copy, no joke/parody disclaimers. When the hero
+   `&amp;`); share `text=`/`quote=` params carry `{{share_text_enc}}`
+   and the sharecard line ends with the registry `share_suffix`
+   verbatim; deadpan copy, no joke/parody disclaimers. When the hero
    shows Sam Altman's face, position and size the overlaid text block
    so no text touches his face at desktop or 390px widths; shorten or
    adjust the copy as needed to keep his face clear. Optional inline
@@ -97,7 +99,9 @@ steps in order; each one builds on the last.
 9. Register last: only after art, template, CSS, test, and
    screenshots are all done and passing, append one entry to
    `public/pledges/themes.json` (`slug` + `display_name` +
-   `category` from the idea's Spec notes Registry line). Keep the
+   `category` + `share_suffix` — the suffix is the sharecard line's
+   tail after `{type}`, plain apostrophes, no entities — from the
+   idea's Spec notes Registry line). Keep the
    file valid JSON; change nothing else in it. Re-run `npm test`
    to confirm the registry edit broke nothing.
 10. Land and stop: report every path created. The full

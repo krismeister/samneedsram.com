@@ -61,6 +61,10 @@ Rules for templates:
   href="https://github.com/krismeister/samneedsram.com" target="_blank"
   rel="noopener" style="color:inherit">GitHub</a>` to the footer's last
   line so visitors can star and read the source.
+- Share links use the themed text: the X intent `text=` and Facebook
+  `quote=` params carry `{{share_text_enc}}` (URL-encoded, hashtag
+  included), never `{{meta_title}}`. The on-page sharecard line ends
+  with the registry `share_suffix` verbatim.
 - Mobile-first. Must look right with an empty eulogy (use the conditional).
 - No JS required. If any: inline, <50 lines, no dependencies, page works with
   JS disabled (crawlers don't run it).
@@ -73,7 +77,9 @@ Rules for templates:
 
 `public/pledges/themes.json` is the list of active themes. Top-level
 `themes` array; each entry is `slug` + `display_name` + `category`
-(e.g. Movies, Games, TV, Music, Originals). Everything else
+(e.g. Movies, Games, TV, Music, Originals) + `share_suffix` (the tail
+of the theme's sharecard line after `{type}`, plain text, e.g.
+`to the resistance`). Everything else
 is derived by §2 convention (`html/pledges/<slug>.html`,
 `/pledges/css/<slug>.css`, `/pledges/art/<slug>/…`), never listed.
 
@@ -90,7 +96,7 @@ but disappear from the picker and from new mints:
 
 1. Move the entry from `public/pledges/themes.json` to
    `public/pledges/deprecated-themes.json` (same `slug` +
-   `display_name` + `category` shape). The picker reads only
+   `display_name` + `category` + `share_suffix` shape). The picker reads only
    `themes.json`, so the theme vanishes from the form.
 2. No code change needed: mint enforces membership via `themeStatus()`
    against both JSON files (active → mintable, deprecated → 400
@@ -123,6 +129,8 @@ String fields arrive HTML-escaped. Numbers/enums arrive validated.
 | `{{meta_title}}` | derived: `{who} pledged {qty}{unit} {type} to Sam` | `Mabel pledged 8GB DDR3 to Sam` |
 | `{{meta_description}}` | derived: eulogy (mint always supplies one; the `{who} donated…` fallback only fires for hand-built payloads) | — |
 | `{{meta_image}}` | derived absolute URL of the theme og art | `https://…/pledges/art/ramageddon/og.jpg` |
+| `{{share_text}}` | derived: `{who} pledged {qty} {unit} {type} {share_suffix} #SamNeedsRAM` | `Mabel pledged 8 GB DDR3 to the resistance #SamNeedsRAM` |
+| `{{share_text_enc}}` | URL-encoded `share_text`, for share hrefs only | `Mabel%20pledged%20…%23SamNeedsRAM` |
 
 Conditional (only one supported):
 
