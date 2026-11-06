@@ -191,6 +191,17 @@ describe("fillTemplate", () => {
     assert.ok(out.includes("&lt;script&gt;"));
   });
 
+  it("uses the theme share suffix in meta_title", () => {
+    const out = fillTemplate("<title>{{meta_title}}</title>", VALID, {
+      siteUrl: "https://samneedsram.com",
+      jwt: "JWT",
+      theme: "ramfather",
+      displayName: "The RAMfather",
+      shareSuffix: "to the Family",
+    });
+    assert.ok(out.includes("<title>Mabel pledged 8GB DDR3 to the Family</title>"));
+  });
+
   it("uses disks as the floppy unit", () => {
     const out = fillTemplate("{{qty}} {{qty_unit}}", {
       ...VALID,
