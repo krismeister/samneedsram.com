@@ -1,5 +1,6 @@
 import { PLEDGE_TEMPLATES } from "@/lib/pages.generated";
 import { verifyPledge } from "@/lib/pledges";
+import { injectGlobalHead } from "@/lib/site-head";
 import {
   fillTemplate,
   getPledgeSecret,
@@ -47,7 +48,7 @@ export async function GET(request, { params }) {
     displayName,
     randomTheme: pickRandomThemeSlug(activeSlugs, theme),
   });
-  return new Response(html, {
+  return new Response(injectGlobalHead(html), {
     headers: { "content-type": "text/html; charset=utf-8" },
   });
 }

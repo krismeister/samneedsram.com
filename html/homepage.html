@@ -1008,6 +1008,7 @@
       });
     }).then(function (out) {
       if (out.status === 200 && out.data && out.data.url) {
+        if (window.umami) window.umami.track("pledge_minted", { theme: theme, kind: kind });
         window.location.assign(out.data.url);
         return;
       }
@@ -1031,6 +1032,7 @@
   });
 
   function share(btn) {
+    if (window.umami) window.umami.track("share_clicked");
     var data = {
       title: "samneedsram.com",
       text: "Sam's out of memory. I pledged my old tech — help him remember.",
