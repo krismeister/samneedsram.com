@@ -14,18 +14,18 @@ const nextConfig = {
   },
   async headers() {
     // Site is set-and-forget: cache everything hard except the homepage
-    // (Kris still edits it) and the mint/health APIs (never cache).
+    // (Kris still edits it); never cache themes.json or the mint/health APIs.
     const YEAR = "public, max-age=31536000, immutable";
     const cc = (value) => [{ key: "Cache-Control", value }];
     return [
       // Pledge pages: each URL carries its JWT, so bytes are frozen per URL.
       // (The dice-button pick freezes per URL too — harmless, still valid.)
       { source: "/pledges/:path*", headers: cc(YEAR) },
-      // Picker data must stay fresher than the immutable art around it,
-      // or the form would offer retired themes that mint rejects.
+      // Picker data is never cached: a stale copy would offer retired
+      // themes that mint rejects.
       {
         source: "/pledges/themes.json",
-        headers: cc("public, max-age=3600, stale-while-revalidate=86400"),
+        headers: cc("no-store"),
       },
       // Homepage: still edited, so keep it short.
       {

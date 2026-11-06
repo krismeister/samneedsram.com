@@ -3,8 +3,8 @@ import assert from "node:assert/strict";
 import nextConfig from "../next.config.mjs";
 
 // Cache policy: the site is set-and-forget, so TTLs are maxed everywhere
-// except the homepage (still edited) and the mint/health APIs (never cache).
-// themes.json stays at 1h so the picker never offers retired themes.
+// except the homepage (still edited). themes.json and the mint/health APIs
+// are never cached, so the picker never offers retired themes.
 describe("cache headers", () => {
   it("maps every route to its intended Cache-Control", async () => {
     const rules = await nextConfig.headers();
@@ -15,7 +15,7 @@ describe("cache headers", () => {
     const YEAR = "public, max-age=31536000, immutable";
     const HOUR = "public, max-age=3600, stale-while-revalidate=86400";
     assert.equal(get("/pledges/:path*"), YEAR);
-    assert.equal(get("/pledges/themes.json"), HOUR);
+    assert.equal(get("/pledges/themes.json"), "no-store");
     assert.equal(get("/"), "public, max-age=300, stale-while-revalidate=3600");
     assert.equal(get("/letters"), HOUR);
     assert.equal(get("/letters/:path*"), HOUR);
