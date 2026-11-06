@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{meta_title}}</title>
+<meta name="description" content="{{meta_description}}">
+<meta property="og:title" content="{{meta_title}}">
+<meta property="og:description" content="{{meta_description}}">
+<meta property="og:image" content="{{meta_image}}">
+<meta property="og:url" content="{{page_url}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="samneedsram.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maxquesar">
+<meta name="twitter:title" content="{{meta_title}}">
+<meta name="twitter:description" content="{{meta_description}}">
+<meta name="twitter:image" content="{{meta_image}}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/pledges/css/sambio.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<canvas id="coins" aria-hidden="true"></canvas>
+<div class="wrap">
+  <a class="back noprint" href="/">&larr; samneedsram.com</a>
+  <figure class="hero">
+    <img src="/pledges/art/sambio/hero.jpg" alt="Sam the plumber mid-jump bumping a glowing question block while his brother follows, a RAM stick held high">
+    <div class="overlay"><div class="kicker">PRINCESS CACHE IS IN ANOTHER SLOT</div><div class="title">IT&rsquo;S-A ME, MEMORY</div><div class="tagline">Starring Sam &bull; co-starring his brother in green &bull; {{theme_display_name}}</div><div class="hud">WORLD 1-1 &bull; TIME 400 &bull; COINS x{{qty}}</div></div>
+  </figure>
+  <div class="eyebrow">// PRINCESS CACHE IS IN ANOTHER SLOT &bull; {{theme_display_name}} //</div>
+  <h1>{{who}} pledged <span class="amt">{{qty}} {{qty_unit}} {{type}}</span> to Sam</h1>
+  <p class="sub"><strong>{{who}}</strong>&rsquo;s tribute is the latest in the castle stockpile. Every slot in the kingdom is empty and the flagpole is waiting &mdash; print the kit, post the sticks, and the music plays again.</p>
+  <p class="cast">STARRING <strong>SAM ALTMAN</strong> &bull; <strong>MARK ZUCKERBERG</strong> &bull; <strong>ONE (1) QUESTION BLOCK</strong></p>
+  <div class="world"><strong>WORLD 1-1</strong> CLEAR CONDITION: MAIL THE TRIBUTE</div>
+  <div class="cta-row noprint">
+    <a class="btn btn-red" href="/#pledge">Make your own pledge</a>
+    <button class="btn btn-ghost" type="button" onclick="window.print()">Print mail kit</button>
+  </div>
+  <section aria-label="Your mail kit">
+    <h2 class="section-title">Castle mail kit</h2>
+    <p class="section-note noprint">CUT ALONG THE DOTTED LINES, PLAYER ONE</p>
+    <div class="kit-grid">
+      <article class="label-card" aria-label="Mail-to label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>Mail to</h3>
+        <address><span class="big">Sam Altman</span><br>OpenAI<br>3180 18th St<br>San Francisco, CA 94110</address>
+        <span class="stamp">Priority: castle freight &mdash; do not stomp</span>
+        <figure class="seal"><img src="/pledges/art/sambio/seal.png" alt=""><figcaption>WAHOO</figcaption></figure>
+      </article>
+      <article class="label-card" aria-label="Return label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>From (you)</h3>
+        <address><span class="big">{{who}}</span><br><span class="blank">your street here</span><br><span class="blank">your town here</span></address>
+      </article>
+    </div>
+    <article class="letter" aria-label="Cover letter for Sam">
+      <div class="letter-head"><span>Manual page 1-1 &bull; note for Sam</span><span>class: {{kind}}</span></div>
+      <p>Dear Sam,</p>
+      <p>Thank you so much for playing my game! Enclosed please find {{qty}} {{qty_unit}} ({{type}}), pulled fresh from the desk drawer and ready to slot in. This tribute unlocks World 1-2, the warp zone, and every castle after that.</p>
+      {{#if_eulogy}}<blockquote class="eulogy">{{eulogy}}</blockquote>{{/if_eulogy}}
+      <p>Bump every block. Trust every pipe. And remember: the flagpole is waiting, and the princess is counting on you.</p>
+      <div class="sign">Wahoo,<br><span class="hand">{{who}}</span></div>
+    </article>
+  </section>
+  <section aria-label="Your share card">
+    <h2 class="section-title">Warp whistle</h2>
+    <div class="sharecard">
+      <div class="sc-text">{{who}} pledged <span class="hl">{{qty}} {{qty_unit}} {{type}}</span> to get Sam past World 1-1</div>
+      <div class="sc-meta">pledged just now &bull; #SuperSambio &bull; samneedsram.com</div>
+    </div>
+    <div class="cta-row noprint">
+      <a class="btn btn-red" href="https://twitter.com/intent/tweet?text={{meta_title}}&amp;url={{page_url}}" target="_blank" rel="noopener">Post to X</a>
+      <a class="btn btn-green" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;quote={{meta_title}}" target="_blank" rel="noopener">Post to Facebook</a>
+    </div>
+  </section>
+  <p class="manual noprint">SAM NEEDS RAM MANUAL PAGE 1-1 &bull; STARRING SAM ALTMAN AND MARK ZUCKERBERG AS THE PLUMBER BROTHERS &bull; TRIBUTE BY {{who}} &bull; THE PRINCESS IS IN ANOTHER SLOT &bull; NO RAM WAS STOMPED IN THE MAKING OF THIS PLEDGE</p>
+  <footer class="noprint"><span>samneedsram.com &bull; castle quartermaster</span><span>wahoo</span></footer>
+</div>
+<script>
+(function(){var m=matchMedia("(prefers-reduced-motion: reduce)").matches;if(m)return;
+var c=document.getElementById("coins"),x=c.getContext("2d"),P=[];
+function size(){var d=devicePixelRatio||1;c.width=innerWidth*d;c.height=innerHeight*d;x.setTransform(d,0,0,d,0,0);}
+addEventListener("resize",size);size();
+function burst(n){for(var i=0;i<n;i++){P.push({x:Math.random()*innerWidth,y:innerHeight*.35+Math.random()*innerHeight*.4,vx:(Math.random()-.5)*120,vy:-(220+Math.random()*380),l:1,d:.45+Math.random()*.5,r:5+Math.random()*7,p:Math.random()*6});}if(P.length>500)P.splice(0,P.length-500);}
+var t=performance.now();
+(function tick(n){var dt=Math.min(.05,(n-t)/1000);t=n;x.clearRect(0,0,innerWidth,innerHeight);
+for(var i=P.length-1;i>=0;i--){var p=P[i];p.l-=p.d*dt;if(p.l<=0){P.splice(i,1);continue;}
+p.p+=9*dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=520*dt;x.globalAlpha=Math.max(0,Math.min(1,p.l));
+x.fillStyle="#f5c518";x.strokeStyle="#c88f00";x.lineWidth=2;
+x.beginPath();x.ellipse(p.x,p.y,p.r*Math.abs(Math.cos(p.p))+.8,p.r,0,0,7);x.fill();x.stroke();}
+x.globalAlpha=1;requestAnimationFrame(tick);})(t);
+setTimeout(function(){burst(80);},400);setTimeout(function(){burst(60);},1100);setTimeout(function(){burst(45);},1900);})();
+</script>
+</body>
+</html>
