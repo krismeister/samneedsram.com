@@ -35,7 +35,7 @@ describe("zelda theme art", () => {
     const seal = await fs.readFile(path.join(art, "seal.png"));
     assert.equal(
       sha256(hero),
-      "0c18df544800248b10554a0b97ef5ce663a35901dfab76edd8a4a82495c6d679",
+      "062e78b91385136a54fd824c6ad761eaa2a72a0e2bb08fadf1757b007c45d366",
     );
     assert.equal(
       sha256(og),

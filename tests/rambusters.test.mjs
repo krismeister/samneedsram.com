@@ -35,7 +35,7 @@ describe("rambusters theme art", () => {
     const seal = await fs.readFile(path.join(art, "seal.png"));
     assert.equal(
       sha256(hero),
-      "a636ad3bd2cd57a9057fba719dce6592ee04c74e64172eac7aa0e91c70554f7d",
+      "9cc44b1e81eed43cffd668eaaef74faa512b744195e42ba1dea9158523a1e098",
     );
     assert.equal(
       sha256(og),
