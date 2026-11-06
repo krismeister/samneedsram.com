@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- Dunder DIMMflin seal: beige-and-gold double ring, trophy cup top,
+     RAM-stick glyph bottom, stars at the sides. Center stays
+     transparent: the template overlays the word DUNDIE in HTML. No text here. -->
+<g fill="none" stroke="#8a6d2f">
+<circle cx="256" cy="256" r="238" stroke-width="10"/>
+</g>
+<g fill="none" stroke="#c9a227">
+<circle cx="256" cy="256" r="150" stroke-width="5"/>
+</g>
+<g fill="none" stroke="#8a6d2f" stroke-width="6">
+<path d="M216 118 h80 v34 c0 26 -18 42 -40 42 c-22 0 -40 -16 -40 -42 Z"/>
+<path d="M216 126 c-16 0 -26 12 -26 28 c0 18 14 30 30 32"/>
+<path d="M296 126 c16 0 26 12 26 28 c0 18 -14 30 -30 32"/>
+<line x1="256" y1="194" x2="256" y2="208"/>
+<line x1="236" y1="208" x2="276" y2="208"/>
+</g>
+<g fill="none" stroke="#8a6d2f" stroke-width="5">
+<rect x="196" y="318" width="120" height="30" rx="3"/>
+</g>
+<g stroke="#8a6d2f" stroke-width="3">
+<line x1="210" y1="348" x2="210" y2="356"/>
+<line x1="224" y1="348" x2="224" y2="356"/>
+<line x1="238" y1="348" x2="238" y2="356"/>
+<line x1="252" y1="348" x2="252" y2="356"/>
+<line x1="274" y1="348" x2="274" y2="356"/>
+<line x1="288" y1="348" x2="288" y2="356"/>
+<line x1="302" y1="348" x2="302" y2="356"/>
+</g>
+<g fill="#8a6d2f">
+<rect x="204" y="325" width="22" height="16"/>
+<rect x="240" y="325" width="22" height="16"/>
+<rect x="276" y="325" width="22" height="16"/>
+<path d="M46 236 l6 12 12 6 -12 6 -6 12 -6 -12 -12 -6 12 -6 Z"/>
+<path d="M466 236 l6 12 12 6 -12 6 -6 12 -6 -12 -12 -6 12 -6 Z"/>
+</g>
+</svg>
