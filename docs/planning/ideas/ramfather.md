@@ -8,8 +8,9 @@ Sam heads the most respected memory family in the business, and the wedding week
 Voice: solemn family counsel plus wedding-toast warmth. Offers, respects, favors owed and repaid, total loyalty to the hardware. Grave and honorable, never snarky.
 Palette/type: wedding white and rose red on office-mahogany black with cigar-smoke gray. Headers in an engraved inscriptional serif (Cinzel or similar), body in a readable old-style serif. System-serif fallback must stay legible.
 Art direction:
-- hero.jpg: Sam in-character as a tuxedoed don at a wedding-day desk, holding a RAM stick like a honored offering, rose boutonniere and dark office behind. Warm desk-lamp glow center, dark-safe area middle for overlaid title.
-- og.jpg: Sam in tuxedo holding one giant RAM stick forward, plain mahogany-black behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
+- Cast: family duo, left to right: Sam (tuxedoed don, seated at desk), Mark Zuckerberg (consigliere, standing behind).
+- hero.jpg: Sam in-character as a tuxedoed don at a wedding-day desk holding a RAM stick like an honored offering, Zuckerberg in-character as the consigliere leaning in behind his shoulder, rose boutonniere and dark office behind. Warm desk-lamp glow center, dark-safe area middle for overlaid title.
+- og.jpg: Sam in tuxedo holding one giant RAM stick forward with Zuckerberg's face over his shoulder, plain mahogany-black behind. Must read at small size: big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone red rose crossed with a gold RAM stick on mahogany black, centered. Must read at tiny size: one bold motif, no text.
 - seal.png: round black-and-red stamp, rose-and-RAM motif at center.
 Copy beats:

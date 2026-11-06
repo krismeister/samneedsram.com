@@ -8,6 +8,7 @@ Sam woke up on a blocky shore with nothing in his inventory and monsters due at 
 Voice: starter-guide earnestness plus achievement toast. Crafting recipes, day-count warnings, blocky wonder at every new stick. Helpful and square, never snarky.
 Palette/type: grass-block green and dirt brown on cave black with diamond cyan accents. Headers in a chunky pixel-adjacent sans, body in a clean neutral sans. System-sans fallback must stay legible.
 Art direction:
+- Cast: Sam solo — the fresh-spawn first-night survival joke is inherently solitary.
 - hero.jpg: Sam in-character as a blocky adventurer raising a glowing RAM pickaxe before a half-built dirt shelter at sunset, square sun on the horizon. Warm sunset glow center, dark-safe area middle for overlaid title.
 - og.jpg: Sam holding one giant cyan RAM diamond overhead, plain grass-block green behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone cyan diamond-RAM on cave black, centered. Must read at tiny size: one bold motif, no text.

@@ -8,6 +8,7 @@ Sam is trying to write an important letter, and the cheerful paperclip assistant
 Voice: relentlessly helpful office assistant plus tip-of-the-day. Pop-up cheer, suggestive questions, total confidence in every recommendation. Friendly and persistent, never snarky.
 Palette/type: paperclip silver and helper-balloon yellow on desktop teal with start-button green accents. Headers in a chunky 90s software sans (Tahoma-like), body in a plain clean sans. System-sans fallback must stay legible.
 Art direction:
+- Cast: Sam solo — the paperclip assistant is the second lead, and a second person at the desk would crowd the gag.
 - hero.jpg: Sam in-character at a beige CRT desk while a giant googly-eyed paperclip assistant points at a glowing RAM stick, retro desktop icons behind. Warm monitor glow center, dark-safe area middle for overlaid title.
 - og.jpg: Sam holding one giant RAM stick beside the big paperclip eyes, plain desktop teal behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone silver paperclip on desktop teal, centered. Must read at tiny size: one bold motif, no text.

@@ -8,8 +8,9 @@ Sam manages the world's best branch, and every computer in the office has slowed
 Voice: branch memo plus talking-head aside. Mandatory fun, direct-address sincerity, world's-best-boss energy, total devotion to the branch family. Earnest and proud, never snarky.
 Palette/type: office beige and copier gray on paper white with Dundie-gold accents. Headers in a cheery bold corporate-comedy sans, body in a plain office sans. System-sans fallback must stay legible.
 Art direction:
-- hero.jpg: Sam in-character as a beaming branch manager at a cluttered desk, hoisting a RAM stick like a trophy, office bullpen and conference room behind. Warm fluorescent glow center, dark-safe area middle for overlaid title.
-- og.jpg: Sam in shirtsleeves holding one giant gold RAM trophy, plain office-beige behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
+- Cast: branch trio, left to right: Mark Zuckerberg (assistant to the regional manager), Sam (beaming branch manager, center), Elon Musk (warehouse chief).
+- hero.jpg: Sam in-character as a beaming branch manager at a cluttered desk hoisting a RAM stick like a trophy, flanked by Zuckerberg with a stapler and Elon with a clipboard, office bullpen and conference room behind. Warm fluorescent glow center, dark-safe area middle for overlaid title.
+- og.jpg: Sam and Zuckerberg in shirtsleeves hoisting one giant gold RAM trophy together, plain office-beige behind. Must read at small size: big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone gold trophy silhouette on office beige, centered. Must read at tiny size: one bold motif, no text.
 - seal.png: round beige-and-gold stamp, trophy-and-RAM motif at center.
 Copy beats:

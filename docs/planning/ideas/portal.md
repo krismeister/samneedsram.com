@@ -8,6 +8,7 @@ Sam has volunteered for the enrichment program, but the test chambers cannot run
 Voice: passive-aggressive AI test administrator plus clipboard safety protocol. Cheerful threats, generous promises of cake, total sincerity about the science. Polite and ominous in equal measure, never snarky.
 Palette/type: test-chamber white and observation-gray on enrichment-blue with companion-cube pink accents. Headers in a clean clinical sans with rounded test-subject friendliness, body in a neutral lab sans. System-sans fallback must stay legible.
 Art direction:
+- Cast: Sam solo — enrichment tests run one subject at a time, and the companion cube is not a person.
 - hero.jpg: Sam in-character as an orange-jumpsuited test subject holding a glowing RAM portal device, white test chamber with round and square portals behind. Cool chamber light center, dark-safe area middle for overlaid title.
 - og.jpg: Sam in jumpsuit holding one giant RAM stick between two glowing portals, plain chamber-white behind. Must read at small size: big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone orange-and-blue portal pair on chamber-white, centered. Must read at tiny size: one bold motif, no text.

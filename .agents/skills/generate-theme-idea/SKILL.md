@@ -38,10 +38,13 @@ into the `html/pledges/` template, CSS, and art.
    - `## Theme instructions` — voice notes, palette/type direction, art
      direction for hero/og/picker/seal (subjects, mood, what must read
      at small size), and the key copy beats: hero title, eyebrow, letter
-     angle, share-card line, hashtag. Hero and og art must feature Sam
-     in-character for the theme; he may be accompanied by Zuckerberg,
-     Elon, or Jensen Huang, and no other real people without
-     Kris's OK.
+     angle, share-card line, hashtag. Cast between one and all four:
+     Sam in-character, plus any of Zuckerberg, Elon, or Jensen Huang
+     the premise earns — never forced. Name the cast explicitly with
+     left-to-right blocking and vary the lineup from recent ideas.
+     The hero carries the full cast; the og may reduce to Sam plus at
+     most one companion so it still reads at thumbnail size. No other
+     real people without Kris's OK.
    - `## Spec notes` — anything the template skill must know (marker
      phrasing that works for ram/floppy/usb, conditional use, seal text).
 4. House rules: funny but harmless spoof; public corporate mailing

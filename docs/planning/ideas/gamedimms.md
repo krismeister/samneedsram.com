@@ -8,8 +8,9 @@ Sam holds the northern wall with an empty cache while the cold deletes everythin
 Voice: raven scroll plus maester's chronicle. Oaths sworn, houses named, dread measured in leagues of snow. Cold and ceremonial, never snarky.
 Palette/type: winter blue-gray and wolf-fur gray on night black with dragonfire orange accents. Headers in a chiseled northern serif (Cinzel or similar), body in a readable old-style serif. System-serif fallback must stay legible.
 Art direction:
-- hero.jpg: Sam in-character as a fur-cloaked northern warden atop a wall of servers, holding a glowing blue RAM sword, falling snow and cold moonlight behind. Cold blue glow center, dark-safe area middle for overlaid title.
-- og.jpg: Sam in furs holding one giant glowing blue RAM sword upright, plain winter-night behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
+- Cast: Night's Watch duo, left to right: Sam (northern warden), Jensen Huang (sworn ranger).
+- hero.jpg: Sam in-character as a fur-cloaked northern warden atop a wall of servers holding a glowing blue RAM sword, Jensen in-character as a sworn ranger with a torch beside him, falling snow and cold moonlight behind. Cold blue glow center, dark-safe area middle for overlaid title.
+- og.jpg: Sam and Jensen in furs with one giant glowing blue RAM sword upright between them, plain winter-night behind. Must read at small size: big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone glowing blue RAM sword vertical on night black, centered. Must read at tiny size: one bold motif, no text.
 - seal.png: round blue-and-black stamp, sword-and-RAM motif at center.
 Copy beats:

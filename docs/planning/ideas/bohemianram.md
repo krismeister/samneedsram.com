@@ -8,8 +8,9 @@ Sam has taken the stage at the sold-out memory arena, but the amplifiers are emp
 Voice: bombastic rock-opera showbill plus backstage rider. Grand declarations, thunder-and-lightning drama, total devotion to the encore. Theatrical and triumphant, never snarky.
 Palette/type: stadium gold and velvet purple on midnight black with spotlight-white beams. Headers in a towering glam-rock display serif, body in a showbill clean sans. System-sans fallback must stay legible.
 Art direction:
-- hero.jpg: Sam in-character as a caped frontman under stadium spotlights, holding a glowing RAM stick like a microphone stand, roaring crowd and light beams behind. Gold spotlight center, dark-safe area middle for overlaid title.
-- og.jpg: Sam in cape holding one giant glowing RAM stick skyward, plain midnight black behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
+- Cast: full band trio, left to right: Jensen Huang (lead guitar), Sam (caped frontman, center), Mark Zuckerberg (drums).
+- hero.jpg: the full trio on stage under stadium spotlights, Sam in-character as a caped frontman holding a glowing RAM stick like a microphone stand, Jensen with guitar and Zuckerberg at the drums behind, roaring crowd and light beams behind. Gold spotlight center, dark-safe area middle for overlaid title.
+- og.jpg: Sam in cape holding one giant glowing RAM stick skyward with Jensen beside him raising a guitar neck, plain midnight black behind. Must read at small size: big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone gold lightning bolt crown on midnight black, centered. Must read at tiny size: one bold motif, no text.
 - seal.png: round gold-and-purple stamp, crown-and-RAM motif at center.
 Copy beats:

@@ -8,6 +8,7 @@ Sam is a very good boy whose treat drawer of memory has run completely empty. Th
 Voice: two-word wonder plus broken-English praise. Much, such, very, wow, total adoration for the good boy and his hardware. Adoring and sincere, never snarky.
 Palette/type: shiba gold and impact-caption white on meme-sky blue with caption-bar black. Headers in a rounded comic display sans, body in a friendly clean sans. System-sans fallback must stay legible.
 Art direction:
+- Cast: Sam solo — single-subject meme portrait; human co-stars would break the joke.
 - hero.jpg: Sam in-character as a golden shiba chief sitting proud among floating RAM sticks, rainbow comic sky and green yard behind. Warm golden light center, dark-safe area middle for overlaid title.
 - og.jpg: Sam's shiba face beside one giant RAM stick, plain meme-sky behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone gold RAM stick on caption-bar black, centered. Must read at tiny size: one bold motif, no text.

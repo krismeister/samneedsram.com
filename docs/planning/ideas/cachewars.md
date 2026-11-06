@@ -8,8 +8,9 @@ Sam's fighters cannot jump to lightspeed because the navicomputer has no memory 
 Voice: opening-crawl epic plus rebel mission briefing. May-the-cache declarations, trench-run countdowns, total faith in the Force of secondhand hardware. Heroic and earnest, never snarky.
 Palette/type: lightsaber blue and rebel orange on starfield black with crawl-yellow accents. Headers in a wide futuristic sans (Michroma or similar), body in a clean neutral sans. System-sans fallback must stay legible.
 Art direction:
-- hero.jpg: Sam in-character as a robed farm-boy knight holding a glowing RAM lightsaber aloft, twin suns and server towers behind. Blue saber glow center, dark-safe area middle for overlaid title.
-- og.jpg: Sam in robe holding one giant glowing RAM lightsaber upright, plain starfield behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
+- Cast: rebel duo, left to right: Elon Musk (rogue pilot), Sam (robed knight).
+- hero.jpg: Sam in-character as a robed farm-boy knight holding a glowing RAM lightsaber aloft beside Elon in-character as a scruffy rogue pilot with blaster, twin suns and server towers behind. Blue saber glow center, dark-safe area middle for overlaid title.
+- og.jpg: Sam and Elon shoulder to shoulder with two crossed glowing RAM lightsabers upright, plain starfield behind. Must read at small size: big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone green RAM lightsaber blade diagonal on starfield black, centered. Must read at tiny size: one bold motif, no text.
 - seal.png: round orange-and-black stamp, starbird-and-RAM motif at center.
 Copy beats:

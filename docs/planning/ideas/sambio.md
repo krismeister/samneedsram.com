@@ -8,8 +8,9 @@ Sam is a cheerful plumber of memory whose kingdom runs on coins and question blo
 Voice: game manual cheer plus princess-note mystery. Wahoo energy, coin-count declarations, castle warnings, total faith in the power of jumping. Bright and bouncy, never snarky.
 Palette/type: plumber red and coin gold on sky blue with warp-pipe green accents. Headers in a chunky rounded game sans (Bungee or similar), body in a friendly clean sans. System-sans fallback must stay legible.
 Art direction:
-- hero.jpg: Sam in-character as a red-capped plumber mid-jump bumping a glowing RAM question block, green pipes and a distant castle behind. Bright sky-blue light center, dark-safe area middle for overlaid title.
-- og.jpg: Sam in red cap holding one giant glowing RAM question block overhead, plain sky blue behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
+- Cast: plumber-brother duo, left to right: Sam (red cap), Mark Zuckerberg (green cap).
+- hero.jpg: Sam in-character as a red-capped plumber mid-jump bumping a glowing RAM question block, Zuckerberg in-character as his green-capped brother jumping just behind, green pipes and a distant castle behind. Bright sky-blue light center, dark-safe area middle for overlaid title.
+- og.jpg: Sam in red cap and Zuckerberg in green cap holding one giant glowing RAM question block overhead together, plain sky blue behind. Must read at small size: big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone gold RAM coin on sky blue, centered. Must read at tiny size: one bold motif, no text.
 - seal.png: round red-and-gold stamp, block-and-RAM motif at center.
 Copy beats:

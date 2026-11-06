@@ -8,8 +8,9 @@ Sam's island park holds living dinosaurs and a control room running on fumes. Th
 Voice: park brochure wonder plus control-room safety manual. Spared-no-expense declarations, chaos-theory warnings, raptor-fence reverence. Awestruck and procedural, never snarky.
 Palette/type: jungle green and mosquito-amber on night black with tour-jeep red accents. Headers in a tall condensed adventure sans (Oswald or similar), body in a sturdy clean sans. System-sans fallback must stay legible.
 Art direction:
-- hero.jpg: Sam in-character as a safari-hatted park founder holding a RAM stick up before towering park gates, dinosaur silhouette and jungle mist behind. Amber gate-light center, dark-safe area middle for overlaid title.
-- og.jpg: Sam in safari hat holding one giant amber RAM stick, plain jungle-night behind. Must read at small size: two big shapes, high contrast, no text, no fine detail.
+- Cast: park duo, left to right: Sam (safari-hatted founder), Elon Musk (chaos theorist).
+- hero.jpg: Sam in-character as a safari-hatted park founder holding a RAM stick up before towering park gates, Elon in-character as a leather-jacketed chaos theorist gesturing at a raptor-paddock readout beside him, dinosaur silhouette and jungle mist behind. Amber gate-light center, dark-safe area middle for overlaid title.
+- og.jpg: Sam in safari hat and Elon beside him holding one giant amber RAM stick between them, plain jungle-night behind. Must read at small size: big shapes, high contrast, no text, no fine detail.
 - picker.jpg: lone amber RAM stick in an amber circle on night black, centered. Must read at tiny size: one bold motif, no text.
 - seal.png: round amber-and-black stamp, claw-and-RAM motif at center.
 Copy beats:
