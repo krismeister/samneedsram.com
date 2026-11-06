@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{meta_title}}</title>
+<meta name="description" content="{{meta_description}}">
+<meta property="og:title" content="{{meta_title}}">
+<meta property="og:description" content="{{meta_description}}">
+<meta property="og:image" content="{{meta_image}}">
+<meta property="og:url" content="{{page_url}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="samneedsram.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maxquesar">
+<meta name="twitter:title" content="{{meta_title}}">
+<meta name="twitter:description" content="{{meta_description}}">
+<meta name="twitter:image" content="{{meta_image}}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/pledges/css/portal.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<canvas id="sparks" aria-hidden="true"></canvas>
+<a class="random-theme noprint" href="{{random_theme_url}}"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="8.2" cy="8.2" r="1.6" fill="currentColor"/><circle cx="15.8" cy="8.2" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="8.2" cy="15.8" r="1.6" fill="currentColor"/><circle cx="15.8" cy="15.8" r="1.6" fill="currentColor"/></svg> Deal me another theme</a>
+<div class="wrap">
+  <a class="back noprint" href="/">&larr; samneedsram.com</a>
+  <figure class="hero">
+    <img src="/pledges/art/portal/hero.jpg" alt="Sam in an orange test-subject jumpsuit holding a RAM stick between an orange and a blue portal">
+    <div class="overlay"><div class="kicker">APERTURE CALLS FOR TEST SUBJECTS</div><div class="title">{{theme_display_name}}</div><div class="tagline">The cake will be forthcoming at the conclusion of the test.</div><div class="chamber">ENRICHMENT CENTER &bull; CHAMBER 19</div></div>
+  </figure>
+  <div class="eyebrow">// TEST PROTOCOL &bull; {{theme_display_name}} //</div>
+  <h1>{{who}} pledged <span class="amt">{{qty}} {{qty_unit}} {{type}}</span> to the enrichment program</h1>
+  <p class="sub">Hello, <strong>{{who}}</strong>, and thank you for volunteering. The enrichment program cannot run its test chambers without memory in their slots &mdash; print the kit, post the sticks, and testing may continue indefinitely. This was a triumph.</p>
+  <p class="protocol">SUBJECT <strong>SAM ALTMAN</strong> &bull; STATUS <strong>AWAITING MEMORY</strong> &bull; CAKE <strong>FORTHCOMING</strong></p>
+  <div class="cta-row noprint">
+    <a class="btn btn-orange" href="/#pledge">Make your own pledge</a>
+    <button class="btn btn-ghost" type="button" onclick="window.print()">Print mail kit</button>
+  </div>
+  <section aria-label="Your mail kit">
+    <h2 class="section-title">Enrichment mail kit</h2>
+    <p class="section-note noprint">FOR YOUR SAFETY, DO NOT BEND, FOLD, OR QUESTION THE KIT</p>
+    <div class="kit-grid">
+      <article class="label-card" aria-label="Mail-to label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>Mail to</h3>
+        <address><span class="big">Sam Altman</span><br>OpenAI<br>3180 18th St<br>San Francisco, CA 94110</address>
+        <span class="stamp">Priority: enrichment freight &mdash; do not bend</span>
+        <figure class="seal"><img src="/pledges/art/portal/seal.png" alt=""><figcaption>APERTURE</figcaption></figure>
+      </article>
+      <article class="label-card" aria-label="Return label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>From (you)</h3>
+        <address><span class="big">{{who}}</span><br><span class="blank">your street here</span><br><span class="blank">your town here</span></address>
+      </article>
+    </div>
+    <article class="letter" aria-label="Cover letter for Sam">
+      <div class="letter-head"><span>Enrichment consent form</span><span>class: {{kind}}</span></div>
+      <p>Dear Sam,</p>
+      <p>Enclosed please find {{qty}} {{qty_unit}} ({{type}}), cheerfully donated to the enrichment program. These sticks will power test chambers nineteen through twenty-six, and your generosity has been noted on your permanent testing record.</p>
+      {{#if_eulogy}}<blockquote class="eulogy">{{eulogy}}</blockquote>{{/if_eulogy}}
+      <p>Please handle with care. The enclosed memory dislikes static, magnets, and being dropped through portals from a great height. Remember: the cake is not a lie, and neither is our gratitude.</p>
+      <div class="sign">With sincere scientific appreciation,<br><span class="hand">{{who}}</span></div>
+    </article>
+  </section>
+  <section aria-label="Your share card">
+    <h2 class="section-title">Broadcast results</h2>
+    <div class="sharecard">
+      <div class="sc-text">{{who}} pledged <span class="hl">{{qty}} {{qty_unit}} {{type}}</span> to the enrichment program</div>
+      <div class="sc-meta">pledged just now &bull; #CakeIsADIMM &bull; samneedsram.com</div>
+    </div>
+    <div class="cta-row noprint">
+      <a class="btn btn-blue" href="https://twitter.com/intent/tweet?text={{meta_title}}&amp;url={{page_url}}" target="_blank" rel="noopener">Post to X</a>
+      <a class="btn btn-orange" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;quote={{meta_title}}" target="_blank" rel="noopener">Post to Facebook</a>
+    </div>
+  </section>
+  <p class="notice noprint">APERTURE SCIENCE ENRICHMENT CENTER reminds you that all donated memory becomes property of the testing initiative &bull; test subjects experiencing cake-related anticipation are experiencing correct protocol &bull; the chambers thank you &bull; there is no chamber 19-B and there never was</p>
+  <footer class="noprint"><span>samneedsram.com &bull; enrichment quartermaster</span><span>thank you for testing</span></footer>
+</div>
+<script>
+(function(){var m=matchMedia("(prefers-reduced-motion: reduce)").matches;if(m)return;
+var c=document.getElementById("sparks"),x=c.getContext("2d"),P=[];
+var C=["#2e7de9","#ff8c1a","#f27bb5"];
+function size(){var d=devicePixelRatio||1;c.width=innerWidth*d;c.height=innerHeight*d;x.setTransform(d,0,0,d,0,0);}
+addEventListener("resize",size);size();
+function burst(n){for(var i=0;i<n;i++){P.push({x:Math.random()*innerWidth,y:innerHeight+10,vx:(Math.random()-.5)*60,vy:-(120+Math.random()*260),l:1,d:.4+Math.random()*.5,s:3+Math.random()*7,c:C[i%3]});}if(P.length>500)P.splice(0,P.length-500);}
+var t=performance.now();
+(function tick(n){var dt=Math.min(.05,(n-t)/1000);t=n;x.clearRect(0,0,innerWidth,innerHeight);
+for(var i=P.length-1;i>=0;i--){var p=P[i];p.l-=p.d*dt;if(p.l<=0){P.splice(i,1);continue;}
+p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy-=40*dt;x.globalAlpha=Math.max(0,Math.min(1,p.l));x.fillStyle=p.c;
+x.fillRect(p.x,p.y,p.s*(0.4+0.6*p.l),p.s*(0.4+0.6*p.l));}
+x.globalAlpha=1;requestAnimationFrame(tick);})(t);
+setTimeout(function(){burst(70);},400);setTimeout(function(){burst(50);},1200);})();
+</script>
+</body>
+</html>
