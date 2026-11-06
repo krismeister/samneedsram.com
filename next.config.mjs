@@ -15,12 +15,13 @@ const nextConfig = {
   async headers() {
     // Site is set-and-forget: cache everything hard except the homepage
     // (Kris still edits it); never cache themes.json or the mint/health APIs.
-    const YEAR = "public, max-age=31536000, immutable";
+    // Nothing caches longer than 10 days.
+    const TEN_DAYS = "public, max-age=864000";
     const cc = (value) => [{ key: "Cache-Control", value }];
     return [
       // Pledge pages: each URL carries its JWT, so bytes are frozen per URL.
-      // (The dice-button pick freezes per URL too — harmless, still valid.)
-      { source: "/pledges/:path*", headers: cc(YEAR) },
+      // (The dice button re-deals client-side on every view — see site-head.)
+      { source: "/pledges/:path*", headers: cc(TEN_DAYS) },
       // Picker data is never cached: a stale copy would offer retired
       // themes that mint rejects.
       {
@@ -49,12 +50,12 @@ const nextConfig = {
       { source: "/api/pledges/mint", headers: cc("no-store") },
       { source: "/api/health", headers: cc("no-store") },
       // Static brand art: set-and-forget.
-      { source: "/homepage/:path*", headers: cc(YEAR) },
-      { source: "/favicon.svg", headers: cc(YEAR) },
-      { source: "/favicon-16x16.png", headers: cc(YEAR) },
-      { source: "/favicon-32x32.png", headers: cc(YEAR) },
-      { source: "/apple-touch-icon.png", headers: cc(YEAR) },
-      { source: "/site.webmanifest", headers: cc(YEAR) },
+      { source: "/homepage/:path*", headers: cc(TEN_DAYS) },
+      { source: "/favicon.svg", headers: cc(TEN_DAYS) },
+      { source: "/favicon-16x16.png", headers: cc(TEN_DAYS) },
+      { source: "/favicon-32x32.png", headers: cc(TEN_DAYS) },
+      { source: "/apple-touch-icon.png", headers: cc(TEN_DAYS) },
+      { source: "/site.webmanifest", headers: cc(TEN_DAYS) },
     ];
   },
 };

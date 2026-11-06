@@ -12,9 +12,9 @@ describe("cache headers", () => {
       rules.find((r) => r.source === source)?.headers.find(
         (h) => h.key === "Cache-Control",
       )?.value;
-    const YEAR = "public, max-age=31536000, immutable";
+    const TEN_DAYS = "public, max-age=864000";
     const HOUR = "public, max-age=3600, stale-while-revalidate=86400";
-    assert.equal(get("/pledges/:path*"), YEAR);
+    assert.equal(get("/pledges/:path*"), TEN_DAYS);
     assert.equal(get("/pledges/themes.json"), "no-store");
     assert.equal(get("/"), "public, max-age=300, stale-while-revalidate=3600");
     assert.equal(get("/letters"), HOUR);
@@ -22,11 +22,11 @@ describe("cache headers", () => {
     assert.equal(get("/api/letters/:path*"), HOUR);
     assert.equal(get("/api/pledges/mint"), "no-store");
     assert.equal(get("/api/health"), "no-store");
-    assert.equal(get("/homepage/:path*"), YEAR);
-    assert.equal(get("/favicon.svg"), YEAR);
-    assert.equal(get("/favicon-16x16.png"), YEAR);
-    assert.equal(get("/favicon-32x32.png"), YEAR);
-    assert.equal(get("/apple-touch-icon.png"), YEAR);
-    assert.equal(get("/site.webmanifest"), YEAR);
+    assert.equal(get("/homepage/:path*"), TEN_DAYS);
+    assert.equal(get("/favicon.svg"), TEN_DAYS);
+    assert.equal(get("/favicon-16x16.png"), TEN_DAYS);
+    assert.equal(get("/favicon-32x32.png"), TEN_DAYS);
+    assert.equal(get("/apple-touch-icon.png"), TEN_DAYS);
+    assert.equal(get("/site.webmanifest"), TEN_DAYS);
   });
 });
