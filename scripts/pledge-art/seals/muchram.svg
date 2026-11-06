@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- Much RAM WOW seal motif. Rings + paw + mini RAM stick, no text: the
+     template overlays the word WOW in HTML. Transparent bg, center empty. -->
+<g fill="none">
+<circle cx="256" cy="256" r="238" stroke="#f2b234" stroke-width="16"/>
+<circle cx="256" cy="256" r="200" stroke="#ffffff" stroke-width="6"/>
+</g>
+<!-- top paw print -->
+<g fill="#f2b234">
+<ellipse cx="256" cy="128" rx="26" ry="20"/>
+<circle cx="214" cy="102" r="11"/>
+<circle cx="236" cy="88" r="11"/>
+<circle cx="276" cy="88" r="11"/>
+<circle cx="298" cy="102" r="11"/>
+</g>
+<!-- side diamonds -->
+<g fill="#ffffff">
+<path d="M40 256 l14 -14 14 14 -14 14 Z"/>
+<path d="M444 256 l14 -14 14 14 -14 14 Z"/>
+</g>
+<!-- bottom mini RAM stick silhouette -->
+<g>
+<rect x="176" y="348" width="160" height="44" rx="6" fill="none" stroke="#f2b234" stroke-width="10"/>
+<rect x="196" y="360" width="24" height="20" fill="#f2b234"/>
+<rect x="232" y="360" width="24" height="20" fill="#f2b234"/>
+<rect x="268" y="360" width="24" height="20" fill="#f2b234"/>
+<rect x="196" y="398" width="120" height="10" fill="#f2b234"/>
+</g>
+</svg>
