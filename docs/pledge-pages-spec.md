@@ -48,6 +48,15 @@ Rules for templates:
   `/pledges/art/ramageddon/hero.jpg`). Never relative paths.
 - Markers are verbatim `{{name}}` tokens (§3). The filler does dumb string
   replacement plus one conditional — no logic in templates.
+- Random-theme button: every template has this anchor immediately before
+  `<div class="wrap">` (dice icon + exact phrase, `noprint` so it stays
+  out of the printed kit):
+  ```html
+  <a class="random-theme noprint" href="{{random_theme_url}}"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="8.2" cy="8.2" r="1.6" fill="currentColor"/><circle cx="15.8" cy="8.2" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="8.2" cy="15.8" r="1.6" fill="currentColor"/><circle cx="15.8" cy="15.8" r="1.6" fill="currentColor"/></svg> Deal me another theme</a>
+  ```
+  Each theme's CSS styles `.random-theme` fixed top-right (`position:fixed;
+  top:.75rem; right:.75rem; z-index:50`), themed to its palette, shrinking
+  at the 640px breakpoint.
 - Mobile-first. Must look right with an empty eulogy (use the conditional).
 - No JS required. If any: inline, <50 lines, no dependencies, page works with
   JS disabled (crawlers don't run it).
@@ -105,6 +114,8 @@ String fields arrive HTML-escaped. Numbers/enums arrive validated.
 | `{{theme}}` | `theme` slug | `ramageddon` |
 | `{{theme_display_name}}` | from registry `display_name` | `Ramageddon` |
 | `{{page_url}}` | derived absolute canonical URL (incl. JWT) | `https://samneedsram.com/pledges/…` |
+| `{{random_theme}}` | derived: a different active slug picked per request (§5) | `gondor` |
+| `{{random_theme_url}}` | derived absolute URL of that theme with the same JWT | `https://…/pledges/gondor?content=…` |
 | `{{meta_title}}` | derived: `{who} pledged {qty}{unit} {type} to Sam` | `Mabel pledged 8GB DDR3 to Sam` |
 | `{{meta_description}}` | derived: eulogy (mint always supplies one; the `{who} donated…` fallback only fires for hand-built payloads) | — |
 | `{{meta_image}}` | derived absolute URL of the theme og art | `https://…/pledges/art/ramageddon/og.jpg` |
@@ -174,6 +185,10 @@ Shared: `public/pledges/art/shared/noise.png` — neutral 512px tileable grain,
   JWT → verify HMAC → validate payload vs schema → 400 on any failure.
 - Escape `who`/`type`/`eulogy` for HTML; `qty` numeric-only; build derived
   markers (§3); substitute; return `text/html`.
+- Random button: per request the route picks a random active slug that is
+  not the current theme (`pickRandomThemeSlug` over `themes.json`, so
+  retired themes never get dealt) and fills `{{random_theme_url}}` with
+  the same JWT.
 - Absolute URLs need the site origin: required env `SITE_URL`
   (production: `https://samneedsram.com`). No host-header trust.
 - X notes: `summary_large_image` card; crawler reads first-byte HTML only

@@ -4,6 +4,8 @@ import {
   fillTemplate,
   getPledgeSecret,
   getSiteUrl,
+  pickRandomThemeSlug,
+  readActiveThemeSlugs,
   readThemes,
 } from "@/lib/pledge-pages";
 
@@ -36,12 +38,14 @@ export async function GET(request, { params }) {
   }
 
   const themes = await readThemes();
+  const activeSlugs = await readActiveThemeSlugs();
   const displayName = themes[theme]?.display_name ?? theme;
   const html = fillTemplate(template, payload, {
     siteUrl,
     jwt,
     theme,
     displayName,
+    randomTheme: pickRandomThemeSlug(activeSlugs, theme),
   });
   return new Response(html, {
     headers: { "content-type": "text/html; charset=utf-8" },

@@ -58,6 +58,9 @@ footer { margin-top:1.5rem; color:var(--dim); font-size:.85rem; border-top:3px s
   .hero .presents, .hero .tagline, .hero .prod { display:none; }
   .hero .overlay { padding-top:2.2rem; }
 }
+.random-theme { position:fixed; top:.75rem; right:.75rem; z-index:50; display:inline-flex; align-items:center; gap:.45em; background:var(--panel); color:var(--ink); border:2px solid var(--grass); border-radius:0; box-shadow:3px 3px 0 #000; font-size:.78rem; font-weight:700; text-decoration:none; padding:.42rem .7rem; }
+.random-theme svg { width:1.15em; height:1.15em; flex:none; }
+@media (max-width:640px) { .random-theme { top:.5rem; right:.5rem; font-size:.68rem; padding:.35rem .55rem; } }
 @media print {
   body { background:#fff; color:#000; }
   #sparkles, .noprint, .hero { display:none !important; }

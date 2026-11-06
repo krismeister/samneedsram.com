@@ -63,14 +63,18 @@ steps in order; each one builds on the last.
    (Google Fonts allowed, must degrade to system fonts), mobile-first
    with a 640px breakpoint, print stylesheet hiding canvas/noprint/hero,
    eulogy quotes via `blockquote.eulogy::before/::after` (the
-   conditional's inner HTML stays byte-exact), seal overlay styles.
+   conditional's inner HTML stays byte-exact), seal overlay styles,
+   plus the `.random-theme` button block per the spec (§2 button rule:
+   fixed top-right, themed to the palette, shrinking at 640px).
    Anchor the hero overlay to the top or bottom edge (matching the
    art's safe area), never the vertical middle; on ≤640px widths hide
    the decorative overlay lines so the kicker + title never touch
    Sam's face.
 7. Write `html/pledges/<slug>.html`: valid HTML5; required `<head>`
    block verbatim from §3; absolute asset paths only (`/pledges/...`);
-   only allowlisted `{{markers}}`; the eulogy conditional byte-exact;
+   only allowlisted `{{markers}}` (including the §2 random-theme button
+   anchor with its dice SVG and exact phrase, placed immediately before
+   `<div class="wrap">`); the eulogy conditional byte-exact;
    kind-agnostic phrasing (`{who} pledged {qty} {qty_unit} {type}...`)
    so ram/floppy/usb all read right; no pledge numbers; corporate
    mail-to address only (OpenAI, 3180 18th St, San Francisco, CA 94110);
