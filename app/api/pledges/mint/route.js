@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { validatePledge, signPledge } from "@/lib/pledges";
-import { getPledgeSecret } from "@/lib/pledge-pages";
+import { getPledgeSecret, themeStatus } from "@/lib/pledge-pages";
 import { PLEDGE_TEMPLATES } from "@/lib/pages.generated";
 
 // POST /api/pledges/mint — validate a pledge, sign it, return its page URL.
@@ -23,6 +23,19 @@ export async function POST(request) {
   const checked = validatePledge(body);
   if (!checked.ok) {
     return NextResponse.json({ errors: checked.errors }, { status: 400 });
+  }
+  const status = await themeStatus(checked.value.theme);
+  if (status === "unknown") {
+    return NextResponse.json(
+      { errors: [`theme "${checked.value.theme}" is unknown — pick another`] },
+      { status: 400 },
+    );
+  }
+  if (status === "deprecated") {
+    return NextResponse.json(
+      { errors: [`theme "${checked.value.theme}" is retired — pick another`] },
+      { status: 400 },
+    );
   }
   if (!PLEDGE_TEMPLATES[checked.value.theme]) {
     return NextResponse.json(

@@ -7,6 +7,7 @@ import {
   getPledgeSecret,
   getSiteUrl,
   readThemes,
+  themeStatus,
 } from "../lib/pledge-pages.js";
 
 const SECRET = "test-secret-with-32-plus-characters!!";
@@ -80,14 +81,21 @@ describe("validatePledge", () => {
     assert.equal(validatePledge({ ...VALID, qty: 600 }).ok, false);
   });
 
-  it("enforces eulogy and theme rules", () => {
+  it("enforces eulogy and theme shape rules", () => {
     assert.equal(validatePledge({ ...VALID, eulogy: "x".repeat(141) }).ok, false);
-    assert.equal(validatePledge({ ...VALID, theme: "nope" }).ok, false);
+    // Membership comes from the JSON registries (see themeStatus) — the
+    // validator only checks slug shape, so well-formed unknown slugs pass.
+    assert.equal(validatePledge({ ...VALID, theme: "nope" }).ok, true);
+    for (const bad of ["", "Nope!", "has space", "a".repeat(65), 123]) {
+      assert.equal(validatePledge({ ...VALID, theme: bad }).ok, false);
+    }
   });
 
-  it("rejects deprecated themes for new mints", () => {
-    const r = validatePledge({ ...VALID, theme: "thisisfine" });
-    assert.equal(r.ok, false);
+  it("leaves retirement to the mint route; old links still verify", async () => {
+    // thisisfine is deprecated: well-formed, so validation passes — the
+    // mint route rejects it via themeStatus while old links keep working.
+    assert.equal(validatePledge({ ...VALID, theme: "thisisfine" }).ok, true);
+    assert.equal(await themeStatus("thisisfine"), "deprecated");
   });
 });
 

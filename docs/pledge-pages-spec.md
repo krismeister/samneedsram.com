@@ -79,13 +79,13 @@ but disappear from the picker and from new mints:
    `public/pledges/deprecated-themes.json` (same `slug` +
    `display_name` + `category` shape). The picker reads only
    `themes.json`, so the theme vanishes from the form.
-2. Move the slug from `THEMES` to `DEPRECATED_THEMES` in
-   `lib/pledges.js`, and drop it from the `validatePledge` error
-   message. Mint calls `validatePledge` (active only); page serving
-   calls `verifyPledge` (active + deprecated).
-3. Update the deprecation tests in `tests/pledges.test.mjs` (mint
-   rejects the slug, verify still accepts it, `readThemes` resolves
-   its display name).
+2. No code change needed: mint enforces membership via `themeStatus()`
+   against both JSON files (active → mintable, deprecated → 400
+   "retired", unknown → 400). Page serving verifies the JWT, then
+   renders any embedded template.
+3. Update the deprecation tests (`themeStatus` statuses in
+   `tests/theme-status.test.mjs`, the verify round-trip in
+   `tests/pledges.test.mjs`, `readThemes` display-name resolution).
 4. Keep the theme's template, CSS, art, and per-theme test files in
    place — the route still needs them to render old links.
 5. Run `npm test` — it must be green.
