@@ -74,7 +74,8 @@ steps in order; each one builds on the last.
    block verbatim from §3; absolute asset paths only (`/pledges/...`);
    only allowlisted `{{markers}}` (including the §2 random-theme button
    anchor with its dice SVG and exact phrase, placed immediately before
-   `<div class="wrap">`); the eulogy conditional byte-exact;
+   `<div class="wrap">`); the eulogy conditional byte-exact; the footer
+   ends with the §2 repo link;
    kind-agnostic phrasing (`{who} pledged {qty} {qty_unit} {type}...`)
    so ram/floppy/usb all read right; no pledge numbers; corporate
    mail-to address only (OpenAI, 3180 18th St, San Francisco, CA 94110);

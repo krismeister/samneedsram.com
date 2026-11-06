@@ -57,6 +57,10 @@ Rules for templates:
   Each theme's CSS styles `.random-theme` fixed top-right (`position:fixed;
   top:.75rem; right:.75rem; z-index:50`), themed to its palette, shrinking
   at the 640px breakpoint.
+- Footer links the repo: append ` &bull; <a
+  href="https://github.com/krismeister/samneedsram.com" target="_blank"
+  rel="noopener" style="color:inherit">GitHub</a>` to the footer's last
+  line so visitors can star and read the source.
 - Mobile-first. Must look right with an empty eulogy (use the conditional).
 - No JS required. If any: inline, <50 lines, no dependencies, page works with
   JS disabled (crawlers don't run it).

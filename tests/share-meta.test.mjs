@@ -119,3 +119,76 @@ describe("homepage share meta", () => {
     );
   });
 });
+
+describe("pledge share text", () => {
+  it("every template shares the themed text, encoded", async () => {
+    const dir = await fs.readdir(path.join(root, "html", "pledges"));
+    const files = dir.filter((f) => f.endsWith(".html"));
+    assert.ok(files.length > 20, "expected 20+ pledge templates");
+    for (const file of files) {
+      const src = await fs.readFile(
+        path.join(root, "html", "pledges", file),
+        "utf8",
+      );
+      let hrefs = 0;
+      for (const line of src.split("\n")) {
+        if (
+          line.includes("twitter.com/intent") ||
+          line.includes("facebook.com/sharer")
+        ) {
+          hrefs++;
+          assert.ok(
+            line.includes("{{share_text_enc}}"),
+            `${file}: share href must use share_text_enc`,
+          );
+          assert.ok(
+            !line.includes("{{meta_title}}"),
+            `${file}: share href must not use meta_title`,
+          );
+        }
+      }
+      assert.equal(hrefs, 2, `${file}: expected 2 share hrefs`);
+    }
+  });
+
+  it("fillTemplate builds themed, encoded share text with hashtag", () => {
+    const out = fillTemplate("{{share_text}}|{{share_text_enc}}", PLEDGE, {
+      siteUrl: SITE,
+      jwt: "JWT",
+      theme: "ramageddon",
+      displayName: "Ramageddon",
+      shareSuffix: "to the resistance",
+    });
+    const [raw, enc] = out.split("|");
+    assert.equal(
+      raw,
+      "Mabel pledged 8 GB DDR3 to the resistance #SamNeedsRAM",
+    );
+    assert.equal(enc, encodeURIComponent(raw));
+    assert.ok(enc.includes("%23SamNeedsRAM"));
+  });
+
+  it("every registry theme has a share suffix", async () => {
+    for (const f of ["themes.json", "deprecated-themes.json"]) {
+      const reg = JSON.parse(
+        await fs.readFile(path.join(root, "public", "pledges", f), "utf8"),
+      );
+      for (const t of reg.themes) {
+        assert.ok(
+          t.share_suffix && t.share_suffix.length > 0,
+          `${f}:${t.slug} needs share_suffix`,
+        );
+      }
+    }
+  });
+
+  it("falls back to Sam without a suffix", () => {
+    const out = fillTemplate("{{share_text}}", PLEDGE, {
+      siteUrl: SITE,
+      jwt: "JWT",
+      theme: "x",
+      displayName: "X",
+    });
+    assert.ok(out.endsWith("to Sam #SamNeedsRAM"));
+  });
+});
