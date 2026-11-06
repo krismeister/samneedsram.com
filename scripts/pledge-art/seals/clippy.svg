@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- Clippy TIP #1 seal motif. Rings + clip/RAM accents only, no
+     text: the template overlays the words TIP #1 in HTML. Transparent bg.
+     Center kept empty for the word. -->
+<g fill="none" stroke="#dfe3e6">
+<circle cx="256" cy="256" r="238" stroke-width="18"/>
+<circle cx="256" cy="256" r="200" stroke-width="6"/>
+</g>
+<g fill="none" stroke="#8fd6d2" stroke-width="10" stroke-linecap="round">
+<path d="M176 118 q-34 26 -34 62 t34 62 t34 -62 t-34 -62"/>
+<path d="M336 394 q34 -26 34 -62 t-34 -62 t-34 62 t34 62"/>
+</g>
+<g fill="#8fd6d2">
+<rect x="86" y="238" width="52" height="36" rx="4"/>
+<rect x="374" y="238" width="52" height="36" rx="4"/>
+</g>
+<g fill="#0b3b3a">
+<rect x="94" y="246" width="10" height="20"/>
+<rect x="110" y="246" width="10" height="20"/>
+<rect x="126" y="246" width="10" height="20"/>
+<rect x="382" y="246" width="10" height="20"/>
+<rect x="398" y="246" width="10" height="20"/>
+<rect x="414" y="246" width="10" height="20"/>
+</g>
+<g fill="#dfe3e6">
+<path d="M256 40 l14 14 -14 14 -14 -14 Z"/>
+<path d="M256 444 l14 14 -14 14 -14 -14 Z"/>
+</g>
+</svg>

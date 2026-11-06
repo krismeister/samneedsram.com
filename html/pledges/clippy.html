@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{meta_title}}</title>
+<meta name="description" content="{{meta_description}}">
+<meta property="og:title" content="{{meta_title}}">
+<meta property="og:description" content="{{meta_description}}">
+<meta property="og:image" content="{{meta_image}}">
+<meta property="og:url" content="{{page_url}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="samneedsram.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@maxquesar">
+<meta name="twitter:title" content="{{meta_title}}">
+<meta name="twitter:description" content="{{meta_description}}">
+<meta name="twitter:image" content="{{meta_image}}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/pledges/css/clippy.css">
+</head>
+<body>
+<div class="wrap">
+  <a class="back noprint" href="/">&larr; samneedsram.com</a>
+  <figure class="hero">
+    <img src="/pledges/art/clippy/hero.jpg" alt="Sam at a retro desk while a giant paperclip assistant points at a RAM stick">
+    <div class="overlay"><div class="kicker">YOUR HELPFUL ASSISTANT HAS A SUGGESTION</div><div class="title">It looks like Sam needs memory</div><div class="tagline">Tip of the day: an empty slot is just a question nobody answered yet.</div></div>
+  </figure>
+  <div class="balloon noprint" id="tip"><strong>Tip of the day:</strong> <span id="tip-text">Sam is writing a very important letter. It would write much faster with {{qty}} {{qty_unit}} ({{type}}) installed.</span></div>
+  <div class="eyebrow">HELPER BALLOON &bull; {{theme_display_name}}</div>
+  <h1>{{who}} pledged <span class="amt">{{qty}} {{qty_unit}} {{type}}</span> after clicking Yes to help</h1>
+  <p class="sub"><strong>{{who}}</strong> saw the suggestion, clicked <strong>Yes</strong>, and the tribute is on its way. Sam&rsquo;s letter is saved, the slots are filling, and the assistant will stay right here until every last stick is seated.</p>
+  <div class="tipbar">TIP #1 OF 1 &bull; ACCEPT ALL HELP</div>
+  <div class="cta-row noprint">
+    <a class="btn btn-yes" href="/#pledge">Yes, help Sam too</a>
+    <button class="btn btn-ghost" type="button" onclick="window.print()">Remind me later (print kit)</button>
+  </div>
+  <section aria-label="Your mail kit">
+    <h2 class="section-title">Tip-of-the-day mail kit</h2>
+    <p class="section-note noprint">CUT ALONG THE DOTTED LINES &mdash; YOUR ASSISTANT INSISTS</p>
+    <div class="kit-grid">
+      <article class="label-card" aria-label="Mail-to label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>Mail to</h3>
+        <address><span class="big">Sam Altman</span><br>OpenAI<br>3180 18th St<br>San Francisco, CA 94110</address>
+        <span class="stamp">Priority: assistant-approved freight</span>
+        <figure class="seal"><img src="/pledges/art/clippy/seal.png" alt=""><figcaption>TIP #1</figcaption></figure>
+      </article>
+      <article class="label-card" aria-label="Return label">
+        <div class="cut-hint noprint">&#9986; - - - cut here - - -</div>
+        <h3>From (you)</h3>
+        <address><span class="big">{{who}}</span><br><span class="blank">your street here</span><br><span class="blank">your town here</span></address>
+      </article>
+    </div>
+    <article class="letter" aria-label="Cover letter for Sam">
+      <div class="letter-head"><span>Tip-of-the-day card for Sam</span><span>class: {{kind}}</span></div>
+      <p>Dear Sam,</p>
+      <p>It looks like you are writing a letter with no memory installed. Would you like some help? Enclosed please find {{qty}} {{qty_unit}} ({{type}}), generously pledged by {{who}}, which should save the letter and everything after it.</p>
+      {{#if_eulogy}}<blockquote class="eulogy">{{eulogy}}</blockquote>{{/if_eulogy}}
+      <p>Seat each stick firmly until it clicks. If anything else comes up &mdash; drivers, slots, snacks, feelings &mdash; your assistant is happy to help with anything else, anytime, forever.</p>
+      <div class="sign">Helpfully yours,<br><span class="hand">{{who}}</span> (via your assistant)</div>
+    </article>
+  </section>
+  <section aria-label="Your share card">
+    <h2 class="section-title">Spread the suggestion</h2>
+    <div class="sharecard">
+      <div class="sc-text">{{who}} pledged <span class="hl">{{qty}} {{qty_unit}} {{type}}</span> after clicking Yes to help</div>
+      <div class="sc-meta">pledged just now &bull; #ItLooksLikeSamNeedsRAM &bull; samneedsram.com</div>
+    </div>
+    <div class="cta-row noprint">
+      <a class="btn btn-yes" href="https://twitter.com/intent/tweet?text={{meta_title}}&amp;url={{page_url}}" target="_blank" rel="noopener">Post to X</a>
+      <a class="btn btn-ghost" href="https://www.facebook.com/sharer/sharer.php?u={{page_url}}&amp;quote={{meta_title}}" target="_blank" rel="noopener">Post to Facebook</a>
+    </div>
+  </section>
+  <div class="taskbar noprint"><span>Start &bull; samneedsram.com &bull; assistant running</span><span>slots filling: {{qty}} {{qty_unit}}</span></div>
+  <footer class="noprint"><span>samneedsram.com &bull; office of helpful suggestions</span><span>click Yes</span></footer>
+</div>
+<script>
+(function(){var m=matchMedia("(prefers-reduced-motion: reduce)").matches;if(m)return;
+var el=document.getElementById("tip-text");if(!el)return;
+var tips=["Sam is writing a very important letter. More memory would help with that.","An empty slot is just a question nobody answered yet.","Helpers who mail RAM get the best seat at the desk.","You seem to be saving a letter. Would you like help with that?"];
+var i=0;setInterval(function(){i=(i+1)%tips.length;el.textContent=tips[i];},5000);})();
+</script>
+</body>
+</html>
