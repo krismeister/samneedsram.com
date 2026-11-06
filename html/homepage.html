@@ -418,6 +418,64 @@
   @media (max-width: 640px) { .field-row { grid-template-columns: 1fr; } }
   @media (prefers-reduced-motion: reduce) { .pledge-form.flash { animation: none; } }
 
+  /* ---------- how'd i build it ---------- */
+  .watch-card {
+    max-width: 34rem;
+    background: #fff;
+    border: 1px solid rgba(22, 19, 14, 0.3);
+    padding: 0.7rem 0.7rem 0.8rem;
+    box-shadow: 8px 8px 0 rgba(22, 19, 14, 0.25);
+    transform: rotate(-1deg);
+    position: relative;
+    margin: 1rem 0 0;
+  }
+  .watch-card::before {
+    content: "";
+    position: absolute;
+    top: -0.8rem;
+    left: 30%;
+    width: 5rem;
+    height: 1.5rem;
+    background: var(--tape);
+    transform: rotate(3deg);
+    border-left: 1px dashed rgba(0,0,0,0.25);
+    border-right: 1px dashed rgba(0,0,0,0.25);
+  }
+  .watch-card a { display: block; }
+  .watch-card .thumb {
+    display: block;
+    position: relative;
+    border: 1px solid rgba(22, 19, 14, 0.4);
+  }
+  .watch-card img { display: block; width: 100%; height: auto; }
+  .watch-card .play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 4rem;
+    height: 4rem;
+    background: var(--red);
+    border: 3px solid var(--paper);
+    border-radius: 50%;
+    box-shadow: 4px 4px 0 rgba(22, 19, 14, 0.4);
+  }
+  .watch-card .play::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 54%;
+    translate: -50% -50%;
+    border-left: 1.1rem solid var(--paper);
+    border-top: 0.7rem solid transparent;
+    border-bottom: 0.7rem solid transparent;
+  }
+  .watch-card figcaption {
+    font-family: "Permanent Marker", cursive;
+    font-size: 1.05rem;
+    margin-top: 0.5rem;
+    transform: rotate(-0.6deg);
+  }
   /* ---------- footer ---------- */
   footer { margin-top: 3rem; }
   .caution {
@@ -637,10 +695,20 @@
     </div>
   </section>
 
-  <div class="cta-row">
-    <button class="btn btn-red" id="pledgeBtn2" type="button">Pledge your sticks</button>
-    <button class="btn btn-yellow" id="shareBtn2" type="button">Share the drive</button>
-  </div>
+  <section aria-label="How it was built">
+    <h2 class="section-title">How&rsquo;d I build it?</h2>
+    <p class="section-note">the director&rsquo;s commentary</p>
+    <figure class="watch-card">
+      <a href="https://youtu.be/5qPAYRzlRsA?si=0KGTrn3kHdwx_V2d" target="_blank" rel="noopener">
+        <span class="thumb">
+          <img src="https://i.ytimg.com/vi/5qPAYRzlRsA/maxresdefault.jpg" alt="Kris demoing the Warhammer 40KB pledge page" loading="lazy">
+          <span class="play" aria-hidden="true"></span>
+        </span>
+      </a>
+      <figcaption>kris shows how this whole thing got built</figcaption>
+    </figure>
+  </section>
+
   <footer>
     <div class="caution"></div>
     <div class="foot-row">
@@ -848,7 +916,6 @@
     setTimeout(function () { document.getElementById("fWho").focus({ preventScroll: true }); }, reduceMotion ? 0 : 600);
   }
   document.getElementById("pledgeBtn").addEventListener("click", goToForm);
-  document.getElementById("pledgeBtn2").addEventListener("click", goToForm);
 
   var DETAILS = {
     ram: { typeLabel: "RAM type", qtyLabel: "Gigabytes", max: 512, integer: false, opts: ["DDR2", "DDR3", "DDR4", "DDR5", "SODIMM"] },
@@ -1055,7 +1122,6 @@
     }
   }
   document.getElementById("shareBtn").addEventListener("click", function () { share(this); });
-  document.getElementById("shareBtn2").addEventListener("click", function () { share(this); });
 })();
 </script>
 </body>
