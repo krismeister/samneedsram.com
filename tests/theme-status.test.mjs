@@ -14,6 +14,7 @@ describe("themeStatus", () => {
   it("reports retired and unknown slugs", async () => {
     assert.equal(await themeStatus("thisisfine"), "deprecated");
     assert.equal(await themeStatus("daftram"), "deprecated");
+    assert.equal(await themeStatus("pickleram"), "deprecated");
     assert.equal(await themeStatus("nope"), "unknown");
   });
 });
