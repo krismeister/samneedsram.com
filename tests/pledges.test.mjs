@@ -121,10 +121,13 @@ describe("validatePledge", () => {
   });
 
   it("leaves retirement to the mint route; old links still verify", async () => {
-    // thisisfine is deprecated: well-formed, so validation passes — the
-    // mint route rejects it via themeStatus while old links keep working.
+    // thisisfine and daftram are deprecated: well-formed, so validation
+    // passes — the mint route rejects them via themeStatus while old
+    // links keep working.
     assert.equal(validatePledge({ ...VALID, theme: "thisisfine" }).ok, true);
     assert.equal(await themeStatus("thisisfine"), "deprecated");
+    assert.equal(validatePledge({ ...VALID, theme: "daftram" }).ok, true);
+    assert.equal(await themeStatus("daftram"), "deprecated");
   });
 });
 
@@ -143,9 +146,11 @@ describe("pledge JWT", () => {
   });
 
   it("still verifies old links for deprecated themes", () => {
-    const old = { ...VALID, theme: "thisisfine" };
-    const jwt = signPledge(old, SECRET);
-    assert.deepEqual(verifyPledge(jwt, SECRET), old);
+    for (const theme of ["thisisfine", "daftram"]) {
+      const old = { ...VALID, theme };
+      const jwt = signPledge(old, SECRET);
+      assert.deepEqual(verifyPledge(jwt, SECRET), old);
+    }
   });
 });
 
@@ -251,5 +256,6 @@ describe("readThemes", () => {
   it("resolves display names for deprecated themes", async () => {
     const map = await readThemes();
     assert.equal(map["thisisfine"]?.display_name, "This RAM Is Fine");
+    assert.equal(map["daftram"]?.display_name, "Daft RAM");
   });
 });
