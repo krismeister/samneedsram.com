@@ -13,7 +13,7 @@ when Kris asks for a theme hero.
 ## References (read before generating)
 
 - The idea file's art direction (hero line, cast, mood, copy beats).
-- `mailer-assets/photos/` portraits (pass as generation references, never
+- `scripts/pledge-art/photos/` portraits (pass as generation references, never
   publish directly). Cast allowlist: Sam Altman, Elon Musk, Mark Zuckerberg,
   Jensen Huang. No other real people without Kris's OK.
   - Sam: `sam-villageglobal-2022.jpg` (primary; clean front face). Alternates:

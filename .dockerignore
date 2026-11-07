@@ -8,6 +8,7 @@ Dockerfile
 .dockerignore
 docs
 generated_images
+scripts/pledge-art/photos
 # Secrets stay out; runtime env comes from the host.
 .env*
 !.env.example

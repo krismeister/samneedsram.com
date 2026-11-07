@@ -39,7 +39,7 @@ steps in order; each one builds on the last.
      for everything else. Sources land in `generated_images/` by default.
    - Face likeness for og/picker: when the idea puts Sam, Elon, Zuck,
      or Jensen in the og/picker art, pass the matching portrait from
-     `mailer-assets/photos/` as a generation reference (same portraits
+     `scripts/pledge-art/photos/` as a generation reference (same portraits
      as the hero skill) so the model matches the face.
 3. Draw the seal: write `scripts/pledge-art/seals/<slug>.svg` — 512
    viewBox, transparent background, motif only, NO text (the template
