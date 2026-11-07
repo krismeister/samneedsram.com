@@ -22,7 +22,7 @@
 
 ## 📺 Watch the telethon
 
-[![Sam Needs RAM on YouTube. Click to watch.](docs/youtube-thumb.png)](https://youtu.be/5qPAYRzlRsA?si=0KGTrn3kHdwx_V2d)
+[![Sam Needs RAM on YouTube. Click to watch.](docs/design/youtube-thumb.png)](https://youtu.be/5qPAYRzlRsA?si=0KGTrn3kHdwx_V2d)
 
 **[▶ Watch on YouTube](https://youtu.be/5qPAYRzlRsA?si=0KGTrn3kHdwx_V2d)**, then go to **[samneedsram.com](https://samneedsram.com)** and pledge something. Anything. The 2GB DDR2 stick from 2009 is fine. Sam isn't proud.
 

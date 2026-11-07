@@ -18,8 +18,11 @@ into the `html/pledges/` template, CSS, and art.
 
 ## Steps
 
-1. Settle the idea: a theme slug (lowercase, e.g. `severance`), catchy
-   display title, and category (matches `public/pledges/themes.json`
+1. Settle the idea: a theme slug (lowercase hyphenated, e.g.
+   `severance`, `daft-ram-v2` — multi-word slugs always hyphenate;
+   existing unhyphenated slugs are grandfathered, never rename one),
+   catchy display title, and category (matches
+   `public/pledges/themes.json`
    values like Movies, Games, TV, Music, Originals). The display title
    shows in the homepage picker dropdown alongside every other theme,
    so it must be catchy and distinct at a glance — a pun or twist on
