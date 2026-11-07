@@ -4,6 +4,7 @@ import { createHash } from "node:crypto";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fillTemplate } from "../lib/pledge-pages.js";
+import { validatePledge, DEFAULT_EULOGY } from "../lib/pledges.js";
 
 // RAMassic Park theme: dinosaur-park brochure + control-room safety manual,
 // Sam as safari-hatted founder with Elon as chaos theorist.
@@ -78,24 +79,23 @@ describe("ramassicpark template fill", () => {
   });
 
   it("renders a floppy pledge without eulogy and no leftover markers", async () => {
-    const out = fillTemplate(
-      await template(),
-      {
-        who: "Dan",
-        kind: "floppy",
-        type: '3.5" HD',
-        qty: 12,
-        theme: "ramassicpark",
-      },
-      FILL,
-    );
+    const checked = validatePledge({
+      who: "Dan",
+      kind: "floppy",
+      type: '3.5" HD',
+      qty: 12,
+      theme: "ramassicpark",
+    });
+    assert.equal(checked.ok, true);
+    const out = fillTemplate(await template(), checked.value, FILL);
     assert.ok(!out.includes("{{"), "leftover markers");
     assert.ok(out.includes("12 disks"), "floppy unit");
     assert.ok(out.includes("3.5&quot; HD"), "escaped type");
     assert.ok(
-      !out.includes('<blockquote class="eulogy">'),
-      "eulogy block stripped",
+      out.includes("<blockquote") && out.includes(DEFAULT_EULOGY),
+      "default eulogy block kept",
     );
+    assert.ok(!out.includes("undefined"), "no missing-field leak");
     assert.ok(!out.includes("GB of"), "kind-agnostic phrasing");
   });
 });

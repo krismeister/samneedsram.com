@@ -1062,7 +1062,7 @@
       qty: d.integer ? Math.round(qty) : qty,
       theme: theme
     };
-    if (eulogy !== "") body.eulogy = eulogy;
+    body.eulogy = eulogy;
 
     pledgeSubmit.disabled = true;
     fetch("/api/pledges/mint", {

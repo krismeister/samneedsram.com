@@ -182,16 +182,20 @@ describe("fillTemplate", () => {
     assert.ok(!out.includes("{{"));
   });
 
-  it("strips the eulogy block when empty and escapes HTML", () => {
-    const evil = { ...VALID, who: "<script>alert(1)</script>" };
-    delete evil.eulogy;
+  it("always renders the eulogy block and escapes HTML", () => {
+    const evil = {
+      ...VALID,
+      who: "<script>alert(1)</script>",
+      eulogy: "loved <b>boldly</b>",
+    };
     const out = fillTemplate(TPL, evil, {
       siteUrl: "https://samneedsram.com",
       jwt: "JWT",
       theme: "ramageddon",
       displayName: "Ramageddon",
     });
-    assert.ok(!out.includes("<blockquote>"));
+    assert.ok(out.includes("<blockquote>loved &lt;b&gt;boldly&lt;/b&gt;</blockquote>"));
+    assert.ok(!out.includes("if_eulogy"));
     assert.ok(!out.includes("<script>"));
     assert.ok(out.includes("&lt;script&gt;"));
   });
