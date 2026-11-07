@@ -10,8 +10,7 @@ import {
 } from "../lib/site-head.js";
 
 // Umami coverage: Next.js injects global head tags at serve time (static
-// HTML files stay clean), the app layout loads the tracker for React
-// pages, and the homepage reports pledge/share conversions.
+// HTML files stay clean), and the homepage reports pledge/share conversions.
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -42,17 +41,6 @@ describe("global head injection", () => {
     }
   });
 
-  it("app layout loads the tracker", async () => {
-    const layout = await fs.readFile(
-      path.join(root, "app", "layout.js"),
-      "utf8",
-    );
-    assert.ok(
-      layout.includes("UMAMI_SCRIPT_SRC") &&
-        layout.includes("UMAMI_WEBSITE_ID"),
-      "app/layout.js must load umami from the shared constants",
-    );
-  });
 });
 
 describe("homepage conversions", () => {

@@ -33,9 +33,9 @@ Useful flags: `--min-instances 0` (scale to zero, cheapest),
 
 - The container listens on `$PORT` (Cloud Run default 8080); see
   [Dockerfile](../Dockerfile).
-- Mailer content is committed under `public/static-mailers/`, so each
-  redeploy picks up newly generated mailers. Redeploy after a
-  generation session: re-run the `gcloud run deploy` command above.
+- Site content (pledge themes, art) is committed under `public/`, so each
+  redeploy picks up newly built themes. Redeploy after adding content:
+  re-run the `gcloud run deploy` command above.
 - Custom domain: `samneedsram.com` + `www.samneedsram.com` are mapped to
   the service (Cloud DNS zone `samneedsram-com`: apex A/AAAA + www CNAME
   to `ghs.googlehosted.com`). Google-managed TLS auto-renews.

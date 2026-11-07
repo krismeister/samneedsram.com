@@ -7,7 +7,6 @@ npm-debug.log*
 Dockerfile
 .dockerignore
 docs
-mailer-assets/thumbnail-originals
 generated_images
 # Secrets stay out; runtime env comes from the host.
 .env*

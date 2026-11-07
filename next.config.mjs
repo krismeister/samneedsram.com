@@ -13,9 +13,6 @@ const nextConfig = {
     ];
   },
   async headers() {
-    // Site is set-and-forget: cache everything hard except the homepage
-    // (Kris still edits it); never cache themes.json or the mint/health APIs.
-    // Nothing caches longer than 10 days.
     const TEN_DAYS = "public, max-age=864000";
     const cc = (value) => [{ key: "Cache-Control", value }];
     return [
@@ -28,23 +25,9 @@ const nextConfig = {
         source: "/pledges/themes.json",
         headers: cc("no-store"),
       },
-      // Homepage: still edited, so keep it short.
       {
         source: "/",
         headers: cc("public, max-age=300, stale-while-revalidate=3600"),
-      },
-      // Letters: disk-backed, change on deploy only.
-      {
-        source: "/letters",
-        headers: cc("public, max-age=3600, stale-while-revalidate=86400"),
-      },
-      {
-        source: "/letters/:path*",
-        headers: cc("public, max-age=3600, stale-while-revalidate=86400"),
-      },
-      {
-        source: "/api/letters/:path*",
-        headers: cc("public, max-age=3600, stale-while-revalidate=86400"),
       },
       // Never cache minting or health.
       { source: "/api/pledges/mint", headers: cc("no-store") },
