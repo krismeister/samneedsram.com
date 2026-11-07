@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<!-- Pickle RAM v2 seal: gold outer ring, green inner ring, gavel glyph top,
+     RAM-stick glyph bottom, gold diamonds at the sides. Center stays
+     transparent: the template overlays the word BAIL in HTML. No text. -->
+<g fill="none" stroke="#d4a017">
+<circle cx="256" cy="256" r="238" stroke-width="10"/>
+</g>
+<g fill="none" stroke="#35c759">
+<circle cx="256" cy="256" r="150" stroke-width="5"/>
+</g>
+<g fill="none" stroke="#d4a017" stroke-width="8" stroke-linecap="round">
+<line x1="196" y1="168" x2="316" y2="108"/>
+</g>
+<g fill="#d4a017">
+<rect x="282" y="76" width="72" height="44" rx="6" transform="rotate(-24 318 98)"/>
+</g>
+<g fill="none" stroke="#35c759" stroke-width="5">
+<rect x="196" y="356" width="120" height="30" rx="3"/>
+</g>
+<g stroke="#35c759" stroke-width="3">
+<line x1="210" y1="386" x2="210" y2="394"/>
+<line x1="224" y1="386" x2="224" y2="394"/>
+<line x1="238" y1="386" x2="238" y2="394"/>
+<line x1="252" y1="386" x2="252" y2="394"/>
+<line x1="274" y1="386" x2="274" y2="394"/>
+<line x1="288" y1="386" x2="288" y2="394"/>
+<line x1="302" y1="386" x2="302" y2="394"/>
+</g>
+<g fill="#35c759">
+<rect x="204" y="363" width="22" height="16"/>
+<rect x="240" y="363" width="22" height="16"/>
+<rect x="276" y="363" width="22" height="16"/>
+</g>
+<g fill="#d4a017">
+<path d="M46 256 l14 14 -14 14 -14 -14 Z"/>
+<path d="M466 256 l14 14 -14 14 -14 -14 Z"/>
+</g>
+</svg>
