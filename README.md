@@ -35,7 +35,7 @@ Sam Altman needs memory. You have memory. It's in a drawer, next to a dead remot
 This site fixes that:
 
 1. **Pledge your old sticks.** RAM, floppies, or USB drives, with a quantity and a eulogy (140 characters, make it count).
-2. **Pick a theme.** Sixteen of them. Yes, sixteen. More are on the way.
+2. **Pick a theme.** Twenty-six of them. Yes, twenty-six. More are on the way.
 3. **Get your pledge page.** It's a permanent link with its own share card, so everyone can see what you gave up for the drive.
 4. **Mail it.** Totally optional. The kit goes to OpenAI's public corporate address only. Nobody's checking. Sam's counting on the honor system, and honestly, so are we.
 
@@ -55,7 +55,7 @@ If it once held data, Sam wants it.
 
 ## The themes (the part we're proud of)
 
-Every pledge page wears a costume. There's a Ramageddon where the data center burns, a Warhammer 40KB where a floppy is held like a holy relic, a Gondor where the beacon is lit with a suspiciously RAM-shaped flame, plus SeverRAM, The Legend of RAM, 1.21 Gigabytes, PokeRAM, RAMbusters, RAM Trek, Daft RAM, TetRAM, Stranger DIMMs, Pickle RAM, and You've Got RAM. Retired themes (rest in peace, This Is Fine) leave the picker, but their old links work forever, because we respect the dead.
+Every pledge page wears a costume. There's a Ramageddon where the data center burns, a Warhammer 40KB where a floppy is held like a holy relic, a Gondor where the beacon is lit with a suspiciously RAM-shaped flame, plus SeverRAM, The Legend of RAM, 1.21 Gigabytes, PokeRAM, RAMbusters, RAM Trek, Daft RAM, TetRAM, Stranger DIMMs, and Pickle RAM.
 
 Each theme ships with its own hero art, share card, seal, stylesheet, copy, and test. Sam is in every one of them, in character, holding RAM.
 
@@ -85,7 +85,7 @@ Writes a concise, buildable idea file to `docs/planning/ideas/<slug>.md`, one at
 
 - **Picks the premise itself.** Name a franchise and it'll use it. Otherwise it raids geek culture, movies, shows, games, memes, and retro tech, and doesn't ask permission.
 - **Never repeats itself.** It checks `ideas/` *and* `ideas/done/` before writing, and rotates the source so you don't get nine movie themes in a row.
-- **Titles must be puns.** `Warhammer 40KB`, `Ramageddon`. Never the bare franchise name. The title sits in the picker next to fifteen others and has to win a fight.
+- **Titles must be puns.** `Warhammer 40KB`, `Ramageddon`. Never the bare franchise name. The title sits in the picker next to twenty-five others and has to win a fight.
 - **Fixed structure.** Title and logline, a **Premise** (played dead straight), **Theme instructions** (voice, palette, type, art direction for hero, og, picker, and seal, plus the hero title, eyebrow, letter angle, share-card line, and hashtag), and **Spec notes** for the next skill.
 - **Sam stars in every hero and share image,** in character. Zuckerberg, Elon, and Jensen Huang may guest. Nobody else without Kris's OK.
 - **Knows its place.** It writes the file, reports the path, and does not build anything or commit anything.
@@ -119,7 +119,7 @@ The full contract (markers, art dimensions, registry rules) lives in [docs/pledg
 - **Static HTML templates with markers.** The server fills in each pledge page, meta tags included, so social crawlers get the share card without running JavaScript
 - **Signed pledge links.** HMAC-SHA256 JWTs from `node:crypto`, zero dependencies, no expiry. Your pledge outlives us all
 - **Google Firestore** via Application Default Credentials
-- **Puppeteer** and **sharp** for art processing
+- **sharp** for art processing
 - **Cloud Run**, deployed from GitHub Actions on every push to `main`, secrets in Secret Manager
 - **Node's built-in test runner,** with a test for every theme
 
@@ -150,7 +150,7 @@ Open http://localhost:3000. The pledge flow only needs those two variables. `/ap
 app/                    Routes: homepage, /pledges/[theme], /api/*
 html/pledges/           One template per theme (not served raw)
 public/pledges/         Per-theme CSS and art, plus themes.json (the registry)
-scripts/pledge-art/     Seal SVGs and art processing
+scripts/pledge-art/     Seal SVGs, likeness portraits, and art processing
 tests/                  Pledge logic tests plus one test per theme
 lib/                    Validation, signing, template filling, Firestore client
 docs/planning/ideas/    The idea queue (done/ holds the ones already built)
